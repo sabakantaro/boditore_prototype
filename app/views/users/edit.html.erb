@@ -1,0 +1,14 @@
+<h2>Edit</h2>
+
+<p>写真</p>
+
+<%= form_for(current_user) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name , autofocus: true,  rows: "10", autocomplete: "name" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
