@@ -1,0 +1,9 @@
+<div class="contents row">
+  <%= form_tag('/post_qs', method: :post) do %>
+    <h3>
+      本文
+    </h3>
+    <textarea name="text" placeholder="text" rows="10" cols="30"></textarea>
+    <input type="submit" value="送信">
+  <% end %>
+</div>
