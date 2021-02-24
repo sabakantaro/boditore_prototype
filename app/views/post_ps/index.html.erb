@@ -1,0 +1,9 @@
+<h1>投稿一覧</h1>
+<% @post_ps.each do |post_p| %>
+  <div class="post_ps-index-item">
+    <%= post_p.content %>
+  </div>
+<% end %>
+<%= link_to"新規投稿", "/post_ps/new" %>
+<%= link_to"投稿編集", "/post_ps/1/edit" %>
+<%= link_to"投稿削除", post_p_path(1), method: :delete %>

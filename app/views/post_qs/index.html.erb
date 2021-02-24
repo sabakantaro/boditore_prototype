@@ -1,0 +1,9 @@
+<h1>投稿一覧</h1>
+<% @post_qs.each do |post_p| %>
+  <div class="post_q-index-item">
+    <%= post_q.content %>
+  </div>
+<% end %>
+<%= link_to"新規投稿", "/post_qs/new" %>
+<%= link_to"投稿編集", "/post_qs/1/edit" %>
+<%= link_to"投稿削除", post_q_path(1), method: :delete %>
