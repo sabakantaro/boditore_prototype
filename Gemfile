@@ -65,8 +65,10 @@ end
 
 group :production do
   gem 'pg', '0.20.0'
+  gem 'fog'
 end
 
 gem 'devise'
 gem 'carrierwave'
-# gem 'rmagick'
+gem 'mini_magick'
+gem 'faker'
