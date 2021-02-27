@@ -24,9 +24,11 @@
   </span>
   <p>名前</p>
   <p>評価（星）</p>
+  <%= render 'follow_form' %>
   <p><%= link_to "レビュー", '#' %></p>
-  <p><%= link_to "フォロー", '#' %></p>
-  <p><%= link_to "フォロワー", '#' %></p>
+<section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
   <p><%= link_to "プロフィール編集", edit_user_path %></p>
   <p>自己紹介</p>
   <p>質問投稿一覧</p>

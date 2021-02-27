@@ -11,4 +11,10 @@ Rails.application.routes.draw do
   post 'post_qs/create' => 'post_qs#create'
   resources :post_ps
   post 'post_ps/create' => 'post_ps#create'
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships,       only: [:create, :destroy]
 end

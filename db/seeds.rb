@@ -1,8 +1,7 @@
-User.create!(name:  "",
-            pictue:  "",
-             email: "",
-             password:              "",
-             password_confirmation: "")
+User.create!(name:  "でっていう",
+             email: "detteiu@yosshi.com",
+             password:              "detteiu",
+             password_confirmation: "detteiu")
 
 99.times do |n|
   name  = Faker::Name.name
@@ -13,3 +12,11 @@ User.create!(name:  "",
                password:              password,
                password_confirmation: password)
 end
+
+# リレーションシップ
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
