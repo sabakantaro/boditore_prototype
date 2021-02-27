@@ -5,7 +5,7 @@
   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
 </ul>
 <ul class="content">
-  <li><%= link_to "List", users_path %></li>
+  <li><%= link_to "トレーニーリスト", users_path %></li>
   <li><%= link_to "質問", new_post_q_path %></li>
   <li><%= link_to "投稿", new_post_p_path %></li>
   <li><%= link_to "Favorite", '#' %></li>
@@ -22,7 +22,7 @@
   <span class="content">
     <%= image_tag @user.picture %>
   </span>
-  <p>名前</p>
+  <p><%= @user.name %></p>
   <p>評価（星）</p>
   <%= render 'follow_form' %>
   <p><%= link_to "レビュー", '#' %></p>
