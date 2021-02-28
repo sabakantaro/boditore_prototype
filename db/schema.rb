@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210228025240) do
+ActiveRecord::Schema.define(version: 20210228070426) do
+
+  create_table "favorite_ps", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_p_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_p_id"], name: "index_favorite_ps_on_post_p_id"
+    t.index ["user_id"], name: "index_favorite_ps_on_user_id"
+  end
+
+  create_table "favorite_qs", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post__id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post__id"], name: "index_favorite_qs_on_post__id"
+    t.index ["user_id"], name: "index_favorite_qs_on_user_id"
+  end
 
   create_table "notifications", force: :cascade do |t|
     t.integer "visitor_id", null: false

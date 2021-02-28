@@ -5,7 +5,7 @@
 <% end %>
 <% @post_ps.each do |post_p| %>
   <div class="post_ps-index-item">
-    <%= post_p.content %>
+    <%= link_to post_p.content, "/post_ps/show" %>
   </div>
 <% end %>
 <%= link_to"新規投稿", "/post_ps/new" %>

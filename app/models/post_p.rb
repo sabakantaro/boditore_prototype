@@ -1,6 +1,8 @@
 class PostP < ApplicationRecord
   belongs_to :user
   has_many :notifications, dependent: :destroy
+  has_many :favorite_ps
+  has_many :users, through: :favorite_ps
   default_scope -> { order(created_at: :desc) }
   acts_as_taggable
 

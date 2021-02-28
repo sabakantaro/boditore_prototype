@@ -23,4 +23,12 @@ Rails.application.routes.draw do
   end
   resources :relationships,       only: [:create, :destroy]
   resources :notifications, only: :index
+  resources :post_qs do
+    post 'add' => 'favorite_qs#create'
+    delete '/add' => 'favorite_qs#destroy'
+  end
+  resources :post_ps do
+    post 'add' => 'favorite_ps#create'
+    delete '/add' => 'favorite_ps#destroy'
+  end
 end

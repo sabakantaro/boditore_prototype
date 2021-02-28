@@ -4,6 +4,10 @@ class PostQsController < ApplicationController
     @post_qs = PostQ.all.order(created_at: :desc)
   end
 
+  def show
+    @post_qs = PostQ.all.order(created_at: :desc)
+  end
+
   def new
   end
 

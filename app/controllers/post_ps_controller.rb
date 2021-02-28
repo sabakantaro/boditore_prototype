@@ -4,6 +4,10 @@ class PostPsController < ApplicationController
     @post_ps = PostP.all.order(created_at: :desc)
   end
 
+  def show
+    @post_p = PostP.all
+  end
+
   def new
   end
 

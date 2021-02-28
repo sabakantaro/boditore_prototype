@@ -1,0 +1,2 @@
+module FavoriteQsHelper
+end

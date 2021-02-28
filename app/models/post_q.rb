@@ -2,6 +2,8 @@ class PostQ < ApplicationRecord
   acts_as_taggable
   belongs_to :user
   has_many :notifications, dependent: :destroy
+  has_many :favorite_qs
+  has_many :users, through: :favorite_qs
   default_scope -> { order(created_at: :desc) }
 
   def create_notification_post_q!(current_user, post_q_id)
