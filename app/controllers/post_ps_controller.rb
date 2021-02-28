@@ -9,8 +9,15 @@ class PostPsController < ApplicationController
 
   def create
     @post_p = PostP.new(content: params[:content])
-    @post_p.save
+    # @post_p = @post_p.post
+    if @post_p.save
+      # ここから
+      @post_p.create_notification_post_p!(current_user, @comment.id)
+      # ここまで
+      respond_to :js
+    else
     redirect_to("/post_ps/index")
+    end
   end
 
   def edit

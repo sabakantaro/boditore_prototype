@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210226062358) do
+ActiveRecord::Schema.define(version: 20210228004126) do
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "post_c_id"
+    t.integer "post_q_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_c_id"], name: "index_notifications_on_post_c_id"
+    t.index ["post_q_id"], name: "index_notifications_on_post_q_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+  end
 
   create_table "post_ps", force: :cascade do |t|
     t.text "content"
