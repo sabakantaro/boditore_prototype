@@ -1,6 +1,8 @@
 <h1>PostPs#edit</h1>
 <span>現在ログイン中のユーザー：<%= current_user.name %></span>
 <%= form_for(@post_p, url: post_p_path(@post_p)) do |f| %>
+        <%= f.label :tag_list, 'タグをカンマ区切りで入力' %>
+        <%= text_field_tag 'post[tag_list]', @post.tag_list, :class => "form-control" %>
     <div>
         <%= f.label :中身 %><br>
         <%= f.text_area :content, :placeholder =>"#{@post_p.content}" %>

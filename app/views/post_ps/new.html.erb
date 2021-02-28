@@ -1,6 +1,8 @@
 <h1>新規投稿</h1>
 <div class="contents row">
-  <%= form_tag("/post_ps/create") do %>
+  <%= form_for("/post_ps/create") do |f|  %>
+    <%= f.label :tag_list, 'タグをカンマ区切りで入力' %>
+    <%= text_field_tag 'post[tag_list]', @post_p, :class => "form-control" %>
     <textarea name="content"></textarea>
     <input type="submit" value="投稿">
   <% end %>

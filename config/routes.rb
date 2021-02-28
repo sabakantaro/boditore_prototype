@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   resources :users
   resources :post_qs
   post 'post_qs/create' => 'post_qs#create'
+  post 'post_qs/new' => 'post_qs#new'
   resources :post_ps
   post 'post_ps/create' => 'post_ps#create'
+  post 'post_ps/new' => 'post_ps#new'
   resources :users do
     member do
       get :following, :followers

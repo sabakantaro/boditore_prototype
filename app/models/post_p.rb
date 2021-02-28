@@ -2,10 +2,11 @@ class PostP < ApplicationRecord
   belongs_to :user
   has_many :notifications, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
+  acts_as_taggable
 
   def create_notification_post_p!(current_user, post_p_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
-    temp_ids = PostP.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
+    temp_ids = PostP.select(:user_id).where(post_p_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
       save_notification_post_p!(current_user, post_p_id, temp_id['user_id'])
     end

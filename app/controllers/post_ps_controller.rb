@@ -42,7 +42,7 @@ class PostPsController < ApplicationController
   private
 
     def post_p_params
-        params.require(:post_p).permit(:content)
+        params.require(:post_p).permit(:content, :tag_list)
     end
 
 end

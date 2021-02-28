@@ -35,6 +35,6 @@ class PostQsController < ApplicationController
   private
 
     def post_p_params
-        params.require(:post_q).permit(:content)
+        params.require(:post_q).permit(:content, :tag_list)
     end
 end
