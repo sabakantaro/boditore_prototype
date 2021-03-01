@@ -34,4 +34,6 @@ Rails.application.routes.draw do
   resources :users do
   get :search, on: :collection
   end
+  resources :messages, :only => [:create]
+  resources :rooms, :only => [:create, :show, :index]
 end
