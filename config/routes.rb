@@ -31,4 +31,7 @@ Rails.application.routes.draw do
     post 'add' => 'favorite_ps#create'
     delete '/add' => 'favorite_ps#destroy'
   end
+  resources :users do
+  get :search, on: :collection
+  end
 end

@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
 
+  def search
+    if params[:name].present?
+      @users = User.where('name LIKE ?', "%#{params[:name]}%")
+    else
+      @users = User.none
+    end
+  end
+
   def following
     @user  = User.find(params[:id])
     @users = @user.following.all
@@ -38,10 +46,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+
+
   private
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation, :picture)
+                                   :password_confirmation, :picture, :search)
     end
 end
