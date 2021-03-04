@@ -1,6 +1,6 @@
 <% if user_signed_in? %> <!-- ユーザーがログインしているか調べる -->
   <!-- ユーザーがログインしていた時の処理 -->
-  <div class="center jumbotron">
+  <div class="content">
   <h1>さあ、大筋肉時代の幕開けだ。</h1>
   <h2>
     ここは、あらゆる理想を掲げるトレーニーが集う場所。<br>
@@ -11,7 +11,7 @@
 </div>
 <% else %>
   <!-- ユーザーがログインしていなかった時の処理 -->
-  <div class="center jumbotron">
+  <div class="center">
   <h1>筋肉は、裏切らない。</h1>
   <h2>
     あなたは今、新たな一歩を踏み出そうとしている。<br>
@@ -21,8 +21,7 @@
   </h2>
 </div>
 <% end %>
-<%= link_to "質問をする", new_post_q_path, class: "Home_btn Home_btn1" %>
-<%= link_to "投稿をする",  new_post_p_path, class: "Home_btn Home_btn2" %>
+<%= link_to "投稿をする", new_post_path, class: "Home_btn Home_btn1" %>
 
 <div class="content">
     <span> Boditoreの3つの特長</span>

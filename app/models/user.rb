@@ -10,15 +10,16 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   has_many :favorite_qs
-  has_many :post_qs, through: :favorite_qs
+  has_many :posts, through: :favorite_qs
   has_many :favorite_ps
   has_many :post_ps, through: :favorite_ps
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable
+         :recoverable, :rememberable, :validatable
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   mount_uploader :picture, PictureUploader
 

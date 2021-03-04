@@ -8,11 +8,7 @@ Rails.application.routes.draw do
   get  '/home',    to: 'home#index'
   get  '/signup',  to: 'users#new'
   get 'post_ps/index'
-  get 'post_qs/index'
   resources :users
-  resources :post_qs
-  post 'post_qs/create' => 'post_qs#create'
-  post 'post_qs/new' => 'post_qs#new'
   resources :post_ps
   post 'post_ps/create' => 'post_ps#create'
   post 'post_ps/new' => 'post_ps#new'
@@ -23,10 +19,6 @@ Rails.application.routes.draw do
   end
   resources :relationships,       only: [:create, :destroy]
   resources :notifications, only: :index
-  resources :post_qs do
-    post 'add' => 'favorite_qs#create'
-    delete '/add' => 'favorite_qs#destroy'
-  end
   resources :post_ps do
     post 'add' => 'favorite_ps#create'
     delete '/add' => 'favorite_ps#destroy'
@@ -36,4 +28,13 @@ Rails.application.routes.draw do
   end
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]
+
+  get 'posts/index'
+  resources :posts
+  post 'posts/create' => 'posts#create'
+  post "posts/:id/update" => "posts#update"
+  resources :posts do
+    post 'add' => 'favorite_qs#create'
+    delete '/add' => 'favorite_qs#destroy'
+  end
 end

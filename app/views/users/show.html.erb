@@ -6,8 +6,7 @@
 </ul>
 <ul class="content">
   <li><%= link_to "トレーニーリスト", users_path %></li>
-  <li><%= link_to "質問", new_post_q_path %></li>
-  <li><%= link_to "投稿", new_post_p_path %></li>
+  <li><%= link_to "投稿", new_post_path %></li>
   <li><%= link_to "Favorite", '#' %></li>
 </ul>
 <div class="content">
@@ -19,20 +18,17 @@
  <!--<button type="button" class="btn btn-outline-secondary rounded-pill">-->
    <!--f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: "image-select-btn"-->
  <!--</button>-->
-  <span class="content">
-    <%= image_tag @user.picture %>
-  </span>
+  <!--<span class="content">-->
+  <!--   image_tag @user.image-->
+  <!--</span>-->
   <p><%= @user.name %></p>
-  <p>評価（星）</p>
   <%= render 'follow_form' %>
-  <p><%= link_to "レビュー", '#' %></p>
 <section class="stats">
         <%= render 'shared/stats' %>
       </section>
   <p><%= link_to "プロフィール編集", edit_user_path %></p>
   <p>自己紹介</p>
-  <p>質問投稿一覧</p>
-  <p>回答投稿一覧</p>
+  <p><%= link_to "投稿一覧", "/posts/index" %></p>
 
     <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
 

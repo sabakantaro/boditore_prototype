@@ -1,16 +1,11 @@
-# User.create!(name:  "テスト",
-#             email: "aaa@aaa.com",
-#             password:              SecureRandom.urlsafe_base64,
-#             password_confirmation: user.password)
-
-99.times do |n|
+100.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
   User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password)
+              email: email,
+              password:              password,
+              password_confirmation: password)
 end
 
 # リレーションシップ

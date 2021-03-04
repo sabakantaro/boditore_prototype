@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210301034058) do
+ActiveRecord::Schema.define(version: 20210304023607) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id"
@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(version: 20210301034058) do
 
   create_table "favorite_qs", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "post__id", null: false
+    t.integer "post_q_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post__id"], name: "index_favorite_qs_on_post__id"
+    t.index ["post_q_id"], name: "index_favorite_qs_on_post_q_id"
     t.index ["user_id"], name: "index_favorite_qs_on_user_id"
   end
 
@@ -65,9 +65,12 @@ ActiveRecord::Schema.define(version: 20210301034058) do
   end
 
   create_table "post_ps", force: :cascade do |t|
+    t.text "title"
     t.text "content"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_post_ps_on_user_id"
   end
 
   create_table "post_qs", force: :cascade do |t|
@@ -77,6 +80,12 @@ ActiveRecord::Schema.define(version: 20210301034058) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_post_qs_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|
