@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210304023607) do
+ActiveRecord::Schema.define(version: 20210306034455) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id"
@@ -21,22 +21,13 @@ ActiveRecord::Schema.define(version: 20210304023607) do
     t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
-  create_table "favorite_ps", force: :cascade do |t|
+  create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "post_p_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_p_id"], name: "index_favorite_ps_on_post_p_id"
-    t.index ["user_id"], name: "index_favorite_ps_on_user_id"
-  end
-
-  create_table "favorite_qs", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "post_q_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_q_id"], name: "index_favorite_qs_on_post_q_id"
-    t.index ["user_id"], name: "index_favorite_qs_on_user_id"
+    t.index ["post_id"], name: "index_favorites_on_post_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -52,40 +43,23 @@ ActiveRecord::Schema.define(version: 20210304023607) do
   create_table "notifications", force: :cascade do |t|
     t.integer "visitor_id", null: false
     t.integer "visited_id", null: false
-    t.integer "post_c_id"
-    t.integer "post_q_id"
+    t.integer "post_id"
+    t.integer "message_id"
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_c_id"], name: "index_notifications_on_post_c_id"
-    t.index ["post_q_id"], name: "index_notifications_on_post_q_id"
+    t.index ["message_id"], name: "index_notifications_on_message_id"
+    t.index ["post_id"], name: "index_notifications_on_post_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
-  end
-
-  create_table "post_ps", force: :cascade do |t|
-    t.text "title"
-    t.text "content"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_post_ps_on_user_id"
-  end
-
-  create_table "post_qs", force: :cascade do |t|
-    t.text "title"
-    t.text "content"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_post_qs_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "relationships", force: :cascade do |t|

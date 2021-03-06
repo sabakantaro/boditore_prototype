@@ -27,7 +27,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
-    # @post = current_user.posts.build
+
+    favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
+    @favorite_list = Post.find(favorites)     # postsテーブルから、お気に入り登録済みのレコードを取得
+
+    @post = current_user.posts.build
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
     if @user.id == current_user.id
@@ -53,6 +57,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.create_notification_follow!(current_user)
     if @user.save
       log_in @user
       flash[:success] = "ようこそBoditoreへ"

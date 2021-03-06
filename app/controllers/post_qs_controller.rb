@@ -1,3 +1,0 @@
-class PostQsController < ApplicationController
-
-end

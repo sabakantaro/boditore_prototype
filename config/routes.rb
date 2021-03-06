@@ -7,11 +7,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get  '/home',    to: 'home#index'
   get  '/signup',  to: 'users#new'
-  get 'post_ps/index'
   resources :users
-  resources :post_ps
-  post 'post_ps/create' => 'post_ps#create'
-  post 'post_ps/new' => 'post_ps#new'
   resources :users do
     member do
       get :following, :followers
@@ -19,9 +15,9 @@ Rails.application.routes.draw do
   end
   resources :relationships,       only: [:create, :destroy]
   resources :notifications, only: :index
-  resources :post_ps do
-    post 'add' => 'favorite_ps#create'
-    delete '/add' => 'favorite_ps#destroy'
+  resources :posts do
+    post 'add' => 'favorites#create'
+    delete '/add' => 'favorites#destroy'
   end
   resources :users do
   get :search, on: :collection
@@ -33,8 +29,5 @@ Rails.application.routes.draw do
   resources :posts
   post 'posts/create' => 'posts#create'
   post "posts/:id/update" => "posts#update"
-  resources :posts do
-    post 'add' => 'favorite_qs#create'
-    delete '/add' => 'favorite_qs#destroy'
-  end
+
 end

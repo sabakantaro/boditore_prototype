@@ -1,2 +1,0 @@
-module PostPsHelper
-end

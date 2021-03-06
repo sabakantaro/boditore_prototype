@@ -1,14 +1,19 @@
 <ul class="content">
   <li><%= link_to "トレーニーリスト",   users_path %></li>
-  <li><%= link_to "Inform", '#' %></li>
+  <li><%= link_to "通知", notifications_path %></li>
   <li><%= link_to "プロフィール編集", edit_user_registration_path %></li>
   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
 </ul>
 <ul class="content">
   <li><%= link_to "トレーニーリスト", users_path %></li>
   <li><%= link_to "投稿", new_post_path %></li>
-  <li><%= link_to "Favorite", '#' %></li>
+  <li><p>お気に入り投稿<p></li>
 </ul>
+<% if @favorite_list.present? %>
+  <% @favorite_list.each do |post| %>
+    <%= post.content %>
+  <% end %>
+<% end %>
 <div class="content">
  <!--   if @user.image? -->
  <!--  image_tag @user.image.thumb.url, class: "user-icon"-->
@@ -29,7 +34,28 @@
   <p><%= link_to "プロフィール編集", edit_user_path %></p>
   <p>自己紹介</p>
   <p><%= link_to "投稿一覧", "/posts/index" %></p>
+  <% @posts.each do |post| %>
+  <%=link_to post.content, post_path(post.id) %>
+<% end %>
 
+
+<h1>ユーザー詳細</h1>
+
+<h2><%= @user.email %></h2>
+
+<% if @user.id == current_user.id %>
+
+<% else %>
+  <% if @isRoom == true %>
     <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+  <% else %>
+    <%= form_for @room do |f| %>
+      <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, :value=> @user.id %>
+      <% end %>
+      <%= f.submit "チャットを始める" %>
+    <% end %>
+  <% end %>
+<% end %>
 
 </div>
