@@ -1,12 +1,9 @@
 class RelationshipsController < ApplicationController
 
   def create
-    user = User.find(params[:followed_id])
-    current_user.follow(user)
-    redirect_to user
-    # ここから
-    @user.create_notification_follow!(current_user)
-    # ここまで
+    @user = User.find(params[:followed_id])
+    current_user.follow(@user)
+    @user.create_notification_follow!(current_user) #通知
     respond_to do |format|
       format.html { redirect_to @user }
       format.js
@@ -14,9 +11,8 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-    user = Relationship.find(params[:id]).followed
-    current_user.unfollow(user)
-    redirect_to user
+    @user = Relationship.find(params[:id]).followed
+    current_user.unfollow(@user)
     respond_to do |format|
       format.html { redirect_to @user }
       format.js

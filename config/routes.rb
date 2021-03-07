@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships,       only: [:create, :destroy]
+  
   resources :notifications, only: :index
+  
   resources :posts do
     post 'add' => 'favorites#create'
     delete '/add' => 'favorites#destroy'
@@ -25,8 +27,6 @@ Rails.application.routes.draw do
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]
 
-  get 'posts/index'
-  resources :posts
   post 'posts/create' => 'posts#create'
   post "posts/:id/update" => "posts#update"
 

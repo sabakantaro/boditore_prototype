@@ -1,14 +1,10 @@
 <h1>投稿一覧</h1>
 <% @posts.each do |post| %>
   <div class="posts-index-item">
-    <%= post.content %>
+    <%= link_to post.content, post%>
     <%= link_to "編集", edit_post_path(post) %>
     <%= link_to "削除", post_path(post), method: :delete %>
   </div>
-  <% if !Favorite.exists?(user_id:current_user.id,post_id:post.id) %>
-    <%= link_to "お気に入り",post_add_path(post),method: :post %>
-    <% else %>
-    <%= link_to "お気に入り解除",post_add_path(post),method: :delete %>
 <% end %>
 <%= link_to("新規投稿", "/posts/new") %>
 

@@ -1,8 +1,29 @@
-<!--自分の投稿に対するいいね、コメントは通知に表示しない-->
-<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-<% if notifications.exists? %>
-  <%= render notifications %>
-  <%= paginate notifications %>
+<h1>おしらせ</h1>
+<% if @notifications.exists? %>
+  <% @notifications.each do |notification| %>
+    <table>
+      <tr>
+        <td>
+          <%= link_to user_path(notification.visitor) do %>
+            <%= notification.visitor.name %>
+          <% end %>
+        </td>
+        <td>
+          さんからフォローされました。
+        </td>
+        <td>
+          <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
+        </td>
+      </tr>
+    </table>
+
+    <div>
+        <%= link_to user_path(notification.visitor) do %>
+        <%= notification.visitor.name %>
+         <% end %>
+        さんがあなた(<%= notification.visited.name %>さん)にDMを送りました
+    </div>
+  <% end %>
 <% else %>
-  <p>通知はありません</p>
+  <p>おしらせはありません</p>
 <% end %>

@@ -15,33 +15,26 @@
   <% end %>
 <% end %>
 <div class="content">
- <!--   if @user.image? -->
- <!--  image_tag @user.image.thumb.url, class: "user-icon"-->
- <!-- else -->
- <!--  image_tag "default.jpg", alt: "user-icon", size: "200", class: "user-icon"-->
- <!-- end -->
- <!--<button type="button" class="btn btn-outline-secondary rounded-pill">-->
-   <!--f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: "image-select-btn"-->
- <!--</button>-->
-  <!--<span class="content">-->
-  <!--   image_tag @user.image-->
-  <!--</span>-->
-  <p><%= @user.name %></p>
   <%= render 'follow_form' %>
 <section class="stats">
         <%= render 'shared/stats' %>
       </section>
   <p><%= link_to "プロフィール編集", edit_user_path %></p>
   <p>自己紹介</p>
-  <p><%= link_to "投稿一覧", "/posts/index" %></p>
+  <p><%= link_to "投稿一覧", posts_path(@post) %></p>
   <% @posts.each do |post| %>
   <%=link_to post.content, post_path(post.id) %>
 <% end %>
 
 
 <h1>ユーザー詳細</h1>
-
-<h2><%= @user.email %></h2>
+<% if @user.picture? %>
+<%= image_tag@user.picture, alt: "user-icon", size: "200",  class: "user-icon" %>
+<% else %>
+<%= image_tag "default.jpg", alt: "user-icon", size: "200", class: "user-icon" %>
+<% end %>
+<p><%= @user.name %></p>
+<p><%= @user.email %></p>
 
 <% if @user.id == current_user.id %>
 
