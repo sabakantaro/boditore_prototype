@@ -1,13 +1,14 @@
-<footer class="footer">
-  <small>
-    <a>Boditore</a>
-    by <a>Sabakantaro</a>
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "投稿", new_post_path %></li>
-      <li><%= link_to "トレーニーリスト",   users_path %></li>
-      <li><%= link_to "通知", notifications_path %></li>
-    </ul>
-  </nav>
+<footer class="nav navbar-nav">
+  <div class="container">
+    <nav>
+      <small>
+        <a>Boditore</a>by<a>Sabakantaro</a>
+      </small>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "投稿", new_post_path %></li>
+        <li><%= link_to "トレーニーリスト",   users_path %></li>
+        <li><%= link_to "通知", notifications_path %></li>
+      </ul>
+    </nav>
+  </div>
 </footer>
