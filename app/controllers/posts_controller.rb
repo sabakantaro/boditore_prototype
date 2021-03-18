@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by(post_params)
+    @favorites_count = Favorite.where(post_id: @post.id).count
   end
 
   def new
@@ -40,7 +41,7 @@ class PostsController < ApplicationController
   private
 
     def post_params
-        params.permit(:content)
+        params.permit(:id, :content)
     end
 
 end

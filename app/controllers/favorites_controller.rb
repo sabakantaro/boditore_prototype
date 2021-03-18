@@ -15,7 +15,7 @@ class FavoritesController < ApplicationController
     post=Post.find(params[:post_id])
     if favorite=Favorite.find_by(user_id: user.id,post_id:post.id)
       favorite.delete
-      redirect_to users_path(current_user)
+      redirect_to post
     else
       redirect_to root_url
     end

@@ -14,9 +14,9 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships,       only: [:create, :destroy]
-  
-  resources :notifications, only: :index
-  
+
+  resources :notifications, only: [:index, :destroy]
+
   resources :posts do
     post 'add' => 'favorites#create'
     delete '/add' => 'favorites#destroy'

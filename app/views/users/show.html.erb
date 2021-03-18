@@ -1,57 +1,71 @@
-<div class="sidebar">
-  <ul class="content">
-    <li><%= link_to "トレーニーリスト",   users_path %></li>
-    <li><%= link_to "通知", notifications_path %></li>
-    <li><%= link_to "プロフィール編集", edit_user_registration_path %></li>
-    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-  </ul>
-  <ul class="content">
-    <li><%= link_to "トレーニーリスト", users_path %></li>
-    <li><%= link_to "投稿", new_post_path %></li>
-    <li><p>お気に入り投稿<p></li>
-  </ul>
-  <% if @favorite_list.present? %>
-    <% @favorite_list.each do |post| %>
-      <%= post.content %>
-    <% end %>
-  <% end %>
-    <p><%= link_to "プロフィール編集", edit_user_path %></p>
+<div class="user__wrapper">
+  <div class="user__show">
+    <ul class="user__show__top">
+        <li class="user__show__top__icon">
+            <% if @user.picture? %>
+            <%= image_tag @user.picture, alt: "user-icon", size: "200",  class: "user-icon" %>
+            <% else %>
+            <%= image_tag "default.jpg", alt: "user-icon", size: "200", class: "user-icon" %>
+            <% end %>
+        </li>
+        <li class="user__show__top__content">
+          <% if @user.id == current_user.id %>
+            <button class="btn slide-bg"><span></span><%= link_to "プロフィール編集", edit_user_registration_path  %></button>
+            <button class="btn slide-bg"><span></span><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
+          <% else %>
+            <%= render 'follow_form' %>
+            <% if @isRoom == true %>
+            <button class="btn slide-bg"><span></span><a href="/rooms/<%= @roomId %>">チャットへ</a></button>
+            <% else %>
+              <%= form_for @room do |f| %>
+                <%= fields_for @entry do |e| %>
+                  <%= e.hidden_field :user_id, :value=> @user.id %>
+                <% end %>
+                  <h3><%= f.submit "チャットを始める" %></h3>
+              <% end %>
+            <% end %>
+          <% end %>
+        </li>
+      </ul>
+      <ul class="user__show__bottom">
+        <li class="user__show__bottom__name">
+            <h3><%= @user.name %></h3>
+        </li>
+        <li class="user__show__bottom__follow">
+            <%= render 'shared/stats' %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="post__index">
+      <div class="tabs">
+        <input id="all" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="all">自分の投稿</label>
+        <input id="programming" type="radio" name="tab_item">
+        <label class="tab_item" for="programming">お気に入り投稿</label>
+        <div class="tab_content" id="all_content">
+          <% @posts.each do |post| %>
+          <li class="post__index__item">
+            <div class="post__index__item__user">
+              <%=link_to post.content, post_path(post) %>
+            </div>
+          </li>
+          <% end %>
+        </div>
+        <div class="tab_content" id="programming_content">
+          <li class="post__index__item">
+            <div class="post__index__item__user">
+              <% if @favorite_list.present? %>
+                <% @favorite_list.each do |post| %>
+                  <%=link_to post.content, post_path(post) %>
+                <% end %>
+              <% end %>
+            </div>
+          </li>
+        </div>
+      </div>
+    </div>
 </div>
 
-  <p>自己紹介</p>
-  <p><%= link_to "投稿一覧", posts_path(@post) %></p>
-  <% @posts.each do |post| %>
-  <%=link_to post.content, post_path(post.id) %>
-<% end %>
-
-
-<h1>ユーザー詳細</h1>
-<% if @user.picture? %>
-<%= image_tag@user.picture, alt: "user-icon", size: "200",  class: "user-icon" %>
-<% else %>
-<%= image_tag "default.jpg", alt: "user-icon", size: "200", class: "user-icon" %>
-<% end %>
-<p><%= @user.name %></p>
-<p><%= @user.email %></p>
-
-<%= render 'follow_form' %>
-  <section class="stats">
-          <%= render 'shared/stats' %>
-        </section>
-
-<% if @user.id == current_user.id %>
-
-<% else %>
-  <% if @isRoom == true %>
-    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
-  <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, :value=> @user.id %>
-      <% end %>
-      <%= f.submit "チャットを始める" %>
-    <% end %>
-  <% end %>
-<% end %>
-
+<div class="bg">
 </div>

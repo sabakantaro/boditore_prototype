@@ -1,14 +1,12 @@
-<footer class="nav navbar-nav">
-  <div class="container">
-    <nav>
-      <small>
-        <a>Boditore</a>by<a>Sabakantaro</a>
-      </small>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "投稿", new_post_path %></li>
-        <li><%= link_to "トレーニーリスト",   users_path %></li>
-        <li><%= link_to "通知", notifications_path %></li>
-      </ul>
-    </nav>
-  </div>
+<footer class="footer">
+  <ul class="footer-menu">
+    <li>
+      <%= link_to  root_path do %>
+      <i class="fas fa-home fa-lg"></i>HOME
+      <% end %>
+    </li>
+  <small>
+    <p>© All rights reserved by sabakantaro.</p>
+  </small>
+  </ul>
 </footer>

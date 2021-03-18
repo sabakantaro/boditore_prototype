@@ -1,12 +1,33 @@
+<div class="notifications">
+
 <h1> <%= @post.user.name %>さんの投稿</h1>
   <div class="posts-index-item">
+    <% if @post.user.picture? %>
+            <%= image_tag @post.user.picture, size: "50x50", class:"user-icon"%>
+            <% else %>
+            <%= image_tag "default.jpg", alt: "user-icon", size: "50x50", class: "user-icon" %>
+            <% end %>
     <%= @post.content %>
     <%= link_to "編集", edit_post_path(@post) %>
     <%= link_to "削除", post_path(@post), method: :delete %>
-  </div>
+
+
   <% if !Favorite.exists?(user_id:current_user.id,post_id:@post.id) %>
-    <%= link_to "お気に入り",post_add_path(@post),method: :post %>
-    <% else %>
-    <%= link_to "お気に入り解除",post_add_path(@post),method: :delete %>
+    <%= link_to post_add_path(@post),method: :post do %>
+    <i class="fas fa-star" style="color: gray;"></i>
+    <%= @favorites_count %>
     <% end %>
+  <% else %>
+    <%= link_to post_add_path(@post),method: :delete do %>
+    <i class="fas fa-star" style="color: orange;"></i>
+    <%= @favorites_count %>
+    <% end %>
+  <% end %>
+    </div>
+    
+  <hr>
+  
 <%= link_to("新規投稿", "/posts/new") %>
+</div>
+
+<div class="bg-post"></div>

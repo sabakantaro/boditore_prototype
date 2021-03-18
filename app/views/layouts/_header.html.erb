@@ -1,42 +1,50 @@
-<header class="nav">
-      <div class="container">
-        <%= link_to "Boditore", root_path, id: "logo" %>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
+<header class="header">
+    <div class="wrapper">
+      <%= link_to "Boditore", root_path, id: "logo" %>
+        <nav class="nav">
+          <ul class="nav__wrapper">
+            <li class="nav__item">
               <%= link_to  new_post_path do %>
-              <i class="far fa-paper-plane"></i>
+              <i class="far fa-paper-plane fa-lg"></i>
               <% end %>
             </li>
-            <li>
+            <li class="nav__item">
               <%= link_to  users_path do %>
-              <i class="fas fa-users"></i>
+              <i class="fas fa-users fa-lg"></i>
               <% end %>
             </li>
-            <li>
+            <li class="nav__item">          
               <%= link_to  notifications_path do %>
-              <i class="far fa-bell"></i>
+              <i class="far fa-bell fa-lg"></i>
               <% end %>
             </li>
           <% if user_signed_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="far fa-user-circle"></i><b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "プロフィール", current_user %></li>
-              <li><%= link_to "プロフィール編集", edit_user_registration_path %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-              </li>
-            </ul>
-          </li>
-            <% else %>
-            <!-- ユーザーがログインしていなかった時の処理 -->
-            <li><%= link_to "新規登録", new_user_registration_path %></li>
-            <li><%= link_to "ログイン", new_user_session_path %></li>
-            <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "login" %></li>
+            <li class="nav__item">
+              <ul class="gnav">
+                <li>
+                  <a href="#"><i class="far fa-user-circle fa-lg"></i><b class="caret"></b>&xdtri;</a>
+                  <ul>
+                    <li><%= link_to "プロフィール", current_user %></li>
+                    <li><%= link_to "プロフィール編集", edit_user_registration_path %></li>
+                   
+                    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li class="nav__item">
+              <ul class="gnav">
+                <li>
+                  <a href="#"><i class="far fa-user-circle fa-lg"></i><b class="caret"></b>&xdtri;</a>
+                  <ul>
+                    <li><%= link_to "新規登録", new_user_registration_path %></li>
+                    <li><%= link_to "ログイン", new_user_session_path %></li>
+                    <li><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "login" %></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
             <% end %>
           </ul>
         </nav>
