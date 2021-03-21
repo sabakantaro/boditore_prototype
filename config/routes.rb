@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   end
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]
-
+  
+  post 'posts/new' => 'posts#new'
   post 'posts/create' => 'posts#create'
   post "posts/:id/update" => "posts#update"
 

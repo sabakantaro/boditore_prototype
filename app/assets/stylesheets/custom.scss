@@ -5,24 +5,38 @@ $cBlack: black;
 
 /*main*/
 
-.msr_box01 {
-  text-align: center;
-  width: 100%;
+body {
+  box-shadow: none !important;
+  border: none !important;
+  background-color: rgb(230, 230, 230) !important;
+}
 
+.msr_box01 {
+  margin: auto;
+  text-align: center;
+  width: 80%;
 }
 
 .msr_box01 .disp-img {
+
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px #ccc;
+  margin-top: 30px;
+  background-color: darkgray;
   border: 1px solid #B9B9B9;
   box-sizing: border-box;
   display: block;
   padding: 8px;
-}
+  .img {
 
-.msr_box01 .img {
-  hight: 140;
-  margin: 0 0 5px;
-  opacity: 0.9;
-  z-index: -2;
+    hight: 30%;
+    width: 80%;
+    padding-top: 30px;
+    margin: 0 0 5px;
+    opacity: 0.9;
+    z-index: -2;
+  }
 }
 
 .msr_box01 .ttl {
@@ -37,15 +51,22 @@ $cBlack: black;
 
 .msr_box02 {
   text-align: center;
-  width: 100%;
+  width: 74%;
+  margin: 0 auto;
+  margin-top: 60px;
+  padding: 40px;
+  border: 1px solid #e1e1e1;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px #ccc;
 }
 
 ul.sub__ttl {
   display: flex;
-
   & li {
     display: inline-block;
-    margin-left: 80px;
+    margin-left: 19px;
+
   }
 }
 
@@ -87,6 +108,7 @@ ul {
 .header {
   position: relative;
   background-color: $cBlack;
+  border: 1.8px solid #B9B9B9;
 }
 
 .wrapper {
@@ -156,386 +178,424 @@ ul {
   color: #efa04c;
 }
 
-/* user show */
-
-.user__wrapper {
-  height: 100%;
-  width: 100%;
-  margin-top: 5px;
-  padding: 30px 0;
-}
-
-.user__show {
-  width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #e1e1e1;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0px 4px 6px #ccc;
-}
-
-.user__show__top {
-  padding: 20px;
-  margin-left: 40px;
-  height: 120px;
-  display: flex;
-}
-
-.user__show__bottom {
-  margin-top: 30px;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-
-  &__name {
-    width: 200px;
-    text-align: center;
-    margin-left: 45px;
+  /* user show */
+  .user__wrapper {
+    height: 100%;
+    width: 100%;
+    margin-top: 5px;
+    padding: 30px 0;
   }
 
-  &__follow {
-    display: flex;
-    width: 200px;
-    padding-top: 20px;
+  .user__show {
+    width: 600px;
     margin: 0 auto;
-    margin-left: 55px;
-    & a {
-      color: $cBlack;
-      text-decoration: none;
+    padding: 20px;
+    border: 1px solid #e1e1e1;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px #ccc;
+  }
+
+  .user__show__top {
+    padding: 20px;
+    margin-left: 40px;
+    height: 120px;
+    display: flex;
+  }
+
+  .user__show__bottom {
+    margin-top: 30px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    &__name {
+      width: 200px;
+      text-align: center;
+      margin-left: 45px;
+    }
+
+    &__follow {
+      display: flex;
+      width: 200px;
+      padding-top: 20px;
+      margin: 0 auto;
+      margin-left: 55px;
+      & a {
+        color: $cBlack;
+        text-decoration: none;
+      }
     }
   }
-}
 
-.user__show__top__content {
-  margin-left: 50px;
-}
+  .user__show__top__content {
+    margin-left: 50px;
+  }
 
-.user__show__top__content .btn {
-  width: 200px;
-  text-decoration: none;
-  background-color: $cWhite;
-  color: $cBlack;
-  border: 1px solid $cBlack;
-  padding: 10px 40px;
-  margin: 30px 0;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
+  .user__show__top__content .btn {
+    width: 200px;
+    text-decoration: none;
+    background-color: $cWhite;
+    color: $cBlack;
+    border: 1px solid $cBlack;
+    padding: 10px 40px;
+    margin: 30px 0;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
 
-  &.slide-bg {
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-
-    & a {
-      text-decoration: none;
-      color: $cBlack;
-    }
-    & span {
-      display: inline-block;
-      width: 100%;
-      height: 100%;
-      background-color: $cBlack;
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: translateX(-100%);
-      transition: transform 0.3s;
-      z-index: -1;
-    }
-
-    &:hover {
-      color: $cWhite;
+    &.slide-bg {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
 
       & a {
         text-decoration: none;
-        color: $cWhite;
+        color: $cBlack;
+      }
+      & span {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background-color: $cBlack;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+        z-index: -1;
       }
 
-      & span {
-        transform: none;
+      &:hover {
+        color: $cWhite;
+
+        & a {
+          text-decoration: none;
+          color: $cWhite;
+        }
+
+        & span {
+          transform: none;
+        }
       }
     }
   }
-}
 
-.btn__unfollow {
-  width: 200px;
-  text-decoration: none;
-  background-color: gray;
-  color: $cWhite;
-  border: 1px solid gray;
-  padding: 13px 40px;
-  margin: 30px 0;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  border-radius: 5px;
-}
-
-.btn__follow {
-  width: 200px;
-  text-decoration: none;
-  background-color: skyblue;
-  color: $cWhite;
-  border: 1px solid skyblue;
-  padding: 13px 40px;
-  margin: 30px 0;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  border-radius: 5px;
-}
-
-.post__index {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  &__item {
-    display: inline-block;
-    width: 750px;
-    padding: 30px;
-    margin: 5% 0;
-    border: 1px solid #e1e1e1;
+  .btn__unfollow {
+    width: 200px;
+    text-decoration: none;
+    background-color: gray;
+    color: $cWhite;
+    border: 1px solid gray;
+    padding: 13px 40px;
+    margin: 30px 0;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
     border-radius: 5px;
-    position: relative;
-    box-shadow: 0px 4px 6px #ccc;
-    &__user a {
+  }
+
+  .btn__follow {
+    width: 200px;
+    text-decoration: none;
+    background-color: skyblue;
+    color: $cWhite;
+    border: 1px solid skyblue;
+    padding: 13px 40px;
+    margin: 30px 0;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 5px;
+  }
+
+  .user__show__post {
+    &__index__item {
+      &__user {
+        position: relative;
+        &__name {
+          position: absolute;
+          left: 55px;
+          top: 15px;
+        }
+      }
+
+      & h3 {
+        display: block;
+        text-align: center;
+      }
+
+      & a {
+        text-decoration: none;
+        color: blue;
+      }
+    }
+
+    &__index {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      &__item {
+        display: inline-block;
+        width: 750px;
+        padding: 30px;
+        margin: 5% 0;
+        border: 1px solid #e1e1e1;
+        border-radius: 5px;
+        position: relative;
+        box-shadow: 0px 4px 6px #ccc;
+        &__user a {
+          text-decoration: none;
+          color: $cBlack;
+        }
+      }
+    }
+  }
+
+
+
+  /*タブ切り替え全体のスタイル*/
+  .tabs {
+    margin-top: 50px;
+    padding-bottom: 40px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 900px;
+  }
+
+  /*タブのスタイル*/
+  .tab_item {
+    width: calc(100%/2);
+    height: 50px;
+    border-bottom: 3px solid black;
+    background-color: #d9d9d9;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    color: #565656;
+    display: block;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+  }
+
+  .tab_item:hover {
+    opacity: 0.75;
+  }
+
+  /*ラジオボタンを全て消す*/
+  input[name="tab_item"] {
+    display: none;
+  }
+
+  /*タブ切り替えの中身のスタイル*/
+  .tab_content {
+    display: none;
+    padding: 40px 40px 0;
+    clear: both;
+    overflow: hidden;
+  }
+
+
+  /*選択されているタブのコンテンツのみを表示*/
+  #all:checked~#all_content,
+  #favorite:checked~#favorite_content {
+    display: block;
+  }
+
+  /*選択されているタブのスタイルを変える*/
+  .tabs input:checked+.tab_item {
+    background-color: black;
+    color: #fff;
+  }
+
+  /* footer */
+  footer {
+    width: 100%;
+    color: $cBlack;
+    text-align: center;
+  }
+
+  .footer-menu a {
+    display: inline;
+    color: $cBlack;
+    text-decoration: none;
+  }
+
+
+  /*post*/
+  .sysNextSubmit {
+    width: 120px;
+    text-decoration: none;
+    background-color: #556B2F;
+    color: $cWhite;
+    border: 1.5px solid gray;
+    padding: 13px 40px;
+    margin: 30px 0;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 5px;
+  }
+
+  .post {
+    text-align: center;
+    & a {
       text-decoration: none;
       color: $cBlack;
     }
   }
-}
 
 
-
-/*タブ切り替え全体のスタイル*/
-
-.tabs {
-  margin-top: 50px;
-  padding-bottom: 40px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 900px;
-}
-
-/*タブのスタイル*/
-
-.tab_item {
-  width: calc(100%/2);
-  height: 50px;
-  border-bottom: 3px solid black;
-  background-color: #d9d9d9;
-  line-height: 50px;
-  font-size: 16px;
-  text-align: center;
-  color: #565656;
-  display: block;
-  float: left;
-  text-align: center;
-  font-weight: bold;
-  transition: all 0.2s ease;
-}
-
-.tab_item:hover {
-  opacity: 0.75;
-}
-
-/*ラジオボタンを全て消す*/
-
-input[name="tab_item"] {
-  display: none;
-}
-
-/*タブ切り替えの中身のスタイル*/
-
-.tab_content {
-  display: none;
-  padding: 40px 40px 0;
-  clear: both;
-  overflow: hidden;
-}
-
-
-/*選択されているタブのコンテンツのみを表示*/
-
-#all:checked~#all_content,
-#programming:checked~#programming_content {
-  display: block;
-}
-
-/*選択されているタブのスタイルを変える*/
-
-.tabs input:checked+.tab_item {
-  background-color: black;
-  color: #fff;
-}
-
-/* footer */
-
-footer {
-  width: 100%;
-  color: $cBlack;
-  text-align: center;
-}
-
-.footer-menu a {
-  display: inline;
-  color: $cBlack;
-  text-decoration: none;
-}
-
-
-/*post*/
-
-.sysNextSubmit {
-  width: 120px;
-  text-decoration: none;
-  background-color: #556B2F;
-  color: $cWhite;
-  border: 1.5px solid gray;
-  padding: 13px 40px;
-  margin: 30px 0;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  border-radius: 5px;
-}
-
-
-.bg-post {
-  /*位置の設定*/
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  /* 空の要素なので、高さの定義が必要です。 */
-  background-image: url("post.jpg");
-  background-size: cover;
-  /*透過の設定*/
-  opacity: 0.5;
-}
-
-.post {
-  text-align: center;
-  & a {
-    text-decoration: none;
-    color: $cBlack;
+  /*user-index*/
+  .search {
+    width: 250px;
+    min-height: 500px;
+    height: auto;
+    float: left;
+    margin-top: 10px;
   }
-}
+
+  /* DM */
+  .visited_user {
+    color: white;
+    text-align: right;
+    background-color: black;
+    width: fit-content;
+    margin: 10px 0 0 auto;
+    border-radius: 30px;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+
+  .current_user {
+    color: black;
+    margin: 10px;
+    background-color: lightgreen;
+    text-align: left;
+    width: fit-content;
+    margin: 10px auto 0 0;
+    border-radius: 30px;
+    box-sizing: border-box;
+    padding: 10px;
+  }
 
 
-/*user-index*/
+  /* DM*/
+  .room-show__form {
+    height: 70px;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    border-top: 1px solid #e1e1e1;
+    background-color: #bcbcbc;
+    position: fixed;
+    bottom: 0;
+    &__box {
+      position: relative;
+      margin: 0 auto;
+    }
+  }
 
-.search {
-  width: 250px;
-  min-height: 500px;
-  height: auto;
-  float: left;
-  margin-top: 10px;
-}
-
-.bg {
-  /*位置の設定*/
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  /* 空の要素なので、高さの定義が必要です。 */
-  background-image: url("show.jpg");
-  background-size: cover;
-  /*透過の設定*/
-  opacity: 0.5;
-}
-
-/* DM */
-
-.visited_user {
-  color: white;
-  text-align: right;
-  background-color: black;
-  width: fit-content;
-  margin: 10px 0 0 auto;
-  border-radius: 30px;
-  box-sizing: border-box;
-  padding: 10px;
-}
-
-.current_user {
-  color: black;
-  margin: 10px;
-  background-color: lightgreen;
-  text-align: left;
-  width: fit-content;
-  margin: 10px auto 0 0;
-  border-radius: 30px;
-  box-sizing: border-box;
-  padding: 10px;
-}
-
-.bg-dm {
-  /*位置の設定*/
-  width: 100%;
-  height: 150%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -2;
-  /* 空の要素なので、高さの定義が必要です。 */
-  background-image: url("show.jpg");
-  background-size: cover;
-  /*透過の設定*/
-  opacity: 0.5;
-}
-
-/* DM*/
-
-.room-show__form {
-  height: 70px;
-  width: 100%;
-  padding: 10px;
-  display: flex;
-  border-top: 1px solid #e1e1e1;
-  background-color: #bcbcbc;
-  position: fixed;
-  bottom: 0;
-  &__box {
-    position: relative;
+  .notifications {
+    width: 600px;
     margin: 0 auto;
+    margin-top: 30px;
+    padding: 40px;
+    border: 1px solid #e1e1e1;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px #ccc;
+    h1 {
+      text-align: center;
+    }
+    & a {
+      text-decoration: none;
+      color: $cBlack;
+    }
   }
-}
 
-.notifications {
-  width: 600px;
-  margin: 0 auto;
-  margin-top: 30px;
-  padding: 40px;
-  border: 1px solid #e1e1e1;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0px 4px 6px #ccc;
-  h1 {
-    text-align: center;
-  }
-  & a {
-    text-decoration: none;
+  .notice {
     color: $cBlack;
+    text-align: left;
+    width: fit-content;
+    margin: 10px auto 0 0;
+    padding: 10px;
+    & a {
+      text-decoration: none;
+      color: blue;
+    }
   }
-}
 
-.notice {
-  color: $cBlack;
-  text-align: left;
-  width: fit-content;
-  margin: 10px auto 0 0;
-  padding: 10px;
-  & a {
-    text-decoration: none;
-    color: blue;
+  /* post show */
+  .post__show__title__body {
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 30px 0;
   }
-}
+
+  .post__show__content {
+    font-size: 18px;
+
+    &__favorite {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+  }
+
+  /* post index */
+  .post__wrapper {
+
+    & a {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+
+  .post__index {
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 1000px;
+
+    &__item {
+      display: inline-block;
+      width: 800px;
+      padding: 30px;
+      margin-top: 30px;
+      border: 1px solid #e1e1e1;
+      background-color: white;
+      border-radius: 5px;
+      position: relative;
+      box-shadow: 0px 4px 6px #ccc;
+      & h3 {
+        display: block;
+        text-align: center;
+      }
+
+      & a {
+        text-decoration: none;
+        color: blue;
+      }
+      &__user {
+        position: relative;
+        &__name {
+          position: absolute;
+          left: 55px;
+          top: 15px;
+        }
+      }
+
+      &__img {
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
+        margin: 20px 0;
+      }
+    }
+  }

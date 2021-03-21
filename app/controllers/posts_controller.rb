@@ -1,22 +1,25 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @posts = Post.all.order(created_at: :desc)
   end
 
   def show
-    @post = Post.find_by(post_params)
-    @favorites_count = Favorite.where(post_id: @post.id).count
+    @post = Post.find_by(id:params[:id])
+    @favorites_count = Favorite.where(post_id: params[:id]).count
   end
 
   def new
+    @post = current_user.posts.build
   end
 
   def create
     @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     @post.user_id = current_user.id
     @post.save
-    redirect_to("/posts/index")
+    redirect_to request.referer
   end
 
   def edit
@@ -26,7 +29,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to "/posts/index"
+      redirect_to request.referer
     else
       render :new
     end
@@ -41,7 +44,7 @@ class PostsController < ApplicationController
   private
 
     def post_params
-        params.permit(:id, :content)
+        params.permit(:id, :title, :content, :picture).merge(user_id: current_user.id)
     end
 
 end

@@ -1,8 +1,24 @@
 <div class="notifications">
   <h1>新規投稿</h1>
-  <%= form_tag("/posts/create") do %>
-    <h1><textarea name="content"></textarea></h1><br>
-    <h1><input class="sysNextSubmit" type="submit" value="投稿"></h1>
+  <%= form_with url: posts_path do |form| %>
+    <p>
+      <%= form.label :タイトル %><br>
+      <%= form.text_field :title %>
+    </p>
+
+    <p>
+      <%= form.label :投稿内容 %><br>
+      <%= form.text_area :content %>
+    </p>
+
+    <p>
+      <%= form.label :写真 %><br>
+      <%= form.file_field :picture %>
+    </p>
+
+    <p>
+      <%= form.submit "投稿" %>
+    </p>
   <% end %>
   <p><%= link_to"投稿一覧", posts_path(@post) %></p>
 </div>

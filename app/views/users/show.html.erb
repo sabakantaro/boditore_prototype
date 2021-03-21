@@ -21,7 +21,7 @@
                 <%= fields_for @entry do |e| %>
                   <%= e.hidden_field :user_id, :value=> @user.id %>
                 <% end %>
-                  <h3><%= f.submit "チャットを始める" %></h3>
+                  <h3><%= f.submit "チャットを始める" , class: "btn"%></h3>
               <% end %>
             <% end %>
           <% end %>
@@ -37,35 +37,50 @@
       </ul>
     </div>
 
-    <div class="post__index">
+    <div class="user__show__post__index">
       <div class="tabs">
         <input id="all" type="radio" name="tab_item" checked>
         <label class="tab_item" for="all">自分の投稿</label>
-        <input id="programming" type="radio" name="tab_item">
-        <label class="tab_item" for="programming">お気に入り投稿</label>
+        <input id="favorite" type="radio" name="tab_item">
+        <label class="tab_item" for="favorite">お気に入り投稿</label>
         <div class="tab_content" id="all_content">
           <% @posts.each do |post| %>
-          <li class="post__index__item">
-            <div class="post__index__item__user">
-              <%=link_to post.content, post_path(post) %>
+          <li class="user__show__post__index__item">
+            <div class="user__show__post__index__item__user">
+              <% if post.user.picture? %>
+                <%= image_tag post.user.picture, size: "50x50", class:"user-icon"%>
+              <% else %>
+                <%= image_tag "default.jpg", alt: "user-icon", size: "50x50", class: "user-icon" %>
+              <% end %>
+              <div class="user__show__post__index__item__user__name"><%= link_to post.user.name, user_path(post.user) %></div>
+              <h3><%=link_to post.title, post_path(post) %></h3>
             </div>
+            <%= image_tag post.picture.url , class: "post__index__item__img" if post.picture? %>
+            <hr>
+            <%=link_to "詳細を見る", post_path(post) %>
           </li>
           <% end %>
         </div>
-        <div class="tab_content" id="programming_content">
-          <li class="post__index__item">
-            <div class="post__index__item__user">
-              <% if @favorite_list.present? %>
-                <% @favorite_list.each do |post| %>
-                  <%=link_to post.content, post_path(post) %>
-                <% end %>
-              <% end %>
-            </div>
-          </li>
+        <div class="tab_content" id="favorite_content">
+          <% if @favorite_list.present? %>
+            <% @favorite_list.each do |post| %>
+              <li class="user__show__post__index__item">
+                <div class="user__show__post__index__item__user">
+                  <% if post.user.picture? %>
+                    <%= image_tag post.user.picture, size: "50x50", class:"user-icon"%>
+                  <% else %>
+                    <%= image_tag "default.jpg", alt: "user-icon", size: "50x50", class: "user-icon" %>
+                  <% end %>
+                  <div class="user__show__post__index__item__user__name"><%= link_to post.user.name, user_path(post.user) %></div>
+                  <h3><%=link_to post.title, post_path(post) %></h3>
+                </div>
+                <%= image_tag post.picture.url , class: "post__index__item__img" if post.picture? %>
+                <hr>
+                <%=link_to "詳細を見る", post_path(post) %>
+              </li>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
-</div>
-
-<div class="bg">
 </div>
