@@ -79,4 +79,5 @@ class UsersController < ApplicationController
       params.permit(:name, :email, :password,
                                    :password_confirmation, :picture, :search)
     end
+    
 end

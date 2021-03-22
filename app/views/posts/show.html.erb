@@ -11,10 +11,6 @@
     <div class="post__show__content">
       <p><%= @post.content %></p>
       <%= image_tag @post.picture.url , size: "600x400" if @post.picture? %>
-
-
-    
-
     <div class="post__show__content__favorite">
       <% if !Favorite.exists?(user_id:current_user.id,post_id:@post.id) %>
         <%= link_to post_add_path(@post),method: :post do %>

@@ -4,7 +4,6 @@ class Post < ApplicationRecord
   has_many :users, through: :favorites
   mount_uploader :picture, PictureUploader
   default_scope -> { order(created_at: :desc) }
-  acts_as_taggable
   validate  :picture_size
 
   def user
@@ -20,12 +19,12 @@ class Post < ApplicationRecord
     # まだ誰もコメントしていない場合は、投稿者に通知を送る
     save_notification_message!(current_user, message_id, user_id) if temp_ids.blank?
   end
-  
+
   # アップロードされた画像のサイズをバリデーションする
     def picture_size
       if picture.size > 5.megabytes
         errors.add(:picture, "should be less than 5MB")
       end
     end
-    
+
 end
