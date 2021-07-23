@@ -78,3 +78,8 @@ gem 'mini_magick'
 gem 'faker'
 gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 6.0'
+
+# MySQL setting
+gem 'mysql2'
+#password encrypt
+gem 'dotenv-rails'

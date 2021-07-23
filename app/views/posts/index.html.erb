@@ -6,7 +6,7 @@
       <%= f.submit :検索 %>
     <% end %></h1>
     <ul class="post__index">
-     <% @posts.each do |post| %>
+      <% @posts.each do |post| %>
         <li class="post__index__item">
           <div class="post__index__item__user">
             <% if post.user.picture? %>

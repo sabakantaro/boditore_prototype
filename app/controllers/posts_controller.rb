@@ -31,7 +31,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-   @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def update
@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   private
 
     def post_params
-        params.permit(:id, :title, :content, :picture).merge(user_id: current_user.id)
+      params.permit(:id, :title, :content, :picture).merge(user_id: current_user.id)
     end
 
 end
