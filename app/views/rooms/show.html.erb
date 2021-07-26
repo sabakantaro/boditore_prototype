@@ -39,7 +39,7 @@
 <div class="room-show__form">
   <div class="room-show__form__box">
     <%= form_for @message do |f| %>
-      <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" %>
+      <%= f.text_field :content, :placeholder => "メッセージを入力して下さい", id: "content" %>
       <%= f.hidden_field :room_id, :value => @room.id %>
       <br>
       <%= f.submit "投稿" %>

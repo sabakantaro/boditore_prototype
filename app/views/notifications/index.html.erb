@@ -41,7 +41,7 @@
             <%= image_tag "default.jpg", alt: "user-icon", size: "50x50", class: "user-icon" %>
             <% end %>
         <%= notification.visitor.name %>
-         <% end %>
+        <% end %>
         さんがあなた(<%= notification.visited.name %>さん)にDMを送りました
         <td>
           <%= " (#{time_ago_in_words(notification.created_at)} ago)" %>

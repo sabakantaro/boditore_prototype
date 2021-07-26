@@ -45,6 +45,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'database_cleaner'
+  #rspec高速化
+  gem 'spring-commands-rspec'
   
 end
 
@@ -77,7 +79,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'faker'
 gem 'kaminari'
-gem 'acts-as-taggable-on', '~> 6.0'
 
 # MySQL setting
 gem 'mysql2'

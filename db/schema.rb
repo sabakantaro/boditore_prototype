@@ -80,24 +80,24 @@ ActiveRecord::Schema.define(version: 2021_03_19_033141) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "tag_id"
-    t.string "taggable_type"
-    t.integer "taggable_id"
-    t.string "tagger_type"
-    t.integer "tagger_id"
-    t.string "context", limit: 128
-    t.datetime "created_at"
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
-  end
+  # create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  #   t.integer "tag_id"
+  #   t.string "taggable_type"
+  #   t.integer "taggable_id"
+  #   t.string "tagger_type"
+  #   t.integer "tagger_id"
+  #   t.string "context", limit: 128
+  #   t.datetime "created_at"
+  #   t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  #   t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
+  # end
 
-  create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer "taggings_count", default: 0
-  end
+  # create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  #   t.string "name"
+  #   t.datetime "created_at"
+  #   t.datetime "updated_at"
+  #   t.integer "taggings_count", default: 0
+  # end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
