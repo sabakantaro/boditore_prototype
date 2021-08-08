@@ -69,11 +69,6 @@ group :test do
   gem 'guard-minitest',           '2.4.4'
 end
 
-group :production do
-  gem 'pg', '0.20.0'
-  gem 'fog'
-end
-
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
@@ -84,3 +79,8 @@ gem 'kaminari'
 gem 'mysql2'
 #password encrypt
 gem 'dotenv-rails'
+
+#Unicorn
+group :production, :staging do
+    gem 'unicorn'
+end
