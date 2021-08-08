@@ -9,6 +9,7 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
+      - run: bundle update --bundler
       - run: gem install bundler:2.2.25
           name: Which bundler?
           command: bundle -v
