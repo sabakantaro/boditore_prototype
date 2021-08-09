@@ -17,9 +17,9 @@ jobs:
             gem install bundler -v 2.1.4
       - ruby/bundle-install
 
-      - run:
-                name: Rubocop
-                command: bundle exec rubocop
+      # - run:
+      #           name: Rubocop
+      #           command: bundle exec rubocop
 
       - run:
                 name: run tests
