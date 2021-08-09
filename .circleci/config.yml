@@ -6,6 +6,7 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.5-stretch-node
+      
     executor: ruby/default
     steps:
       - checkout
@@ -16,3 +17,26 @@ jobs:
             gem install bundler -v 2.1.4
       - ruby/bundle-install
 
+      - run:
+                name: Rubocop
+                command: bundle exec rubocop
+
+      - run:
+                name: run tests
+                command: |
+                  mkdir /tmp/test-results
+                  TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+                    circleci tests split --split-by=timings)"
+
+                  bundle exec rspec \
+                    --format progress \
+                    --format RspecJunitFormatter \
+                    --out /tmp/test-results/rspec.xml \
+                    --format progress \
+                    $TEST_FILES
+
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
