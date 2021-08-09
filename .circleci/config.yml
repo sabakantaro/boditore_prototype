@@ -10,6 +10,7 @@ jobs:
     steps:
       - checkout
       - run:
+          run: gem install bundler:2.2.25
           name: Which bundler?
           command: bundle -v
       - ruby/bundle-install
