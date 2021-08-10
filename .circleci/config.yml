@@ -5,7 +5,6 @@ orbs:
 jobs:
   build:
     docker:
-<<<<<<< HEAD
       - image: circleci/ruby:2.6-stretch-node
         environment:
           
@@ -71,17 +70,5 @@ jobs:
     - store_test_results:
         path: /tmp/test-results
     - store_artifacts:
-        path: /tmp/test-results
+            path: /tmp/test-results
         destination: test-results
-=======
-      - image: circleci/ruby:2.6.5-stretch-node
-    executor: ruby/default
-    steps:
-      - checkout
-      - run:
-          name: Bundler install
-          command: |
-            gem update --system
-            gem install bundler -v 2.1.4
-      - ruby/bundle-install
->>>>>>> afa9247460046aee9cd173f365e2eb3426782833
