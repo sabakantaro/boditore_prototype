@@ -39,6 +39,7 @@ development:
 
 test:
   <<: *default
+  encoding: utf8mb4_general_ci
   database: db/test.mysql2
 
 #awsサーバー環境
