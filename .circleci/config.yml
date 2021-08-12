@@ -8,15 +8,13 @@ jobs:
     - image: circleci/ruby:2.6-stretch-node
       environment:
           
-        - BUNDLER_VERSION: 2.1.4
+        - BUNDLER_VERSION: 2.2.25
         - RAILS_ENV: test
 
     - image: circleci/mysql:5.7
       environment:
-          #- MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-          #- MYSQL_ROOT_HOST: '%'
         - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-        - MYSQL_ROOT_HOST: '127.0.0.1'
+        - MYSQL_ROOT_HOST: '%'
 
     working_directory: ~/boditore_prototype
 
@@ -31,7 +29,7 @@ jobs:
     - run:
         name: install dependencies
         command: |
-          gem install bundler -v 2.2.24
+          gem install bundler -v 2.2.25
           bundle install --jobs=4 --retry=3 --path vendor/bundle
     - save_cache:
         paths:
@@ -39,7 +37,7 @@ jobs:
         key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
     - run: yarn install   # webpaker使用しているため
-    - run: mv config/database.yml.ci config/database.yml
+    - run: mv ./config/database.yml.ci .config/database.yml
 
     # Database setup
     - run:
@@ -67,3 +65,7 @@ jobs:
     - store_artifacts:
         path: /tmp/test-results
         destination: test-results
+
+    - add_ssh_keys:
+       fingerprints:
+       - "AAAAB3NzaC1yc2EAAAADAQABAAABAQDf6NFOigIW3BsmJdG9olLhjfTpoml2EVLIQh+TdjwjwqNTbmHFJmGNc+SZGdwtv0bFvGdRDjEVlhm/0QZ7ORVnr3PAPYiDJ+IL4tnmy4A2r8U+Ku67K0Ihv4/1UZFrZSYznp0XUqJUrDcyzWt/Ryyqe8eRjeYq/1pxXoEnFfuOVe3YlS/YExzCl4JQTxQK3lwWelWY37BnrmykgVQQbu0dfOYXTuhT2MfIJj+wrQKmemZVjLFbJMG/v/IJAzQPRBgeLkHVvvuCp9ckxrNFZEbLzmztn+FNbu49G02Tx3UUWJNXVVUYubujn6SXeGKt69EmL3BU7JAwGdLoE665vWf1 sabakantaro@ip-10-0-0-69.ap-northeast-1.compute.internal"
