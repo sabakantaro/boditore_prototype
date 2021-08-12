@@ -1,11 +1,11 @@
-version: 2.1
+version: 2
 orbs:
   ruby: circleci/ruby@0.1.2 
 
 jobs:
   build:
     docker:
-    - image: circleci/ruby:2.6-stretch-node
+    - image: circleci/ruby:2.6.5-node-browsers
       environment:
           
         - BUNDLER_VERSION: 2.2.25
@@ -31,6 +31,7 @@ jobs:
         command: |
           gem install bundler -v 2.2.25
           bundle install --jobs=4 --retry=3 --path vendor/bundle
+    
     - save_cache:
         paths:
         - ./vendor/bundle
@@ -68,4 +69,4 @@ jobs:
 
     - add_ssh_keys:
        fingerprints:
-       - "AAAAB3NzaC1yc2EAAAADAQABAAABAQDf6NFOigIW3BsmJdG9olLhjfTpoml2EVLIQh+TdjwjwqNTbmHFJmGNc+SZGdwtv0bFvGdRDjEVlhm/0QZ7ORVnr3PAPYiDJ+IL4tnmy4A2r8U+Ku67K0Ihv4/1UZFrZSYznp0XUqJUrDcyzWt/Ryyqe8eRjeYq/1pxXoEnFfuOVe3YlS/YExzCl4JQTxQK3lwWelWY37BnrmykgVQQbu0dfOYXTuhT2MfIJj+wrQKmemZVjLFbJMG/v/IJAzQPRBgeLkHVvvuCp9ckxrNFZEbLzmztn+FNbu49G02Tx3UUWJNXVVUYubujn6SXeGKt69EmL3BU7JAwGdLoE665vWf1 sabakantaro@ip-10-0-0-69.ap-northeast-1.compute.internal"
+         - "AAAAB3NzaC1yc2EAAAADAQABAAABAQDf6NFOigIW3BsmJdG9olLhjfTpoml2EVLIQh+TdjwjwqNTbmHFJmGNc+SZGdwtv0bFvGdRDjEVlhm/0QZ7ORVnr3PAPYiDJ+IL4tnmy4A2r8U+Ku67K0Ihv4/1UZFrZSYznp0XUqJUrDcyzWt/Ryyqe8eRjeYq/1pxXoEnFfuOVe3YlS/YExzCl4JQTxQK3lwWelWY37BnrmykgVQQbu0dfOYXTuhT2MfIJj+wrQKmemZVjLFbJMG/v/IJAzQPRBgeLkHVvvuCp9ckxrNFZEbLzmztn+FNbu49G02Tx3UUWJNXVVUYubujn6SXeGKt69EmL3BU7JAwGdLoE665vWf1 sabakantaro@ip-10-0-0-69.ap-northeast-1.compute.internal"
