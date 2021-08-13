@@ -4,14 +4,14 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
-default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+#default: &default
+# adapter: sqlite3
+#  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#  timeout: 5000
 
-development:
-  <<: *default
-  database: db/development.sqlite3
+#development:
+#  <<: *default
+#  database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -20,46 +20,56 @@ development:
 #<<: *default
 # database: db/test.sqlite3
 
-production:
-  <<: *default
-  database: db/production.sqlite3
+#production:
+#  <<: *default
+#  database: db/production.sqlite3
+
+#default: &default
+#  adapter: mysql2
+#  encoding: utf8mb4
+#  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#  username: root
+  #socket: /tmp/mysql.sock
+  #  host: db
 
 default: &default
   adapter: mysql2
-  encoding: utf8mb4
+  encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  #socket: /tmp/mysql.sock
+  password: password
+  socket: /tmp/mysql.sock
   host: db
-  
+
 development:
   <<: *default
-  database: boditore
-  #host: db
-  username: root
-  password: password
-
-production:
-  <<: *default
-  database: db
-  #adapter: mysql2
-  #encoding: utf8mb4
-  host: <%= Rails.application.credentials.db[:hostname] %>
-  #username: root
-  password: <%= Rails.application.credentials.db[:password] %>
+  database: boditore_development
 
 test:
   <<: *default
-  database: ci_test
-  host: db
-  username: root
-  password: password
+  database: boditore_test
 
+
+  #development:
+  #<<: *default
+  #database: boditore
+  #host: db
+  # username: root
+  # password: password
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  database: boditore_production
+  
 #awsサーバー環境
-  production:
-  <<: *default
-  database: <%= ENV['DB_NAME'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DB_HOSTNAME'] %>
+#  production:
+#  <<: *default
+#  database: <%= ENV['DB_NAME'] %>
+#  username: <%= ENV['DB_USERNAME'] %>
+#  password: <%= ENV['DB_PASSWORD'] %>
+#  host: <%= ENV['DB_HOSTNAME'] %>
 
