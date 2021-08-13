@@ -48,6 +48,8 @@ development:
 test:
   <<: *default
   encoding: utf8
+  options: "ENGINE=InnoDB DEFAULT CHARSET=utf8"
+  force: :cascade
   attributes:
     default_table_charset: utf8
   database: boditore_test

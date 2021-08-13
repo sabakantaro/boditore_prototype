@@ -1,6 +1,8 @@
 test:
   adapter: mysql2
   encoding: utf8
+  options: "ENGINE=InnoDB DEFAULT CHARSET=utf8"
+  force: :cascade
   attributes:
     default_table_charset: utf8
     #default_table_collate
