@@ -10,8 +10,8 @@
 test: &default
   adapter: mysql2
   encoding: utf8
-  charset: utf8mb4
-  collation: utf8mb4_unicode_ci
+  charset: utf8
+  collation: utf8
   pool: 5
   username: 'root'
   host: '127.0.0.1'
