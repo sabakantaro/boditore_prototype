@@ -43,6 +43,8 @@ jobs:
     - run:
         name: Databasesetup
         command: |
+                table->engine = 'InnoDB';
+                table->charset = 'utf8';
                 bundle exec rake db:create
                 bundle exec rake db:schema:load
 
