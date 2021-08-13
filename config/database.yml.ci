@@ -1,6 +1,9 @@
 test:
   adapter: mysql2
   encoding: utf8
+  attributes:
+    default_table_charset: utf8
+    #default_table_collate
   pool: 5
   username: 'root'
   port: 3306
