@@ -40,10 +40,10 @@ jobs:
     - run: mv config/database.yml.ci config/database.yml
 
     # Database setup
-    #- run:
-            #name: Databasesetup
-        #command: |
-                #bundle exec rake db:create
+    - run:
+        name: Databasesetup
+        command: |
+                rake db:create
                 #bundle exec rake db:schema:load
 
     # run tests!
