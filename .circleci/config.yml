@@ -47,7 +47,7 @@ jobs:
                 #ALTER TABLE t CHARSET = utf8;
                 #table->engine = 'InnoDB';
                 #table->charset = 'utf8';
-                bundle exec rake db:create, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade
+                bundle exec rake db:create
                 bundle exec rake db:schema:load
 
     # run tests!
