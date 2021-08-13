@@ -47,6 +47,9 @@ development:
 
 test:
   <<: *default
+  encoding: utf8
+  attributes:
+    default_table_charset: utf8
   database: boditore_test
 
 
