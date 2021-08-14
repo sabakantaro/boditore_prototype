@@ -13,4 +13,6 @@ test:
   database: ci_test
   variables:
     #storage_engine: MyISAM
-    default_charset: utf8
+    #default_charset: utf8
+    default_table_charset: utf8
+    default_table_collate: utf8
