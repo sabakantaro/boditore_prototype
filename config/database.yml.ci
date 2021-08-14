@@ -12,5 +12,5 @@ test:
   host: '127.0.0.1'
   database: ci_test
   variables:
-    storage_engine: MyISAM
+    #storage_engine: MyISAM
     default_charset: utf8
