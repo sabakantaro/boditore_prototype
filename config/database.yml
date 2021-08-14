@@ -42,7 +42,13 @@ default: &default
   host: localhost
 
 development:
-  <<: *default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: password
+  # socket: /tmp/mysql.sock
+  host: localhost
   database: boditore_development
 
 test:
@@ -51,26 +57,12 @@ test:
   database: ci_test
 
 
-  #development:
-  #<<: *default
-  #database: boditore
-  #host: db
-  # username: root
-  # password: password
-
+ #awsサーバー環境
 production:
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  database: boditore_production
-  
-#awsサーバー環境
-  production:
-  <<: *default
   database: <%= ENV['DB_NAME'] %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
   host: <%= ENV['DB_HOSTNAME'] %>
-
