@@ -52,7 +52,7 @@ test:
   force: :cascade
   attributes:
     default_table_charset: utf8
-  database: boditore_test
+  database: ci_test
 
 
   #development:
