@@ -38,8 +38,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: password
-  socket: /tmp/mysql.sock
-  host: db
+  # socket: /tmp/mysql.sock
+  host: localhost
 
 development:
   <<: *default
@@ -48,10 +48,6 @@ development:
 test:
   <<: *default
   encoding: utf8
-  options: "ENGINE=InnoDB DEFAULT CHARSET=utf8"
-  force: :cascade
-  attributes:
-    default_table_charset: utf8
   database: ci_test
 
 
@@ -71,10 +67,10 @@ production:
   database: boditore_production
   
 #awsサーバー環境
-#  production:
-#  <<: *default
-#  database: <%= ENV['DB_NAME'] %>
-#  username: <%= ENV['DB_USERNAME'] %>
-#  password: <%= ENV['DB_PASSWORD'] %>
-#  host: <%= ENV['DB_HOSTNAME'] %>
+  production:
+  <<: *default
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOSTNAME'] %>
 
