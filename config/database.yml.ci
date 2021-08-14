@@ -1,15 +1,10 @@
 test:
   adapter: mysql2
   encoding: utf8
-  options: "ENGINE=InnoDB DEFAULT CHARSET=utf8"
-  force: :cascade
-  attributes:
-    default_table_charset: utf8
-    default_table_collate: utf8
+  variables:
+    storage_engine: MyISAM
   pool: 5
   username: 'root'
   port: 3306
   host: '127.0.0.1'
   database: ci_test
-    variables:
-      storage_engine: MyISAM
