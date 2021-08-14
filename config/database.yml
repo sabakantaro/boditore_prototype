@@ -58,7 +58,7 @@ test:
   username: root
   password: password
   # socket: /tmp/mysql.sock
-  host: localhost
+  host: db
   encoding: utf8
   database: ci_test
 
