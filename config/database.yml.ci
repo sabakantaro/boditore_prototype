@@ -1,8 +1,18 @@
-test:
+production:
   adapter: mysql2
   encoding: utf8
-  pool: 5
-  username: 'root'
-  port: 3306
-  host: '127.0.0.1'
-  database: ci_test
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: boditore-mysql.cyr0fwwfhspc.ap-northeast-1.rds.amazonaws.com
+  host: <%= ENV['DB_HOSTNAME'] %>
+
+#test:
+#  adapter: mysql2
+#  encoding: utf8
+#  pool: 5
+#  username: 'root'
+#  port: 3306
+#  host: '127.0.0.1'
+#  database: ci_test
