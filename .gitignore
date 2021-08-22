@@ -5,6 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # 環境変数ファイルをgit管理から除外
+.env
 /.env
 touch .env
 
