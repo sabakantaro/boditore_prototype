@@ -10,10 +10,13 @@ jobs:
         - BUNDLER_VERSION: 2.2.25
         - RAILS_ENV: 'test'
 
-    - image: circleci/mysql:5.7
+    - image: mysql:5.7
       environment:
-        - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-        - MYSQL_ROOT_HOST: '%'
+        - MYSQL_ROOT_PASSWORD: 'password'
+        - ports: "4306:3306"
+      # environment:
+      #   - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+      #   - MYSQL_ROOT_HOST: '%'
 
     working_directory: ~/boditore_prototype
 
