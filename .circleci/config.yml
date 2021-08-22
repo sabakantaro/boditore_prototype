@@ -40,32 +40,31 @@ jobs:
     - run: mv config/database.yml.ci config/database.yml
 
     # Database setup
-    - run:
-        name: Databasesetup
-        command: |
-                bundle exec rake db:create RAILS_ENV=test
-                bundle exec rake db:schema:load RAILS_ENV=test
+#     - run:
+#         name: Databasesetup
+#         command: |
+#                 bundle exec rake db:create RAILS_ENV=test
+#                 bundle exec rake db:schema:load RAILS_ENV=test
 
     # run tests!
-    - run:
-        name: Run rspec
-        command: |
-          mkdir /tmp/test-results
-          TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
-            circleci tests split --split-by=timings)"
-          bundle exec rspec \
-            --format progress \
-            --out /tmp/test-results/rspec.xml \
-            --format progress \
-            $TEST_FILES
+#     - run:
+#         name: Run rspec
+#         command: |
+#           mkdir /tmp/test-results
+#           TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+#             circleci tests split --split-by=timings)"
+#           bundle exec rspec \
+#             --format progress \
+#             --out /tmp/test-results/rspec.xml \
+#             --format progress \
+#             $TEST_FILES
     
     # collect reports
-    - store_test_results:
-        path: /tmp/test-results
-    - store_artifacts:
-        path: /tmp/test-results
-        destination: test-results
+#     - store_test_results:
+#         path: /tmp/test-results
+#     - store_artifacts:
+#         path: /tmp/test-results
+#         destination: test-results
 
-    - add_ssh_keys:
-       fingerprints:
-         - "AAAAB3NzaC1yc2EAAAADAQABAAABAQDf6NFOigIW3BsmJdG9olLhjfTpoml2EVLIQh+TdjwjwqNTbmHFJmGNc+SZGdwtv0bFvGdRDjEVlhm/0QZ7ORVnr3PAPYiDJ+IL4tnmy4A2r8U+Ku67K0Ihv4/1UZFrZSYznp0XUqJUrDcyzWt/Ryyqe8eRjeYq/1pxXoEnFfuOVe3YlS/YExzCl4JQTxQK3lwWelWY37BnrmykgVQQbu0dfOYXTuhT2MfIJj+wrQKmemZVjLFbJMG/v/IJAzQPRBgeLkHVvvuCp9ckxrNFZEbLzmztn+FNbu49G02Tx3UUWJNXVVUYubujn6SXeGKt69EmL3BU7JAwGdLoE665vWf1 sabakantaro@ip-10-0-0-69.ap-northeast-1.compute.internal"
+#     - add_ssh_keys:
+#        fingerprints:
