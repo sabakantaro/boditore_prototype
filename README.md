@@ -6,7 +6,6 @@
 筋トレSNSである本アプリを使用することで、筋トレをする仲間を見つけることができるため横のつながりができ、挫折せずに筋トレを習慣化することができます。<br>
 公式マニュアルや技術記事などを参考に、すべて独学で開発しました。<br>
 
-<img width="1275" alt="スクリーンショット 2021-04-08 12 40 54" src="https://user-images.githubusercontent.com/74854952/113965107-bcb58c00-9867-11eb-8241-8d39c7f6d9ae.png"><br>
 
 サイトURL・・・<a href="https://infinite-beach-47596.herokuapp.com">Boditore</a>（ログイン画面からゲストログインできます）
 
@@ -79,10 +78,9 @@ ActiveRecordのメリット、デメリットを考察することができま�
 ・プロフィール、記事投稿、編集の詳細入力部の文字カウンター(javascriptで実装)<br>
 ・要素ホバーでせり出すアニメーション(javascriptで実装)<br>
 ## インフラ構成
-![AWS](https://user-images.githubusercontent.com/74854952/112935694-38745200-915f-11eb-8fea-acea1cad292d.png)
 ## ER図
-![ER図 (2)](https://user-images.githubusercontent.com/74854952/113252826-537dc800-92ff-11eb-93c0-712fc9168ac5.png)
 ## 今後の改良計画
+・レスポンシブル対応導入<br>
 ・Request、Systemspec周りのテストを追加<br>
 
 #### 長文にも関わらず最後までご覧いただき、ありがとうございました。
