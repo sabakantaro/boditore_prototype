@@ -32,14 +32,14 @@
   #socket: /tmp/mysql.sock
   #  host: db
 
-default: &default
-  adapter: mysql2
-  encoding: utf8
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: password
-  # socket: /tmp/mysql.sock
-  host: localhost
+# default: &default
+#   adapter: mysql2
+#   encoding: utf8
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   username: root
+#   password: password
+#   socket: /tmp/mysql.sock
+#   host: localhost
 
 development:
   adapter: mysql2
@@ -47,8 +47,8 @@ development:
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: password
-  # socket: /tmp/mysql.sock
-  host: localhost
+  socket: /tmp/mysql.sock
+  host: db
   database: boditore_development
 
 test:
@@ -57,19 +57,25 @@ test:
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: password
-  # socket: /tmp/mysql.sock
+  socket: /tmp/mysql.sock
   host: db
-  encoding: utf8
-  database: ci_test
+  database: boditore_test
 
 
- #awsサーバー環境
+#awsサーバー環境
+# production:
+  # adapter: mysql2
+  # encoding: utf8
+  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # database: <%= ENV['DB_NAME'] %>
+  # username: <%= ENV['DB_USERNAME'] %>
+  # password: <%= ENV['DB_PASSWORD'] %>
+  # host: <%= ENV['DB_HOSTNAME'] %>
+
 production:
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: <%= ENV['DB_NAME'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: boditore-mysql.cyr0fwwfhspc.ap-northeast-1.rds.amazonaws.com
-  host: <%= ENV['DB_HOSTNAME'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  database: boditore_production
