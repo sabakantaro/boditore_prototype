@@ -39,7 +39,7 @@ jobs:
     - run: yarn install   # webpaker使用しているため
     - run: mv config/database.yml.ci config/database.yml
 
-    Database setup
+    # Database setup
     - run:
         name: Databasesetup
         command: |
