@@ -19,7 +19,7 @@ services:
       - chrome
 
 # rspecのsystemテストでブラウザを立ち上げるため
-  chrome:
-    image: selenium/standalone-chrome:latest
-    ports:
-      - 4444:4444
+  # chrome:
+  #   image: selenium/standalone-chrome:latest
+  #   ports:
+  #     - 4444:4444
