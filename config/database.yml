@@ -59,8 +59,7 @@ test:
   password: password
   socket: /tmp/mysql.sock
   host: db
-  database: boditore_test
-
+  database: boditore_prototype_db_1
 
 #awsサーバー環境
 # production:
