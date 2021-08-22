@@ -21,3 +21,6 @@
 /yarn-error.log
 
 .byebug_history
+
+# 環境変数ファイルをgit管理から除外
+/.env
