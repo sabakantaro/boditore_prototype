@@ -47,7 +47,7 @@ development:
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: password
-  socket: /tmp/mysql.sock
+  socket: /var/run/mysqld/mysqld.sock
   host: db
   database: boditore_development
 
@@ -57,8 +57,8 @@ test:
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: password
-  # socket: /tmp/mysql.sock
-  database: db
+  socket: /var/run/mysqld/mysqld.sock
+  database: ci_test
 
 #awsサーバー環境
 # production:
