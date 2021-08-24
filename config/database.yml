@@ -58,7 +58,7 @@ test:
   username: root
   password: password
   socket: /var/run/mysqld/mysqld.sock
-  host: db
+  host: localhost
   database: ci_test
 
 #awsサーバー環境
