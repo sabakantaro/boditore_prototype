@@ -68,6 +68,7 @@ group :test do
   gem 'guard',                    '2.16.2'
   gem 'guard-minitest',           '2.4.4'
   gem 'nokogiri'
+  gem 'pg'
 end
 
 gem 'devise'
