@@ -58,7 +58,7 @@ test:
   username: root
   password: password
   socket: /tmp/mysql.sock
-  host: '172.18.0.1'
+  host: '127.0.0.1'
   database: ci_test
 
 #awsサーバー環境
