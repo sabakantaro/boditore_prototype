@@ -53,12 +53,12 @@ development:
 
 test:
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: arjuna
-  password: password
-  host: '127.0.0.1'
-  database: mscrtins
+  username: mscrtins
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  host: db
+  database: ci_test
 
 # test:
 #   adapter: mysql2

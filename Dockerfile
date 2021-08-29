@@ -4,7 +4,6 @@ RUN apt-get update -qq && \
     apt-get install -y build-essential \ 
                         libpq-dev \        
                         nodejs
-                        
 
 RUN mkdir /app_name 
 
@@ -17,3 +16,7 @@ ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
 RUN gem install bundler 
 RUN bundle install
 ADD . $APP_ROOT
+
+#postgres設定
+FROM postgres:latest
+ENV POSTGRES_DB=ci_test

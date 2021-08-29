@@ -1,5 +1,8 @@
 test:
   adapter: postgresql
-  encoding: utf8
-  pool: 5
-  database: mscrtins
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: mscrtins
+  password: password
+  host: '127.0.0.1'
+  database: ci_test
