@@ -58,7 +58,7 @@ test:
   username: <%= ENV['POSTGRES_USER'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
   POSTGRES_HOST: '127.0.0.1'
-  socket: /var/run/postgresql/.s.PGSQL.5432
+  # socket: /var/run/postgresql/.s.PGSQL.5432
   port: '5432'
   database: mscrtins
 
