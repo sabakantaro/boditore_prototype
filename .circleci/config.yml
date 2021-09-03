@@ -10,7 +10,7 @@ jobs:
         environment:
           POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
           POSTGRES_USER: <%= ENV['POSTGRES_USER'] %>
-          POSTGRES_HOST: <%= ENV['POSTGRES_HOST'] %>
+          POSTGRES_HOST: '127.0.0.1'
           POSTGRES_DB: 'mscrtins'
 
     working_directory: ~/repo
