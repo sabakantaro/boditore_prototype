@@ -56,7 +56,6 @@ jobs:
             name: rspecを実行
             command: bundle exec rspec
 #awsデプロイ
-version: 2
 orbs:
   ruby: circleci/ruby@0.1.2
 jobs:
