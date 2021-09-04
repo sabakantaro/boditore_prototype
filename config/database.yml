@@ -55,12 +55,12 @@ test:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  # password: <%= ENV['POSTGRES_PASSWORD'] %>
+  username: Snivy
+  # password: CVWmQ17SgAdtu3Tw_03pljfWhISxjVIr
   host: 127.0.0.1
   # socket: /var/run/postgresql/.s.PGSQL.5432
   port: '5432'
-  database: boditore_test
+  database: ci_test
 
 # test:
 #   adapter: mysql2

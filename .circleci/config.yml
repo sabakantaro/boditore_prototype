@@ -6,17 +6,21 @@ jobs:
         - image: circleci/ruby:2.6.5-node
           environment:
             #自身の登録しているユーザに変える。
-            POSTGRES_USER: root
             PGHOST: 127.0.0.1
+            PGUSER: Snivy
             RAILS_ENV: test
         #使ってるデータベースとバージョンを指定する。# 「host: localhost」でアクセスできるサービスコンテナイメージ。
         - image: circleci/postgres:13.3
           environment:
             #それぞれ設定
-            POSTGRES_USER: root
-            #下記を書けばパスワードなしでデータベースにログインしてくれる。 
+            POSTGRES_USER: Snivy
+            POSTGRES_DB: ci_test
             POSTGRES_HOST_AUTH_METHOD: trust
-            POSTGRES_DB: boditore_test
+            # user: mscrtins
+            #下記を書けばパスワードなしでデータベースにログインしてくれる。 
+            # password: CVWmQ17SgAdtu3Tw_03pljfWhISxjVIr
+            # POSTGRES_HOST_AUTH_METHOD: trust
+            # database: mscrtins
       #自身のアプリ名にする
       working_directory: ~/boditore
       steps:
@@ -45,7 +49,7 @@ jobs:
             command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
 
         - run: bundle exec rake db:create
-        # - run: bundle exec rake db:schema:load
+        - run: bundle exec rake db:schema:load
 
         # rspecを実行する
         - run:
