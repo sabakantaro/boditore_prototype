@@ -60,7 +60,7 @@ test:
   POSTGRES_HOST: '127.0.0.1'
   # socket: /var/run/postgresql/.s.PGSQL.5432
   port: '5432'
-  database: 'mscrtins'
+  database: boditore_test
 
 # test:
 #   adapter: mysql2
