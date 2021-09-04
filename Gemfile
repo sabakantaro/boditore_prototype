@@ -47,6 +47,11 @@ group :development, :test do
   gem 'database_cleaner'
   #rspec高速化
   gem 'spring-commands-rspec'
+  #circleci awsデプロイで使用
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
   
 end
 
