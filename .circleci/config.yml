@@ -55,3 +55,16 @@ jobs:
         - run:
             name: rspecを実行
             command: bundle exec rspec
+#awsデプロイ
+version: 2
+orbs:
+  ruby: circleci/ruby@0.1.2
+jobs:
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - b9:8f:92:73:2a:e2:a4:39:47:c4:7a:bf:77:04:ef:26
+      - run: ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "/home/ec2-user/boditore_prototype/deploy-me.sh"
