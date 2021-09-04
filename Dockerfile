@@ -19,4 +19,4 @@ ADD . $APP_ROOT
 
 #postgres設定
 FROM postgres:latest
-ENV POSTGRES_DB='mscrtins'
+ENV POSTGRES_DB=boditore_test
