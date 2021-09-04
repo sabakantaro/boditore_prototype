@@ -53,9 +53,9 @@ development:
 
 test:
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
+  username: root
   # password: <%= ENV['POSTGRES_PASSWORD'] %>
   POSTGRES_HOST: 127.0.0.1
   # socket: /var/run/postgresql/.s.PGSQL.5432
