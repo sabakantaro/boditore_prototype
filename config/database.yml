@@ -56,9 +56,7 @@ test:
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: Snivy
-  # password: CVWmQ17SgAdtu3Tw_03pljfWhISxjVIr
   host: 127.0.0.1
-  # socket: /var/run/postgresql/.s.PGSQL.5432
   port: '5432'
   database: ci_test
 
@@ -72,20 +70,20 @@ test:
 #   host: '127.0.0.1'
 #   database: ci_test
 
-#awsサーバー環境
-# production:
-  # adapter: mysql2
-  # encoding: utf8
-  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  # database: <%= ENV['DB_NAME'] %>
-  # username: <%= ENV['DB_USERNAME'] %>
-  # password: <%= ENV['DB_PASSWORD'] %>
-  # host: <%= ENV['DB_HOSTNAME'] %>
-
+awsサーバー環境
 production:
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  database: boditore_production
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOSTNAME'] %>
+
+# production:
+#   adapter: mysql2
+#   encoding: utf8
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   username: root
+#   password: <%= ENV['DATABASE_PASSWORD'] %>
+#   database: boditore_production
