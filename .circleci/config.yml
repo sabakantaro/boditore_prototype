@@ -56,11 +56,14 @@ jobs:
             name: rspecを実行
             command: bundle exec rspec
 #awsデプロイ
-  deploy:
-    machine:
-      enabled: true
-    steps:
       - add_ssh_keys:
           fingerprints:
             - b9:8f:92:73:2a:e2:a4:39:47:c4:7a:bf:77:04:ef:26
-      - run: ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "/home/ec2-user/boditore_prototype/deploy-me.sh"
+      # masterブランチの時のみデプロイ
+      - deploy:
+          name: Capistrano deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
+              exit 0
+            fi
+            bundle exec cap production deploy
