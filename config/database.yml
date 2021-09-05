@@ -70,7 +70,7 @@ test:
 #   host: '127.0.0.1'
 #   database: ci_test
 
-awsサーバー環境
+#awsサーバー環境
 production:
   adapter: mysql2
   encoding: utf8
