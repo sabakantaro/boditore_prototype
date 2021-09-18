@@ -61,7 +61,9 @@
 #   }
 
 # EC2サーバーのIP、EC2サーバーにログインするユーザー名、サーバーのロールを記述
-server '3.113.131.50', user: 'sabakantaro', roles: %w{app db web} 
+server '3.113.131.50', user: 'sabakantaro',roles: %w{app db web} 
+
+# set :stage, :production
 
 #デプロイするサーバーにsshログインする鍵の情報を記述
 set :ssh_options, keys: '~/.ssh/boditore_key_rsa' 

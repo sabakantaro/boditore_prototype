@@ -1,8 +1,17 @@
+# set :default_environment, { 
+#     'database' => 'boditore_production',
+#     'username' => 'root',
+#     'password' => 'Exmusic12',
+#     'host' => 'localhost'
+#     }
+
+
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.16.0"
 
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+# set :application, "boditore_prototype"
+
+# set :repo_url, "git@github.com:sabakantaro/boditore_prototype.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -51,16 +60,26 @@ set :branch, 'master'
 set :deploy_to, '/var/www/rails/boditore_prototype'
 
 # シンボリックリンクをはるファイル。(※後述)
-set :linked_files, fetch(:linked_files, []).push('config/master.key', 'config/settings.yml')
+set :linked_files, fetch(:linked_files, []).push('config/master.key')
 
 # シンボリックリンクをはるフォルダ。(※後述)
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
+# プロセス番号を記載したファイルの場所
+set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
+
 # 保持するバージョンの個数(※後述)
+# Unicornの設定ファイルの場所
+set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
 # rubyのバージョン
+set :rbenv_type, :user
 set :rbenv_ruby, '2.6.5'
+
+# どの公開鍵を利用してデプロイするか
+set :ssh_options, auth_methods: ['publickey'],
+                keys: ['~/.ssh/boditore_key_rsa'] 
 
 #出力するログのレベル。
 set :log_level, :debug
@@ -69,6 +88,11 @@ namespace :deploy do
     desc 'Restart application'
     task :restart do
         invoke 'unicorn:restart'
+    
+        # task :set_default_env do
+        #     set :default_env, fetch(:default_env).merge(ssm_env)
+        # end
+
     end
 
     desc 'Create database'
