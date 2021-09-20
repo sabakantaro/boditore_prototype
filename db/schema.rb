@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_03_19_033141) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "entries", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "room_id"
@@ -100,5 +103,3 @@ ActiveRecord::Schema.define(version: 2021_03_19_033141) do
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
 end
-
-# , options: "ENGINE=InnoDB DEFAULT CHARSET=utf8"
