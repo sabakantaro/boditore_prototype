@@ -56,9 +56,9 @@ jobs:
             name: rspecを実行
             command: bundle exec rspec
 #awsデプロイ
-        - add_ssh_keys:
-            fingerprints:
-              - b9:8f:92:73:2a:e2:a4:39:47:c4:7a:bf:77:04:ef:26
+        # - add_ssh_keys:
+        #     fingerprints:
+        #       - b9:8f:92:73:2a:e2:a4:39:47:c4:7a:bf:77:04:ef:26
         # masterブランチの時のみデプロイ
         - deploy:
             name: Capistrano deploy
