@@ -71,23 +71,23 @@ test:
 #   database: ci_test
 
 #awsサーバー環境
-production:
-  adapter: mysql2
-  encoding: utf8
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: <%= ENV['DB_NAME'] %>
-  # database: boditore_production
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DB_HOSTNAME'] %>
-  socket: /tmp/mysql.sock
-  port: '22'
-
 # production:
 #   adapter: mysql2
 #   encoding: utf8
 #   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#   username: root
-#   password: <%= ENV['DATABASE_DEV_PASSWORD'] %>
-#   host: <%= ENV['DATABASE_DEV_HOST'] %>
-#   database: boditore_production
+#   database: <%= ENV['DB_NAME'] %>
+#   # database: boditore_production
+#   username: <%= ENV['DB_USERNAME'] %>
+#   password: <%= ENV['DB_PASSWORD'] %>
+#   host: <%= ENV['DB_HOSTNAME'] %>
+#   # socket: /tmp/mysql.sock
+#   # port: '22'
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  database: boditore_production
+  username: root
+  password: Exmusic12
+  socket: /var/lib/mysql/mysql.sock
