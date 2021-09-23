@@ -7,22 +7,22 @@ set :application, 'boditore_prototype'
 # cloneするgitのレポジトリ
 set :repo_url, 'git@github.com:sabakantaro/boditore_prototype.git'
 
-# deployするブランチ。デフォルトはmasterなのでなくても可。
+# deployするブランチ。デフォルトはmasterなのでなくても可
 set :branch, 'master'
 
-# deploy先のディレクトリ。 
+# deploy先のディレクトリ
 set :deploy_to, '/var/www/rails/boditore_prototype'
 
-# シンボリックリンクをはるファイル。(※後述)
+# シンボリックリンクをはるファイル
 # set :linked_files, fetch(:linked_files, []).push('config/master.key')
 
-# シンボリックリンクをはるフォルダ。(※後述)
+# シンボリックリンクをはるフォルダ。
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 # プロセス番号を記載したファイルの場所
 # set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 
-# 保持するバージョンの個数(※後述)
+# 保持するバージョンの個数
 # Unicornの設定ファイルの場所
 # set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 # set :keep_releases, 5
