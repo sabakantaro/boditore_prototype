@@ -55,13 +55,8 @@ jobs:
         - run:
             name: rspecを実行
             command: bundle exec rspec
-#awsデプロイ
 
-  deploy:
-      machine:
-        image: circleci/classic:edge
-      steps:
-        - checkout
+#awsデプロイ
         - add_ssh_keys:
             fingerprints:
               - "56:2b:01:5c:56:0c:a6:31:2d:98:f1:84:c9:4b:8f:db"
