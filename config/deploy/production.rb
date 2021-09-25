@@ -64,4 +64,4 @@
 server '3.113.131.50', user: 'sabakantaro',roles: %w{app db web} 
 
 #デプロイするサーバーにsshログインする鍵の情報を記述
-set :ssh_options, keys: '~/.ssh/id_rsa_562b015c560ca6312d98f184c94b8fdb' 
+set :ssh_options, keys: '~/.ssh/boditore_key_rsa' 
