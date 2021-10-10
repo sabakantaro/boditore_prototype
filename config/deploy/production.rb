@@ -63,5 +63,5 @@
 # EC2サーバーのIP、EC2サーバーにログインするユーザー名、サーバーのロールを記述
 server '3.113.131.50', user: 'sabakantaro',roles: %w{app db web} 
 
-#デプロイするサーバーにsshログインする鍵の情報を記述
-set :ssh_options, keys: '~/.ssh/boditore_key_rsa' 
+#デプロイするサーバーにsshログインする鍵の情報を記述※boditore_key_rsaはCircleCI上になかった為id_rsaに変更
+set :ssh_options, keys: '~/.ssh/id_rsa.pub' 

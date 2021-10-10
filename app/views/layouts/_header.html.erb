@@ -53,9 +53,10 @@
                   <ul>
                     <li><%= link_to "新規登録", new_user_registration_path %></li>
                     <li><%= link_to "ログイン", new_user_session_path %></li>
-                    <li><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "login" %></li>
+                    
                   </ul>
                 </li>
+                <li><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "login" %></li>
               </ul>
             </li>
             <% end %>

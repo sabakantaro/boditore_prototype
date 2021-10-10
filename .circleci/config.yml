@@ -16,11 +16,6 @@ jobs:
             POSTGRES_USER: Snivy
             POSTGRES_DB: ci_test
             POSTGRES_HOST_AUTH_METHOD: trust
-            # user: mscrtins
-            #下記を書けばパスワードなしでデータベースにログインしてくれる。 
-            # password: CVWmQ17SgAdtu3Tw_03pljfWhISxjVIr
-            # POSTGRES_HOST_AUTH_METHOD: trust
-            # database: mscrtins
       #自身のアプリ名にする
       working_directory: ~/boditore_prototype
       steps:
@@ -59,9 +54,7 @@ jobs:
 #awsデプロイ
         - add_ssh_keys:
             fingerprints:
-              - "56:2b:01:5c:56:0c:a6:31:2d:98:f1:84:c9:4b:8f:db"
-              - "b9:8f:92:73:2a:e2:a4:39:47:c4:7a:bf:77:04:ef:26"
-              - "03:13:e3:1a:4f:bd:00:1c:33:4f:46:82:b2:9d:c8:10"
+              - "b2:8e:3c:03:80:9c:dc:78:a3:d6:dd:12:1b:c0:10:94"
         # masterブランチの時のみデプロイ
         - deploy:
             name: Capistrano deploy

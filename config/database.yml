@@ -46,9 +46,11 @@ development:
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
+  port: '4306'
+  host: 127.0.0.1
   password: password
-  socket: /tmp/mysql.sock
-  host: db
+  # socket: /tmp/mysql.sock
+  # host: db
   database: boditore_development
 
 test:
@@ -59,16 +61,6 @@ test:
   host: 127.0.0.1
   port: '5432'
   database: ci_test
-
-# test:
-#   adapter: mysql2
-#   encoding: utf8
-#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#   username: root
-#   password: password
-#   socket: /tmp/mysql.sock
-#   host: '127.0.0.1'
-#   database: ci_test
 
 #awsサーバー環境
 # production:
@@ -88,5 +80,5 @@ production:
   pool: 5
   database: boditore_production
   username: root
-  password: Exmusic12
+  password: <%= ENV['DB_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
