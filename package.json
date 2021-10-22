@@ -1,5 +1,7 @@
 {
   "name": "boditore",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "swiper": "^7.0.9"
+  }
 }

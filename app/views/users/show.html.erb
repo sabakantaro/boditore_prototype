@@ -3,9 +3,9 @@
     <ul class="user__show__top">
         <li class="user__show__top__icon">
             <% if @user.picture? %>
-            <%= image_tag @user.picture, alt: "user-icon", size: "200",  class: "user-icon" %>
+            <%= image_tag @user.picture, alt: "user-icon", class: "user-icon" %>
             <% else %>
-            <%= image_tag "default.jpg", alt: "user-icon", size: "200", class: "user-icon" %>
+            <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon" %>
             <% end %>
         </li>
         <li class="user__show__top__content">
@@ -48,12 +48,13 @@
           <li class="user__show__post__index__item">
             <div class="user__show__post__index__item__user">
               <% if post.user.picture? %>
-                <%= image_tag post.user.picture, size: "50x50", class:"user-icon"%>
+                <%= image_tag post.user.picture, class:"user-icon_small"%>
               <% else %>
-                <%= image_tag "default.jpg", alt: "user-icon", size: "50x50", class: "user-icon" %>
+                <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon_small" %>
               <% end %>
               <div class="user__show__post__index__item__user__name"><%= link_to post.user.name, user_path(post.user) %></div>
-              <h3><%=link_to post.title, post_path(post) %></h3>
+              
+<h3><%=link_to post.title, post_path(post) %></h3> 
             </div>
             <%= image_tag post.picture.url , class: "post__index__item__img" if post.picture? %>
             <hr>
@@ -67,12 +68,11 @@
               <li class="user__show__post__index__item">
                 <div class="user__show__post__index__item__user">
                   <% if post.user.picture? %>
-                    <%= image_tag post.user.picture, size: "50x50", class:"user-icon"%>
+                    <%= image_tag post.user.picture, class:"user-icon_small"%>
                   <% else %>
-                    <%= image_tag "default.jpg", alt: "user-icon", size: "50x50", class: "user-icon" %>
+                    <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon_small" %>
                   <% end %>
                   <div class="user__show__post__index__item__user__name"><%= link_to post.user.name, user_path(post.user) %></div>
-                  <h3><%=link_to post.title, post_path(post) %></h3>
                 </div>
                 <%= image_tag post.picture.url , class: "post__index__item__img" if post.picture? %>
                 <hr>

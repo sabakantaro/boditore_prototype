@@ -34,6 +34,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'jquery-rails', '4.3.1'
 
+gem 'rails_same_site_cookie'
+
+gem 'rails-i18n'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

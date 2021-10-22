@@ -26,8 +26,12 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post = current_user.posts.build(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to request.referer
+    if @post.save
+      redirect_to @post, notice: '投稿されました'
+    else
+      flash.now[:alert] = '入力してください'
+      render :new
+    end
   end
 
   def edit
@@ -46,13 +50,13 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to request.referer
+    redirect_to posts_path
   end
 
   private
 
     def post_params
-      params.permit(:id, :title, :content, :picture).merge(user_id: current_user.id)
+      params.require(:post).permit(:title, :content, :picture).merge(user_id: current_user.id)
     end
 
 end

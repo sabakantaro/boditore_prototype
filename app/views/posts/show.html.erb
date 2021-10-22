@@ -1,34 +1,26 @@
-<div class="notifications">
-
+<div class="common_wrapper">
   <div class="post__show">
     <% if @post.user.picture? %>
-      <%= image_tag @post.user.picture, size: "50x50", class:"user-icon"%>
+      <%= image_tag @post.user.picture, class:"user-icon_small"%>
     <% else %>
-      <%= image_tag "default.jpg", alt: "user-icon", size: "50x50", class: "user-icon" %>
+      <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon_small" %>
     <% end %>
     <%= @post.user.name %>
     <h1 class="post__show__title__body"><%= @post.title %></h1>
+
     <div class="post__show__content">
       <p><%= @post.content %></p>
       <%= image_tag @post.picture.url , size: "600x400" if @post.picture? %>
-    <div class="post__show__content__favorite">
-      <% if !Favorite.exists?(user_id:current_user.id,post_id:@post.id) %>
-        <%= link_to post_add_path(@post),method: :post do %>
-        <i class="fas fa-star" style="color: gray;"></i>
-        <%= @favorites_count %>
-        <% end %>
-      <% else %>
-        <%= link_to post_add_path(@post),method: :delete do %>
-        <i class="fas fa-star" style="color: orange;"></i>
-        <%= @favorites_count %>
-        <% end %>
-      <% end %>
-      </div>
+
+        <div class="post__show__content__favorite">
+          <%= render partial: 'favorites/favorite' %>
+        </div>
+
       <hr>
       <% if user_signed_in? && @post.user_id == current_user.id %>
         <%= link_to "編集 |", edit_post_path(@post) %>
         <%= link_to "削除", post_path(@post), method: :delete %>
       <% end %>
+    </div>
   </div>
-</div>
 </div>

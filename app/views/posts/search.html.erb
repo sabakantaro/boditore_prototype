@@ -1,4 +1,4 @@
-<div class="notifications">
+<div class="common_wrapper">
   <h1>検索結果
   <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
     <%= f.text_field :title %>
@@ -9,9 +9,9 @@
       <li class="post__index__item">
           <div class="post__index__item__user">
         <% if post.user.picture? %>
-              <%= image_tag post.user.picture, size: "50x50", class:"user-icon"%>
+              <%= image_tag post.user.picture, class:"user-icon_small"%>
             <% else %>
-              <%= image_tag "default.jpg", alt: "user-icon", size: "50x50", class: "user-icon" %>
+              <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon_small" %>
             <% end %>
             <div class="post__index__item__user__name"><%= post.user.name %>
           </div>
@@ -19,10 +19,10 @@
           <%= image_tag post.picture.url , size: "50x50", class: "post__index__item__img" if post.picture? %>
           <hr>
         <%=link_to "詳細を見る", post_path(post) %>
-         </div>
+          </div>
       </li>
       <% end %>
-   </ul>
-   <hr>
+    </ul>
+  <hr>
     <%= link_to "戻る", posts_path %>
 </div>

@@ -1,56 +1,36 @@
-<div class="msr_box01">
-  <div class="disp-img"><%= image_tag "body.jpg", width: "900" , height: "400",  alt: "disp-img", class: "img" %>
-  <% if user_signed_in? %>
-      <h3 class="ttl">さあ、大筋肉時代の幕開けだ。</h3>
-        <p>
-          ここは、あらゆる理想を掲げるトレーニーが集う場所。<br>
-          努力を続けたものだけが理想のカラダを手にすることができる。<br>
-          初心者でも大丈夫。筋肉の伝道者がキミを導くだろう。<br>
-          プロテインの準備が整ったら、いざ出発の時だ。<br>
-        </p>
-
-  <% else %>
-      <h3 class="ttl">筋肉は、裏切らない。</h3>
-        <p>
-          あなたは今、新たな一歩を踏み出そうとしている。<br>
-          理想のカラダ、健康、理由は様々かもしれない。<br>
-          しかし、努力を続けられたなら必ず結果は手に入る。<br>
-          そう、筋肉は決して裏切らないのだ。<br>
-        </p>
-
-  <% end %>
-  </div>
+<div class="section">
+          <div class="sliderArea">
+            <div class="full-screen slider">
+                  <div><img src="/assets/body.jpg" alt style=""></div>
+                
+                  <div><img src="/assets/post.jpg" alt style=""></div>
+                
+                  <div><img src="/assets/show.jpg" alt style=""></div>
+            </div>
+          </div>
 </div>
 
-<div class="msr_box02">
+  <% if user_signed_in? %>
+  <% else %>
+  <% end %>
+
+<div class="body-main-2">
   <h1> Boditoreの3つの特長</h1>
     <ul class="sub__ttl">
       <li class="ttl2">
-        <%= image_tag "subttl1.jpg", alt: "user-icon", size: "200", class: "user-icon" %>
-        <h3>1.現役トレーニーの情報が手に入る</h3>
-        <p>
-          ネットにはこう書いてあるけど、<br>
-          果たしてこれで良いのだろうか・・・？<br>
-          疑問をマッチョが解決してくれる
-        </p>
+        <%= image_tag "subttl1.jpg", alt: "user-icon", class: "user-icon" %>
+        <h3 class="ttl2">1.魅せる！</h3>
+        <p>自慢の筋トレを投稿しよう！</p>
       </li>
       <li>
-        <%= image_tag "subttl2.jpg", alt: "user-icon", size: "200", class: "user-icon" %>
-        <h3 class="ttl2">2.自分の情報を共有できる</h3>
-        <p>
-          投稿機能を使って情報共有を行えば、<br>
-          自分のトレーニングの成果を上げられる<br>
-          筋肉を世に知らしめるチャンスだ
-        </p>
+        <%= image_tag "subttl2.jpg", alt: "user-icon", class: "user-icon" %>
+        <h3 class="ttl2">2.調べる！</h3>
+        <p>リストから投稿を見てみよう！</p>
       </li>
       <li>
-        <%= image_tag "subttl3.jpg", alt: "user-icon", size: "200", class: "user-icon" %>
-        <h3 class="ttl2">3.マッスルメイトができる</h3>
-        <p>
-          お互いに筋肉を共有しあったら<br>
-          もうすでに筋肉仲間になっている<br>
-          そう、マッスルメイトだ！
-        </p>
+        <%= image_tag "subttl3.jpg", alt: "user-icon", class: "user-icon" %>
+        <h3 class="ttl2">3.繋がる！</h3>
+        <p>メッセージ機能を活用しよう！</p>
       </li>
   </ul>
 </div>

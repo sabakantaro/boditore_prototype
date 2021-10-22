@@ -1,0 +1,13 @@
+
+      <% if !Favorite.exists?(user_id:current_user.id,post_id:@post.id) %>
+        <%= link_to post_add_path(@post),method: :post do %>
+        <i class="fas fa-star" style="color: gray;"></i>
+        <%= @favorites_count %>
+        <% end %>
+      <% else %>
+        <%= link_to post_add_path(@post),method: :delete do %>
+        <i class="fas fa-star" style="color: orange;"></i>
+        <%= @favorites_count %>
+        <% end %>
+      <% end %>
+      

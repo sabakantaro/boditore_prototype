@@ -1,4 +1,4 @@
-<div class="notifications">
+<div class="common_wrapper">
 
   <div class="row">
     <aside class="col-md-4">
@@ -10,9 +10,9 @@
           <div class="user_avatars">
             <% @users.each do |user| %>
             <% if user.picture? %>
-            <%= image_tag user.picture, size: "50x50", class:"user-icon"%>
+            <%= image_tag user.picture, class:"user-icon_small"%>
             <% else %>
-            <%= image_tag "default.jpg", alt: "user-icon", size: "50x50", class: "user-icon" %>
+            <img src="/assets/default.jpg" alt style="" class="user-icon_small">
             <% end %>
             <%= link_to user.name, user %>
             <hr>

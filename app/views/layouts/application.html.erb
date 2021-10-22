@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Boditore</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700,900&display=swap" rel="stylesheet">
+
     <%= csrf_meta_tags %>
       <%= stylesheet_link_tag    'application', media: 'all',
                                 'data-turbolinks-track': 'reload' %>
-      <%= javascript_include_tag 'application',
+      <%= javascript_include_tag 'application', media: 'all',
                                 'data-turbolinks-track': 'reload' %>
-    <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-mutate-approach="sync"></script>
+
+      <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-mutate-approach="sync"></script>
+
+      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+      <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <%= render 'layouts/shim' %>
   </head>
   <body>
+
+    <div class="notifications">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: key) %>
+      <% end %>
+    </div>
     <%= render 'layouts/header' %>
     <%= yield %>
+
+    
+
     <%= render 'layouts/footer' %>
+
   </body>
 </html>

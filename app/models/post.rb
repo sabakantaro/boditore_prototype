@@ -1,10 +1,11 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
   mount_uploader :picture, PictureUploader
   default_scope -> { order(created_at: :desc) }
   validate  :picture_size
+  # validates :content, presence: true
 
   def user
     return User.find_by(id: self.user_id)

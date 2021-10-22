@@ -1,6 +1,6 @@
-<div class="notifications">
+<div class="common_wrapper">
   <h1>新規投稿</h1>
-  <%= form_with url: posts_path do |form| %>
+  <%= form_with(model: @post, local: true)do |form| %>
     <p>
       <%= form.label :タイトル %><br>
       <%= form.text_field :title, id: "title" %>
