@@ -7,8 +7,6 @@
 # 環境変数ファイルをgit管理から除外
 .env
 /.env
-touch.env
-/env
 
 # Ignore bundler config.
 /.bundle
@@ -30,3 +28,7 @@ touch.env
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/credentials.yml.enc
+.ssh/*
+/ssh/boditore_key_rsa
+.vscode/*

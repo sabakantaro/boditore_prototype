@@ -29,21 +29,21 @@ RSpec.describe '新規投稿', type: :system do
         # ログイン画面へ戻される
         expect(current_path).to eq '/users/sign_in'
     end
-    # it '投稿内容が空だと投稿できない' do
-    #     # ログインする
-    #     visit new_user_session_path
-    #     fill_in 'user_email', with: @user.email
-    #     fill_in 'user_password', with: @user.password
-    #     find('input[name="commit"]').click
-    #     # 新規投稿ページへ遷移する
-    #     visit new_post_path
-    #     # フォームが空のまま、投稿ボタンを押す
-    #     fill_in 'title', with: ''
-    #     fill_in 'content', with: ''
-    #     find('input[name="commit"]').click
-    #     # 新規投稿ページへ戻される
-    #     expect(current_path).to eq '/posts/new'
-    # end
+    it '投稿内容が空だと投稿できない' do
+        # ログインする
+        visit new_user_session_path
+        fill_in 'user_email', with: @user.email
+        fill_in 'user_password', with: @user.password
+        find('input[name="commit"]').click
+        # 新規投稿ページへ遷移する
+        visit new_post_path
+        # フォームが空のまま、投稿ボタンを押す
+        fill_in 'title', with: ''
+        fill_in 'content', with: ''
+        find('input[name="commit"]').click
+        # 新規投稿ページへ戻される
+        expect(current_path).to eq '/posts/new'
+    end
     end
 end
 

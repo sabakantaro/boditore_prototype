@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Post do
     describe '#create' do
-        it "is valid with all content of the post" do
+        it "投稿内容が有効であること" do
           post = FactoryBot.create(:post)
           expect(post).to be_valid
         end

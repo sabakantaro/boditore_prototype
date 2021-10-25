@@ -16,16 +16,16 @@ describe Relationship do
       expect(relationship.errors[:follower_id]).to include
     end
 
-    # it "must exist (follower)" do
-    #   relationship = build(:relationship, follower: nil)
-    #   relationship.valid?
-    #   expect(relationship.errors[:follower]).to include("must exist")
-    # end
+    it "followerが存在すること" do
+      relationship = build(:relationship, follower: nil)
+      relationship.valid?
+      expect(relationship.errors[:follower]).to include("を入力してください")
+    end
 
-    # it "must exist (following)" do
-    #   relationship = build(:relationship, followed: nil)
-    #   relationship.valid?
-    #   expect(relationship.errors[:followed]).to include("must exist")
-    # end
+    it "followingが存在すること" do
+      relationship = build(:relationship, followed: nil)
+      relationship.valid?
+      expect(relationship.errors[:followed]).to include("を入力してください")
+    end
   end
 end

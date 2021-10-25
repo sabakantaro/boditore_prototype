@@ -16,16 +16,16 @@ describe Favorite do
       expect(favorite.errors[:post_id]).to include
     end
 
-    # it "cannot be empty" do
-    #   favorite = build(:favorite, post: nil)
-    #   favorite.valid?
-    #   expect(favorite.errors[:post]).to include("must exist")
-    # end
+    it "投稿を空欄にできない" do
+      favorite = build(:favorite, post: nil)
+      favorite.valid?
+      expect(favorite.errors[:post]).to include("を入力してください")
+    end
 
-    # it "cannot be empty for user" do
-    #   favorite = build(:favorite, user: nil)
-    #   favorite.valid?
-    #   expect(favorite.errors[:user]).to include("must exist")
-    # end
+    it "userを空欄にできない" do
+      favorite = build(:favorite, user: nil)
+      favorite.valid?
+      expect(favorite.errors[:user]).to include("を入力してください")
+    end
   end
 end

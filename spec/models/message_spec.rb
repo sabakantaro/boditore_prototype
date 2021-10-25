@@ -9,17 +9,17 @@ describe Message do
       expect(message.errors[:content]).to include
     end
 
-    # it "must exist (room)" do
-    #   message = build(:message, room_id: nil)
-    #   message.valid?
-    #   expect(message.errors[:room]).to include("must exist")
-    # end
+    it "roomが存在する" do
+      message = build(:message, room_id: nil)
+      message.valid?
+      expect(message.errors[:room]).to include("を入力してください")
+    end
 
-    # it "must exist (user)" do
-    #   message = build(:message, user_id: nil)
-    #   message.valid?
-    #   expect(message.errors[:user]).to include("must exist")
+    it "userが存在する" do
+      message = build(:message, user_id: nil)
+      message.valid?
+      expect(message.errors[:user]).to include("を入力してください")
     
-    # end
+    end
   end
 end
