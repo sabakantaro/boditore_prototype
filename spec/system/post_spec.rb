@@ -42,7 +42,7 @@ RSpec.describe '新規投稿', type: :system do
         fill_in 'content', with: ''
         find('input[name="commit"]').click
         # 新規投稿ページへ戻される
-        expect(current_path).to eq '/posts/new'
+        expect(current_path).to eq post_path(@post)
     end
     end
 end
