@@ -1,18 +1,14 @@
 <div class="section">
           <div class="sliderArea">
             <div class="full-screen slider">
-                  <div><%= image_tag asset_path("body.jpg", alt: "") %></div>
+                  <%= image_tag "body.jpg", alt: "main-slide" %>
                 
-                  <div><%= image_tag asset_path("post.jpg", alt: "") %></div>
+                  <%= image_tag "post.jpg", alt: "main-slide" %>
                 
-                  <div><%= image_tag asset_path("show.jpg", alt: "") %></div>
+                  <%= image_tag "show.jpg", alt: "main-slide" %>
             </div>
           </div>
 </div>
-
-  <% if user_signed_in? %>
-  <% else %>
-  <% end %>
 
 <div class="body-main-2">
   <h1> Boditoreの3つの特長</h1>
