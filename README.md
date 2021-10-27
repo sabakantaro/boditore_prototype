@@ -31,7 +31,7 @@
 ・Docker/docker-compose<br>
 ・MySQL(8.0.23)<br>
 ・CircleCI<br>
-・Puma<br>
+・Unicorn<br>
 ・Nginx<br>
 ・AWS(VPC、ACM、Route53、EC2、RDS)<br>
 
