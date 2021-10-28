@@ -8,7 +8,7 @@
     <% @users.each do |user| %>
       <div>
         <% if user.picture? %>
-              <%= image_tag user.picture, class:"user-icon_small"%>
+              <%= image_tag user.picture.url, class:"user-icon_small"%>
               <% else %>
               <%= image_tag "default.jpg", alt: "user-icon",class: "user-icon_small" %>
               <% end %>

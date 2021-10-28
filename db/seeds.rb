@@ -1,6 +1,6 @@
 100.times do |n|
   name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
+  email = "example-#{n+1}@test.com"
   password = "password"
   User.create!(name:  name,
               email: email,

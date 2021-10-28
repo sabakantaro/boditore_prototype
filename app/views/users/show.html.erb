@@ -3,7 +3,7 @@
     <ul class="user__show__top">
         <li class="user__show__top__icon">
             <% if @user.picture? %>
-            <%= image_tag @user.picture, alt: "user-icon", class: "user-icon" %>
+            <%= image_tag @user.picture.url, alt: "user-icon", class: "user-icon" %>
             <% else %>
             <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon" %>
             <% end %>
@@ -48,7 +48,7 @@
           <li class="user__show__post__index__item">
             <div class="user__show__post__index__item__user">
               <% if post.user.picture? %>
-                <%= image_tag post.user.picture, class:"user-icon_small"%>
+                <%= image_tag post.user.picture.url, class:"user-icon_small"%>
               <% else %>
                 <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon_small" %>
               <% end %>
@@ -68,7 +68,7 @@
               <li class="user__show__post__index__item">
                 <div class="user__show__post__index__item__user">
                   <% if post.user.picture? %>
-                    <%= image_tag post.user.picture, class:"user-icon_small"%>
+                    <%= image_tag post.user.picture.url, class:"user-icon_small"%>
                   <% else %>
                     <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon_small" %>
                   <% end %>

@@ -10,7 +10,7 @@
           <div class="user_avatars">
             <% @users.each do |user| %>
             <% if user.picture? %>
-            <%= image_tag user.picture, class:"user-icon_small"%>
+            <%= image_tag user.picture.url, class:"user-icon_small"%>
             <% else %>
             <img src="/assets/default.jpg" alt style="" class="user-icon_small">
             <% end %>

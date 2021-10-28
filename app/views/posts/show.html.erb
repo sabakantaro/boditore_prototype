@@ -1,7 +1,7 @@
 <div class="common_wrapper">
   <div class="post__show">
     <% if @post.user.picture? %>
-      <%= image_tag @post.user.picture, class:"user-icon_small"%>
+      <%= image_tag @post.user.picture.url, class:"user-icon_small"%>
     <% else %>
       <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon_small" %>
     <% end %>
