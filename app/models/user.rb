@@ -24,10 +24,10 @@ class User < ApplicationRecord
 
   #ゲストユーザー
   def self.guest
-  find_or_create_by!(email: 'aaa@aaa.com') do |user|
-    user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
-    user.password_confirmation = user.password
-    user.name = 'テスト'
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      user.name = 'テスト'
     end
   end
 
