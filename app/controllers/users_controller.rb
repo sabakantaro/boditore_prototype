@@ -61,8 +61,7 @@ class UsersController < ApplicationController
     @user.create_notification_follow!(current_user)
     if @user.save
       log_in @user
-      flash[:success] = "ようこそBoditoreへ"
-      redirect_to @user
+      redirect_to @user, notice: "ようこそBoditoreへ"
     else
       render 'new'
     end
