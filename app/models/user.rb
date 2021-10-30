@@ -23,13 +23,13 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   #ゲストユーザー
-  def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
-      user.password = SecureRandom.urlsafe_base64
-      user.password_confirmation = user.password
-      user.name = 'テスト'
-    end
-  end
+  # def self.guest
+  #   find_or_create_by!(email: 'guest@example.com') do |user|
+  #     user.password = SecureRandom.urlsafe_base64
+  #     user.password_confirmation = user.password
+  #     user.name = 'テスト'
+  #   end
+  # end
 
   def follow(other_user)
     following << other_user
