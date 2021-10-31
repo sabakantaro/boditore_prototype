@@ -1,23 +1,24 @@
 <div class="common_wrapper">
 <h1>編集</h1>
- <%= form_with url: posts_create_path(@post.id) do |form| %>
+  <%= form_for(@post, url: post_path(@post)) do |f| %>
   <p>
-      <%= form.label :タイトル %><br>
-      <%= form.text_field :title, id: "title" %>
+        <%= f.label :タイトル %><br>
+        <%= f.text_field :title, autofocus: true, :placeholder =>"#{@post.title}" %>
     </p>
 
     <p>
-      <%= form.label :投稿内容 %><br>
-      <%= form.text_area :content, id: "content" %>
+      <%= f.label :投稿内容 %><br>
+      <%= f.text_field :content, autofocus: true, :placeholder =>"#{@post.content}" %>
+    </p>
+    
+    
+    <p>
+      <%= f.label :写真 %><br>
+      <%= f.file_field :picture, :placeholder =>"#{@post.picture}" %>
     </p>
 
     <p>
-      <%= form.label :写真 %><br>
-      <%= form.file_field :picture, id: "picture" %>
+      <%= f.submit "投稿" %>
     </p>
-
-    <p>
-      <%= form.submit "投稿" %>
-    </p>
- <% end %>
+  <% end %>
 </div>

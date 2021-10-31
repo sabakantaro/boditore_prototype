@@ -16,7 +16,7 @@
         <td>
           <%= link_to user_path(notification.visitor) do %>
           <% if notification.visitor.picture? %>
-            <%= image_tag notification.visitor.picture, class:"user-icon_small"%>
+            <%= image_tag notification.visitor.picture.url, class:"user-icon_small"%>
             <% else %>
             <%= image_tag "default.jpg", alt: "user-icon",class: "user-icon_small" %>
             <% end %>
@@ -36,7 +36,7 @@
     <div class="notice">
         <%= link_to user_path(notification.visitor) do %>
         <% if notification.visitor.picture? %>
-        <%= image_tag notification.visitor.picture, class:"user-icon_small"%>
+        <%= image_tag notification.visitor.picture.url, class:"user-icon_small"%>
         <% else %>
             <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon_small" %>
             <% end %>
