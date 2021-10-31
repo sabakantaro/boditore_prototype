@@ -493,14 +493,17 @@ footer {
 /* DM */
 
 .visited_user {
-  color: white;
   text-align: right;
-  background-color: black;
+  background-color: pink;
   width: fit-content;
   margin: 10px 0 0 auto;
   border-radius: 30px;
   box-sizing: border-box;
   padding: 10px;
+  & a {
+    text-decoration: none;
+    color: white;
+  }
 }
 
 .current_user {

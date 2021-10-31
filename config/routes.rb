@@ -39,8 +39,4 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:create, :new, :edit, :update, :destroy]
 
-  # post 'posts/new' => 'posts#new'
-  # post 'posts/create' => 'posts#create'
-  # post "posts/:id/update" => "posts#update"
-
 end

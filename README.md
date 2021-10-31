@@ -1,7 +1,6 @@
 # <a href="https://www.boditore.com">Boditore</a>
 
-![スクリーンショット 2021-10-23 14 52 39](https://user-images.githubusercontent.com/79243411/138544369-d82fb4e4-7653-43d6-aeaf-974174454fa7.png)
-![スクリーンショット 2021-10-23 14 53 10](https://user-images.githubusercontent.com/79243411/138544381-0804c897-e92b-4789-8e95-7758b4466773.png)
+![Boditore_紹介画像](https://user-images.githubusercontent.com/79243411/139571787-ddd37840-d3db-457a-aed5-f4508530edf6.gif)
 
 ## アプリの概要
 

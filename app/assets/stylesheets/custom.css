@@ -527,9 +527,8 @@ footer {
 
 /* DM */
 .visited_user {
-  color: white;
   text-align: right;
-  background-color: black;
+  background-color: pink;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -538,6 +537,11 @@ footer {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 10px;
+}
+
+.visited_user a {
+  text-decoration: none;
+  color: white;
 }
 
 .current_user {
