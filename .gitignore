@@ -31,3 +31,4 @@
 /config/secrets.yml
 .ssh/*
 .vscode/*
+.DS_Store
