@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-
   root 'home#index'
   get  '/home',    to: 'home#index'
   get  '/signup',  to: 'users#new'
+
+  namespace :api do
+    namespace :v1 do
+      resources :users
+      resources :posts
+    end
+  end
 
   devise_for :users, controllers: {
     registrations: 'users/registrations'
@@ -13,11 +19,11 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-  get :search, on: :collection
+    get :search, on: :collection
   end
 
   resources :posts do
-  get :search, on: :collection
+    get :search, on: :collection
   end
 
   resources :users do
@@ -25,18 +31,17 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :relationships,       only: [:create, :destroy]
+  resources :relationships,       only: %i[create destroy]
 
-  resources :notifications, only: [:index, :destroy]
+  resources :notifications, only: %i[index destroy]
 
   resources :posts do
     post 'add' => 'favorites#create'
     delete '/add' => 'favorites#destroy'
   end
 
-  resources :messages, :only => [:create]
-  resources :rooms, :only => [:create, :show, :index]
-
-  resources :posts, only: [:create, :new, :edit, :update, :destroy]
+  resources :messages, only: [:create]
+  resources :rooms, only: %i[create show index]
+  resources :posts, only: %i[create new edit update destroy]
 
 end

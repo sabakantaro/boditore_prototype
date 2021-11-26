@@ -3,6 +3,6 @@ FactoryBot.define do
     association :visitor, factory: :user
     association :visited, factory: :user
     checked       { true }
-    action        { "message" }
+    action        { 'message' }
   end
 end

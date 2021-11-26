@@ -1,16 +1,20 @@
 <div class="common_wrapper">
   <div class="post__show">
-    <% if @post.user.picture? %>
-      <%= image_tag @post.user.picture.url, class:"user-icon_small"%>
+    <% if @post.user.image.attached? %>
+      <%= image_tag @post.user.image, class:"user-icon_small"%>
     <% else %>
-      <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon_small" %>
+      <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
     <% end %>
-    <%= @post.user.name %>
+    <%= link_to @post.user.name, @post.user %>
     <h1 class="post__show__title__body"><%= @post.title %></h1>
 
     <div class="post__show__content">
       <p><%= @post.content %></p>
-      <%= image_tag @post.picture.url , size: "600x400" if @post.picture? %>
+            <% if @post.eyecatch.attached? %>
+              <%= image_tag @post.eyecatch, class: "post__index__item__img" %>
+            <% else %>
+              <%= image_tag "post-image.jpg", class: "post__index__item__img" %>
+            <% end %>
 
         <div class="post__show__content__favorite">
           <%= render partial: 'favorites/favorite' %>
@@ -20,6 +24,8 @@
       <% if user_signed_in? && @post.user_id == current_user.id %>
         <%= link_to "編集 |", edit_post_path(@post) %>
         <%= link_to "削除", post_path(@post), method: :delete %>
+      <% end %>
+      <h4><%= link_to posts_path do %>投稿一覧へ</h4>
       <% end %>
     </div>
   </div>

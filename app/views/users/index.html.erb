@@ -7,11 +7,11 @@
   <div class="users">
     <% @users.each do |user| %>
       <div>
-        <% if user.picture? %>
-              <%= image_tag user.picture.url, class:"user-icon_small"%>
-              <% else %>
-              <%= image_tag "default.jpg", alt: "user-icon",class: "user-icon_small" %>
-              <% end %>
+        <% if user.image.attached? %>
+              <%= image_tag user.image, alt: "user-icon", class: "user-icon" %>
+            <% else %>
+            <%= image_tag "default.png", alt: "user-icon", class: "user-icon" %>
+            <% end %>
         <%= link_to user.name, user %>
         <hr>
         </div>

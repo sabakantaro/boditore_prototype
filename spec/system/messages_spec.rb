@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-#modelでuser, roomの有無を確認しているため実装見送り
+# modelでuser, roomの有無を確認しているため実装見送り
 
 # RSpec.describe 'コメント投稿', type: :system do
 #   before do

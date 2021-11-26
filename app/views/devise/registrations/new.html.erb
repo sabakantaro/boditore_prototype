@@ -18,6 +18,17 @@
   </div>
 
   <div class="field">
+    <%= f.label :プロフィール %> <br />
+    <%= f.text_area :profile , autocomplete: "profile" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :トレーニング歴 %> <br />
+    <%= f.number_field :experience, autocomplete: "off" %>年
+  </div>
+  
+
+  <div class="field">
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>

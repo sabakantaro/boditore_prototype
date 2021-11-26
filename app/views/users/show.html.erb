@@ -2,10 +2,10 @@
   <div class="user__show">
     <ul class="user__show__top">
         <li class="user__show__top__icon">
-            <% if @user.picture? %>
-            <%= image_tag @user.picture.url, alt: "user-icon", class: "user-icon" %>
+            <% if @user.image.attached? %>
+              <%= image_tag @user.image, alt: "user-icon", class: "user-icon" %>
             <% else %>
-            <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon" %>
+              <%= image_tag "default.png", alt: "user-icon", class: "user-icon" %>
             <% end %>
         </li>
         <li class="user__show__top__content">
@@ -35,6 +35,9 @@
             <%= render 'shared/stats' %>
         </li>
       </ul>
+        <h3>・トレーニング歴：<%= @user.experience %>年</h3>
+        <h3>・プロフィール</h3>
+        <p><%= @user.profile %></p>
     </div>
 
     <div class="user__show__post__index">
@@ -47,16 +50,20 @@
           <% @posts.each do |post| %>
           <li class="user__show__post__index__item">
             <div class="user__show__post__index__item__user">
-              <% if post.user.picture? %>
-                <%= image_tag post.user.picture.url, class:"user-icon_small"%>
+              <% if post.user.image.attached? %>
+                <%= image_tag post.user.image, class:"user-icon_small"%>
               <% else %>
-                <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon_small" %>
+                <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
               <% end %>
               <div class="user__show__post__index__item__user__name"><%= link_to post.user.name, user_path(post.user) %></div>
               
-<h3><%=link_to post.title, post_path(post) %></h3> 
+            <h3><%=link_to post.title, post_path(post) %></h3>
             </div>
-            <%= image_tag post.picture.url , class: "post__index__item__img" if post.picture? %>
+            <% if post.eyecatch.attached? %>
+              <%= image_tag post.eyecatch, class: "post__index__item__img" %>
+            <% else %>
+              <%= image_tag "post-image.jpg", class: "post__index__item__img" %>
+            <% end %>
             <hr>
             <%=link_to "詳細を見る", post_path(post) %>
           </li>
@@ -67,14 +74,19 @@
             <% @favorite_list.each do |post| %>
               <li class="user__show__post__index__item">
                 <div class="user__show__post__index__item__user">
-                  <% if post.user.picture? %>
-                    <%= image_tag post.user.picture.url, class:"user-icon_small"%>
+                  <% if post.user.image.attached? %>
+                    <%= image_tag post.user.image, class:"user-icon_small"%>
                   <% else %>
-                    <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon_small" %>
+                    <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
                   <% end %>
                   <div class="user__show__post__index__item__user__name"><%= link_to post.user.name, user_path(post.user) %></div>
                 </div>
-                <%= image_tag post.picture.url , class: "post__index__item__img" if post.picture? %>
+                <h3><%=link_to post.title, post_path(post) %></h3>
+                <% if post.eyecatch.attached? %>
+                  <%= image_tag post.eyecatch, class: "post__index__item__img" %>
+                <% else %>
+                  <%= image_tag "post-image.jpg", class: "post__index__item__img" %>
+                <% end %>
                 <hr>
                 <%=link_to "詳細を見る", post_path(post) %>
               </li>

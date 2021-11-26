@@ -16,11 +16,11 @@ module Boditore
     # -- all .rb files in that directory are automatically loaded.
     # 認証トークンをremoteフォームに埋め込む
     config.action_view.embed_authenticity_token_in_remote_forms = true
-    
-    #sqlite3 booleanエラー回避
+
+    # sqlite3 booleanエラー回避
     config.active_record.sqlite3.represent_boolean_as_integer = true
 
-    #devise日本語化
+    # devise日本語化
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
   end

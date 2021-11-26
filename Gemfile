@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.5'
@@ -33,36 +32,38 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'jquery-rails', '4.3.1'
-
+gem 'rack-cors'
 gem 'rails_same_site_cookie'
-
 gem 'rails-i18n'
+# gem 'react-rails'
+gem 'webpacker'
+# gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
+  gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
-  gem 'database_cleaner'
-  #rspec高速化
+  gem 'selenium-webdriver'
+  # rspec高速化
   gem 'spring-commands-rspec'
-  #circleci awsデプロイで使用
+  # circleci awsデプロイで使用
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  
 end
 
 group :development do
+  gem 'foreman'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'rubocop', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -71,27 +72,28 @@ group :development do
 end
 
 group :test do
-  gem 'rails-controller-testing', '1.0.2'
-  gem 'minitest',                 '5.14.3'
-  gem 'minitest-reporters',       '1.1.14'
   gem 'guard',                    '2.16.2'
   gem 'guard-minitest',           '2.4.4'
+  gem 'minitest',                 '5.14.3'
+  gem 'minitest-reporters',       '1.1.14'
   gem 'nokogiri'
   gem 'pg'
+  gem 'rails-controller-testing', '1.0.2'
 end
 
-gem 'devise'
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'devise'
 gem 'faker'
+gem 'gimei'
 gem 'kaminari'
+gem 'mini_magick'
 
 # MySQL setting
 gem 'mysql2'
-#password encrypt
+# password encrypt
 gem 'dotenv-rails'
 
-#Unicorn
+# Unicorn
 group :production, :staging do
-    gem 'unicorn'
+  gem 'unicorn'
 end

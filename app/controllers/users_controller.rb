@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: %i[edit update]
 
   def search
-    if params[:name].present?
-      @users = User.where('name LIKE ?', "%#{params[:name]}%")
-    else
-      @users = User.none
-    end
+    @users = if params[:name].present?
+               User.where('name LIKE ?', "%#{params[:name]}%")
+             else
+               User.none
+             end
   end
 
   def following
@@ -30,16 +30,16 @@ class UsersController < ApplicationController
     @posts = @user.posts
 
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
-    @favorite_list = Post.find(favorites)     # postsテーブルから、お気に入り登録済みのレコードを取得
+    @favorite_list = Post.find(favorites) # postsテーブルから、お気に入り登録済みのレコードを取得
 
     @post = current_user.posts.build
-    @currentUserEntry=Entry.where(user_id: current_user.id)
-    @userEntry=Entry.where(user_id: @user.id)
+    @currentUserEntry = Entry.where(user_id: current_user.id)
+    @userEntry = Entry.where(user_id: @user.id)
     if @user.id == current_user.id
     else
       @currentUserEntry.each do |cu|
         @userEntry.each do |u|
-          if cu.room_id == u.room_id then
+          if cu.room_id == u.room_id
             @isRoom = true
             @roomId = cu.room_id
           end
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     @user.create_notification_follow!(current_user)
     if @user.save
       log_in @user
-      redirect_to @user, notice: "ようこそBoditoreへ"
+      redirect_to @user, notice: 'ようこそBoditoreへ'
     else
       render 'new'
     end
@@ -71,21 +71,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-
-
   private
 
-    def user_params
-      params.permit(:name, :email, :password,
-                    :password_confirmation, :picture, :search)
-    end
+  def user_params
+    params.permit(:name, :email, :password, :image,
+                  :password_confirmation, :profile, :experience, :search)
+  end
 
-    # beforeアクション
-    def logged_in_user
-      unless logged_in?
-        flash[:danger] = "ログインしてください"
-        redirect_to login_url
-      end
+  # beforeアクション
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = 'ログインしてください'
+      redirect_to login_url
     end
-    
+  end
 end

@@ -11,12 +11,14 @@
         <% if post.user.picture? %>
               <%= image_tag post.user.picture.url, class:"user-icon_small"%>
             <% else %>
-              <%= image_tag "default.jpg", alt: "user-icon", class: "user-icon_small" %>
+              <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
             <% end %>
             <div class="post__index__item__user__name"><%= post.user.name %>
           </div>
           <h3><%= post.title %></h3>
-          <%= image_tag post.picture.url , size: "50x50", class: "post__index__item__img" if post.picture? %>
+          <% if post.eyecatch.attached? %>
+              <%= image_tag post.eyecatch, size: "50x50", class: "post__index__item__img" %>
+            <% end %>
           <hr>
         <%=link_to "詳細を見る", post_path(post) %>
           </div>

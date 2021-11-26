@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def search
-    if params[:title].present?
-      @posts = Post.where('title LIKE ?', "%#{params[:title]}%")
-    else
-      @posts = Post.none
-    end
+    @posts = if params[:title].present?
+               Post.where('title LIKE ?', "%#{params[:title]}%")
+             else
+               Post.none
+             end
   end
 
   def index
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by(id:params[:id])
+    @post = Post.find_by(id: params[:id])
     @favorites_count = Favorite.where(post_id: params[:id]).count
   end
 
@@ -27,6 +27,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     @post.user_id = current_user.id
     if @post.save
+      @post.eyecatch = post_params[:image]
       redirect_to @post, notice: '投稿されました'
     else
       flash.now[:alert] = '入力してください'
@@ -51,8 +52,7 @@ class PostsController < ApplicationController
 
   private
 
-    def post_params
-      params.require(:post).permit(:title, :content, :picture).merge(user_id: current_user.id)
-    end
-
+  def post_params
+    params.require(:post).permit(:title, :content, :image).merge(user_id: current_user.id)
+  end
 end

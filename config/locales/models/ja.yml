@@ -9,3 +9,5 @@ ja:
         password: パスワード
         password_confirmation: 変更後のパスワード
         current_password: 現在のパスワード
+        profile: プロフィール
+        experience: トレーニング歴

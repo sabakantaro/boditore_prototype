@@ -1,30 +1,47 @@
-<div class="section">
-          <div class="sliderArea">
-            <div class="full-screen slider">
-              <img src="<%= asset_path "body.jpg" %>" />
-              <img src="<%= asset_path "post.jpg" %>" />
-              <img src="<%= asset_path "show.jpg" %>" />
-            </div>
-          </div>
-</div>
+<% if user_signed_in? %>
+  <div id="user">
 
-<div class="body-main-2">
-  <h1> Boditoreの3つの特長</h1>
-    <ul class="sub__ttl">
-      <li class="ttl2">
-        <%= image_tag "subttl1.jpg", alt: "user-icon", class: "user-icon" %>
-        <h3 class="ttl2">1.魅せる！</h3>
-        <p>自慢の筋トレを投稿しよう！</p>
-      </li>
-      <li>
-        <%= image_tag "subttl2.jpg", alt: "user-icon", class: "user-icon" %>
-        <h3 class="ttl2">2.調べる！</h3>
-        <p>リストから投稿を見てみよう！</p>
-      </li>
-      <li>
-        <%= image_tag "subttl3.jpg", alt: "user-icon", class: "user-icon" %>
-        <h3 class="ttl2">3.繋がる！</h3>
-        <p>メッセージ機能を活用しよう！</p>
-      </li>
-  </ul>
-</div>
+  <h1>ユーザー一覧</h1>
+      <%= form_with url: search_users_path, method: :get, local: true do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit :検索 %>
+      <% end %>
+
+  <contents></contents>
+  </div>
+
+  <%= javascript_pack_tag 'user' %>
+<% else %>
+
+  <div class="section">
+            <div class="sliderArea">
+              <div class="full-screen slider">
+                <img src="<%= asset_path "body.jpg" %>" />
+                <img src="<%= asset_path "post.jpg" %>" />
+                <img src="<%= asset_path "show.jpg" %>" />
+              </div>
+            </div>
+  </div>
+
+  <div class="body-main-2">
+    <h1> Boditoreの3つの特長</h1>
+      <ul class="sub__ttl">
+        <li class="ttl2">
+          <%= image_tag "subttl1.jpg", alt: "user-icon", class: "user-icon" %>
+          <h3 class="ttl2">1.魅せる！</h3>
+          <p>自慢の筋トレを投稿しよう！</p>
+        </li>
+        <li>
+          <%= image_tag "subttl2.jpg", alt: "user-icon", class: "user-icon" %>
+          <h3 class="ttl2">2.調べる！</h3>
+          <p>リストから投稿を見てみよう！</p>
+        </li>
+        <li>
+          <%= image_tag "subttl3.jpg", alt: "user-icon", class: "user-icon" %>
+          <h3 class="ttl2">3.繋がる！</h3>
+          <p>メッセージ機能を活用しよう！</p>
+        </li>
+    </ul>
+  </div>
+
+<% end %>
