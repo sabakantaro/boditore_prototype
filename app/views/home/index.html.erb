@@ -1,11 +1,35 @@
 <% if user_signed_in? %>
   <div id="user">
-
-  <h1>ユーザー一覧</h1>
-      <%= form_with url: search_users_path, method: :get, local: true do |f| %>
-        <%= f.text_field :name %>
-        <%= f.submit :検索 %>
-      <% end %>
+    
+      <v-form>
+        <v-container>
+          <v-row class="user__search">
+            <v-col
+              cols="12"
+              md="4"
+            >
+            <%= form_with url: search_users_path, method: :get, local: true do |f| %>
+              <v-text-field
+                            type="number"
+                            class="mt-0"
+                            solo
+                            label="トレーニング歴で探す"
+                            auto-grow
+                            rows="1"
+                            value=""
+                            placeholder="5"
+                          >
+              <%= f.number_field :experience %>
+              </v-text-field>
+            </v-col>
+            <v-btn class="user__search__button">
+            <%= f.submit :検索 %>
+            </v-btn>
+            <% end %>
+        </v-row>
+    </v-container>
+  </v-form>
+      
 
   <contents></contents>
   </div>

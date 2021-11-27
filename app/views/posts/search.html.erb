@@ -8,8 +8,8 @@
     <% @posts.each do |post| %>
       <li class="post__index__item">
           <div class="post__index__item__user">
-        <% if post.user.picture? %>
-              <%= image_tag post.user.picture.url, class:"user-icon_small"%>
+        <% if post.user.image.attached? %>
+              <%= image_tag post.user.image, class:"user-icon_small"%>
             <% else %>
               <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
             <% end %>

@@ -1,7 +1,6 @@
 <div class="bg-dm">
 </div>
 
-
 <div class="common_wrapper">
 
 <h1>おしらせ</h1>
@@ -15,8 +14,8 @@
       <tr>
         <td>
           <%= link_to user_path(notification.visitor) do %>
-          <% if notification.visitor.picture? %>
-            <%= image_tag notification.visitor.picture.url, class:"user-icon_small"%>
+          <% if notification.visitor.image.attached? %>
+            <%= image_tag notification.visitor.image, class:"user-icon_small"%>
             <% else %>
             <%= image_tag "default.png", alt: "user-icon",class: "user-icon_small" %>
             <% end %>
@@ -35,8 +34,8 @@
 
     <div class="notice">
         <%= link_to user_path(notification.visitor) do %>
-        <% if notification.visitor.picture? %>
-        <%= image_tag notification.visitor.picture.url, class:"user-icon_small"%>
+        <% if notification.visitor.image.attache? %>
+        <%= image_tag notification.visitor.image, class:"user-icon_small"%>
         <% else %>
             <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
             <% end %>

@@ -1,40 +1,70 @@
 <template>
-  <v-row class="user-card">
-    <v-col cols="3" v-for="user in users" :key="user.id">
-      <a v-bind:href="'users/' + user.id">
-        <v-card class="">
-          <img
-            v-if="user.image_url"
-            class="user-image"
-            v-bind:src="user.image_url"
-          />
-          <img
-            v-else
-            class="user-image"
-            v-bind:src="require('./images/default.png')"
-          />
-          <h3>
-            {{ user.name }}
-          </h3>
-          <h3>トレーニング歴：{{ user.experience }}年</h3>
-          <p>{{ user.profile }}</p>
-        </v-card>
-      </a>
+  <v-card class="user-wrapper">
+    <v-col cols="16" v-for="user in users" :key="user.id">
+      <v-container fluid>
+        <v-row dense>
+          <v-col>
+            <v-card class="user-card">
+              <a v-bind:href="'users/' + user.id">
+                <v-img
+                  v-if="user.image_url"
+                  class="white--text align-end"
+                  height="300px"
+                  v-bind:src="user.image_url"
+                >
+                </v-img>
+                <v-img
+                  v-else
+                  class="white--text align-end"
+                  height="300px"
+                  v-bind:src="require('./images/default.png')"
+                >
+                </v-img>
+              </a>
+              <h3>{{ user.name }}</h3>
+              <h3>トレーニング歴：{{ user.experience }}年</h3>
+
+              <v-card-actions>
+                <v-btn color="orange lighten-2" text> プロフィール </v-btn>
+
+                <v-spacer></v-spacer>
+
+                <v-btn icon @click="show = !show">
+                  <v-icon>{{
+                    show ? "mdi-chevron-up" : "mdi-chevron-down"
+                  }}</v-icon>
+                </v-btn>
+              </v-card-actions>
+
+              <v-expand-transition>
+                <div v-show="show">
+                  <v-divider></v-divider>
+
+                  <v-card-text>
+                    <p>{{ user.profile }}</p>
+                  </v-card-text>
+                </div>
+              </v-expand-transition>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-col>
-  </v-row>
+  </v-card>
 </template>
 
 <style scoped lang="scss">
-.user-image {
-  height: 322px;
-  width: 322px;
-}
-.user-card {
-  text-align: center;
+.user-wrapper {
+  margin: 0px 300px;
   & a {
     text-decoration: none;
     overflow: hidden;
   }
+}
+
+.user-card {
+  text-align: center;
+  width: 100%;
 }
 </style>
 
@@ -44,6 +74,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
+      show: false,
       users: "users",
     };
   },

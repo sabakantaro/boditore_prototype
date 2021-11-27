@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[edit update]
 
   def search
-    @users = if params[:name].present?
-               User.where('name LIKE ?', "%#{params[:name]}%")
+    @users = if params[:experience].present?
+               User.where('experience LIKE ?', "%#{params[:experience]}%")
              else
                User.none
              end

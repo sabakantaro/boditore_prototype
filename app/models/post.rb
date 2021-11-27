@@ -26,8 +26,6 @@ class Post < ApplicationRecord
   #   errors.add(:picture, 'should be less than 5MB') if picture.size > 5.megabytes
   # end
 
-  
-
   def eyecatch=(image)
     if image.present?
       prefix = image[/(image|application)(\/.*)(?=\;)/]

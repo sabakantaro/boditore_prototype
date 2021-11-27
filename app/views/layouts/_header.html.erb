@@ -1,6 +1,11 @@
 <header class="header">
     <div class="wrapper">
-      <%= link_to "Boditore", root_path, id: "logo" %>
+    
+      <%= link_to root_path do %>
+      <h3 id="logo">Boditore
+      <i class="fas fa-dumbbell"></i>
+      </h3>
+       <% end %>
         <nav class="nav">
           <ul class="nav__wrapper">
             <% if user_signed_in? %>

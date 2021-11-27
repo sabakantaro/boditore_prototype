@@ -11,7 +11,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="picture">
+  <div class="image">
     <%= f.label :写真 %> <br />
     <%= f.file_field :image %>
   </div>

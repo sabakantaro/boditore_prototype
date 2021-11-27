@@ -8,7 +8,6 @@ module Api
         render json: posts, methods: [:image_url]
       end
 
-
       def create
         post = Post.new(post_params)
         post = current_user.posts.build(post_params)

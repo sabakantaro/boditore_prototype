@@ -1,23 +1,23 @@
 <div class="common_wrapper">
   <h1>検索結果
   <%= form_with url: search_users_path, method: :get, local: true do |f| %>
-    <%= f.text_field :name %>
+    <%= f.number_field :experience %>
     <%= f.submit :検索 %>
   <% end %></h1>
   <table>
     <tbody>
       <% @users.each do |user| %>
         <div>
-        <% if user.picture? %>
-              <%= image_tag user.picture.url class:"user-icon_small"%>
+        <% if user.image.attached? %>
+              <%= image_tag user.image, class:"user-icon_small"%>
               <% else %>
               <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
               <% end %>
-        <%= link_to user.name, user %>
+        <h3>トレーニング歴：<%= link_to user.experience, user %>年</h3>
         <hr>
         </div>
       <% end %>
     </tbody>
   </table>
-  <%= link_to "戻る", users_path %>
+  <%= link_to "戻る", home_path %>
 </div>
