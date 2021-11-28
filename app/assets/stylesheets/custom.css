@@ -546,14 +546,20 @@ footer {
 
 .user__search {
   padding-top: 80px;
+  padding-bottom: 20px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
 }
 
-.user__search__button {
-  padding-bottom: 50px;
+.user__search input {
+  background-color: white;
+  border-style: inset;
+  border-radius: 3px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 2px;
 }
 
 .post__search {
@@ -563,8 +569,13 @@ footer {
   text-align: center;
 }
 
-.post__search__button {
-  padding-bottom: 50px;
+.post__search input {
+  background-color: white;
+  border-style: inset;
+  border-radius: 3px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 2px;
 }
 
 /* DM */
@@ -603,9 +614,11 @@ footer {
 
 /* DM*/
 .room-show__form {
+  text-align: center;
   height: 70px;
   width: 100%;
-  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -32,14 +32,14 @@
 
 
 
-<%= link_to "登録者一覧に戻る", users_path %>
+<%= link_to "ユーザー一覧へ", users_path %>
 
 </div>
 
 <div class="room-show__form">
   <div class="room-show__form__box">
     <%= form_for @message do |f| %>
-      <%= f.text_field :content, :placeholder => "メッセージを入力して下さい", id: "content" %>
+      <%= f.text_area :content, :placeholder => "ここにメッセージを入力", id: "content" %>
       <%= f.hidden_field :room_id, :value => @room.id %>
       <br>
       <%= f.submit "投稿" %>

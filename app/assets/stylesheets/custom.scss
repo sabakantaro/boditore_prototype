@@ -514,18 +514,27 @@ footer {
 
 .user__search {
   padding-top: 80px;
+  padding-bottom: 20px;
   justify-content: center;
   text-align: center;
-  &__button {
-    padding-bottom: 50px;
+  & input {
+    background-color: white;
+    border-style: inset;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 2px;
   }
 }
 
 .post__search {
   justify-content: center;
   text-align: center;
-  &__button {
-    padding-bottom: 50px;
+  & input {
+    background-color: white;
+    border-style: inset;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 2px;
   }
 }
 
@@ -560,9 +569,11 @@ footer {
 /* DM*/
 
 .room-show__form {
+  text-align: center;
   height: 70px;
   width: 100%;
-  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 30px;
   display: flex;
   border-top: 1px solid #e1e1e1;
   background-color: #bcbcbc;

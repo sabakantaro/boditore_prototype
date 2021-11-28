@@ -25,7 +25,7 @@
               <h3>トレーニング歴：{{ user.experience }}年</h3>
 
               <v-card-actions>
-                <v-btn color="orange lighten-2" text> プロフィール </v-btn>
+                <v-title color="orange lighten-2" text> プロフィール </v-title>
 
                 <v-spacer></v-spacer>
 

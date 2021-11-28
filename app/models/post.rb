@@ -3,9 +3,15 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
   default_scope -> { order(created_at: :desc) }
-  # validate :picture_size
   has_one_attached :eyecatch
   attr_accessor :image
+  #vueでエラーメッセージ実装予定
+  validates :title, 
+      :presence => {:message => "を入力してください" }, 
+      :length => { :maximum => 20, :message => "は20文字以内で入力してください"} 
+  validates :content, 
+      :presence => {:message => "を入力してください" }, 
+      :length => { :maximum => 500, :message => "は500文字以内で入力してください"} 
 
   def user
     User.find_by(id: user_id)
@@ -20,11 +26,6 @@ class Post < ApplicationRecord
     # まだ誰もコメントしていない場合は、投稿者に通知を送る
     save_notification_message!(current_user, message_id, user_id) if temp_ids.blank?
   end
-
-  # アップロードされた画像のサイズをバリデーションする
-  # def picture_size
-  #   errors.add(:picture, 'should be less than 5MB') if picture.size > 5.megabytes
-  # end
 
   def eyecatch=(image)
     if image.present?

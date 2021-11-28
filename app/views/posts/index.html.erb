@@ -1,27 +1,12 @@
-  <div class="common_wrapper">
-<div id="main">
+<div class="common_wrapper">
+  <div id="main">
 
     <v-form>
         <v-container>
           <v-row class="post__search">
-            <v-col
-            >
-        <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
-        <v-text-field
-                    type="text"
-                    class="mt-0"
-                    solo
-                    label="検索キーワードを入力してください"
-                    rows="1"
-                    value=""
-                    placeholder="大胸筋"
-                  >
-          <% f.text_field :title %>
-          </v-text-field>
-            </v-col>
-          <v-btn class="post__search__button"> 
+            <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
+            <%= f.text_field :title, :placeholder => "検索キーワード" %>
           <%= f.submit :検索 %>
-          </v-btn>
         <% end %>
         </v-row>
     </v-container>

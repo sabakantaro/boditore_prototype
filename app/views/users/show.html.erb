@@ -65,6 +65,7 @@
               
             <h3><%=link_to post.title, post_path(post) %></h3>
             </div>
+            <p><%= post.content %></p>
             <% if post.eyecatch.attached? %>
               <%= image_tag post.eyecatch, class: "post__index__item__img" %>
             <% else %>
@@ -88,6 +89,7 @@
                   <div class="user__show__post__index__item__user__name"><%= link_to post.user.name, user_path(post.user) %></div>
                 </div>
                 <h3><%=link_to post.title, post_path(post) %></h3>
+                <p><%= post.content %></p>
                 <% if post.eyecatch.attached? %>
                   <%= image_tag post.eyecatch, class: "post__index__item__img" %>
                 <% else %>
