@@ -38,6 +38,8 @@ gem 'rails-i18n'
 # gem 'react-rails'
 gem 'webpacker'
 # gem 'webpacker', github: 'rails/webpacker'
+gem 'webdrivers'
+
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
