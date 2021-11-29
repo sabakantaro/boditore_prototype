@@ -13,7 +13,9 @@ describe User, type: :model do
         name: 'Tester',
         email: 'tester@example.com',
         password: 'dottle-nouveau-pavilion-tights-furze',
-        password_confirmation: 'dottle-nouveau-pavilion-tights-furze'
+        password_confirmation: 'dottle-nouveau-pavilion-tights-furze',
+        profile: 'test',
+        experience: '1'
       )
       expect(user).to be_valid
     end
@@ -30,11 +32,15 @@ describe User, type: :model do
         name: 'Tester',
         email: 'tester@example.com',
         password: 'dottle-nouveau-pavilion-tights-furze'
+        profile: 'test',
+        experience: '1'
       )
       user = User.new(
         name: 'Test',
         email: 'tester@example.com',
         password: 'dottle-nouveau-pavilion-tights-furze'
+        profile: 'test',
+        experience: '1'
       )
       user.valid?
       expect(user.errors[:email]).to include('はすでに存在します')

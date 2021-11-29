@@ -1,65 +1,70 @@
 version: 2
 jobs:
   build:
-      docker:
-        #アプリのバージョンを指定
-        - image: circleci/ruby:2.6.5-node-browsers
-          environment:
-            #自身の登録しているユーザに変える。
-            PGHOST: 127.0.0.1
-            PGUSER: Snivy
-            RAILS_ENV: test
-        #使ってるデータベースとバージョンを指定する。# 「host: localhost」でアクセスできるサービスコンテナイメージ。
-        - image: circleci/postgres:13.3
-          environment:
-            #それぞれ設定
-            POSTGRES_USER: Snivy
-            POSTGRES_DB: ci_test
-            POSTGRES_HOST_AUTH_METHOD: trust
-      #自身のアプリ名にする
-      working_directory: ~/boditore_prototype
-      steps:
-        - checkout
-        #bundle キャッシュをリストアする。公式の設定通り。
-        - restore_cache:
-            keys:
-              - v1-dependencies-{{ checksum "Gemfile.lock" }}
-              - v1-dependencies-
-        # bundle install で依存関係をインストールする。公式の設定と多少異なってます。
-        - run:
-            name: install dependencies
-            command: |
-              gem install bundler -v 2.2.25
-              bundle install --jobs=4 --retry=3 --path vendor/bundle
+    docker:
+      #アプリのバージョンを指定
+      - image: circleci/ruby:2.6.5-node-browsers
+        environment:
+          #自身の登録しているユーザに変える。
+          PGHOST: 127.0.0.1
+          PGUSER: Snivy
+          RAILS_ENV: test
+      #使ってるデータベースとバージョンを指定する。# 「host: localhost」でアクセスできるサービスコンテナイメージ。
+      - image: circleci/postgres:13.3
+        environment:
+          #それぞれ設定
+          POSTGRES_USER: Snivy
+          POSTGRES_DB: ci_test
+          POSTGRES_HOST_AUTH_METHOD: trust
+    #自身のアプリ名にする
+    working_directory: ~/boditore_prototype
+    steps:
+      - checkout
+      #bundle キャッシュをリストアする。公式の設定通り。
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+      # bundle install で依存関係をインストールする。公式の設定と多少異なってます。
+      - run:
+          name: install dependencies
+          command: |
+            gem install bundler -v 2.2.25
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
 
-        # bundle キャッシュを保存する。公式の設定通り。
-        - save_cache:
-            key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-            paths:
-              - ./vendor/bundle
+      # bundle キャッシュを保存する。
+      - save_cache:
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
 
-        #↓追加する
-        - run:
-            name: DBの起動を待つ
-            command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
+      - run:
+          name: DBの起動を待つ
+          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
 
-        - run: bundle exec rake db:create
-        - run: bundle exec rake db:schema:load
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
 
-        # rspecを実行する
-        - run:
-            name: rspecを実行
-            command: bundle exec rspec
+      # rspecを実行する
+      # Webpack用
+      - run:
+          name: yarn Install
+          command: yarn install
+      - run: bundle exec bin/webpack
 
-#awsデプロイ
-        - add_ssh_keys:
-            fingerprints:
-              - "b2:8e:3c:03:80:9c:dc:78:a3:d6:dd:12:1b:c0:10:94"
-        # masterブランチの時のみデプロイ
-        - deploy:
-            name: Capistrano deploy
-            command: |
-              if [ "${CIRCLE_BRANCH}" != "master" ]; then
-                exit 0
-              fi
-              bundle exec cap production deploy
+      - run:
+          name: rspecを実行
+          command: bundle exec rspec
+
+      #awsデプロイ
+      - add_ssh_keys:
+          fingerprints:
+            - "b2:8e:3c:03:80:9c:dc:78:a3:d6:dd:12:1b:c0:10:94"
+      # masterブランチの時のみデプロイ
+      - deploy:
+          name: Capistrano deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
+              exit 0
+            fi
+            bundle exec cap production deploy

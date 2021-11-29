@@ -18,6 +18,8 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'user_email', with: @user.email
       fill_in 'user_password', with: @user.password
       fill_in 'user_password_confirmation', with: @user.password_confirmation
+      fill_in 'user_profile', with: @user.profile
+      fill_in 'user_experience', with: @user.experience
       # 新規登録ボタンを押すとuserモデルのカウントが1上がる
       expect  do
         find('input[name="commit"]').click
