@@ -22,7 +22,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'user_experience', with: @user.experience
       # 新規登録ボタンを押すとuserモデルのカウントが1上がる
       expect  do
-        find('input[name="commit"]').click
+        find('button[class="btn btn-dark"]').click
       end.to change { User.count }.by(1)
       # トップページへ遷移する
       expect(current_path).to eq root_path
@@ -42,7 +42,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'user_password_confirmation', with: ''
       # 新規登録ボタンを押してもユーザーモデルのカウントは上がらない
       expect  do
-        find('input[name="commit"]').click
+        find('button[class="btn btn-dark"]').click
       end.to change { User.count }.by(0)
       # 新規登録ページへ戻される
       expect(current_path).to eq '/users'
@@ -53,7 +53,6 @@ end
 RSpec.describe 'ログイン', type: :system do
   before do
     @user = FactoryBot.create(:user)
-    @gest
   end
   context 'ログインができるとき' do
     it '保存されているユーザーの情報と合致すればログインができる' do

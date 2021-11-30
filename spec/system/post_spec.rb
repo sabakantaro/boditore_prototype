@@ -14,36 +14,36 @@ RSpec.describe '新規投稿', type: :system do
       fill_in 'user_password', with: @user.password
       find('input[name="commit"]').click
       # 新規投稿ページへ遷移する
-      visit new_post_path
+      visit posts_path
       # フォームに情報を入力する
       fill_in 'title', with: @post.title
       fill_in 'content', with: @post.content
-      find('input[name="commit"]').click
+      find('input[type="submit"]').click
     end
   end
 
   context '新規投稿ができないとき' do
     it 'ログインしていないと新規投稿ページに遷移できない' do
       # 投稿画面へ遷移する
-      visit new_post_path
+      visit posts_path
       # ログイン画面へ戻される
       expect(current_path).to eq '/users/sign_in'
     end
-    # it '投稿内容が空だと投稿できない' do
-    #     # ログインする
-    #     visit new_user_session_path
-    #     fill_in 'user_email', with: @user.email
-    #     fill_in 'user_password', with: @user.password
-    #     find('input[name="commit"]').click
-    #     # 新規投稿ページへ遷移する
-    #     visit new_post_path
-    #     # フォームが空のまま、投稿ボタンを押す
-    #     fill_in 'title', with: ''
-    #     fill_in 'content', with: ''
-    #     find('input[name="commit"]').click
-    #     # 新規投稿ページへ戻される
-    #     expect(current_path).to eq post_path(@post)
-    # end
+    it '投稿内容が空だと投稿できない' do
+        # ログインする
+        visit new_user_session_path
+        fill_in 'user_email', with: @user.email
+        fill_in 'user_password', with: @user.password
+        find('input[name="commit"]').click
+        # 新規投稿ページへ遷移する
+        visit posts_path
+        # フォームが空のまま、投稿ボタンを押す
+        fill_in 'title', with: ''
+        fill_in 'content', with: ''
+        find('input[type="submit"]').click
+        # 新規投稿ページへ戻される
+        expect(current_path).to eq posts_path
+    end
   end
 end
 
