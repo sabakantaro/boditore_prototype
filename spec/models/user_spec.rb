@@ -31,14 +31,14 @@ describe User, type: :model do
       User.create(
         name: 'Tester',
         email: 'tester@example.com',
-        password: 'dottle-nouveau-pavilion-tights-furze'
+        password: 'dottle-nouveau-pavilion-tights-furze',
         profile: 'test',
         experience: '1'
       )
       user = User.new(
         name: 'Test',
         email: 'tester@example.com',
-        password: 'dottle-nouveau-pavilion-tights-furze'
+        password: 'dottle-nouveau-pavilion-tights-furze',
         profile: 'test',
         experience: '1'
       )
