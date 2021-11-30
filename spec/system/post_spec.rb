@@ -17,7 +17,7 @@ RSpec.describe '新規投稿', type: :system do
       visit posts_path
       # フォームに情報を入力する
       fill_in 'title', with: @post.title
-      fill_in 'content', with: @post.content
+      # fill_in 'content', with: @post.content
       find('input[type="submit"]').click
     end
   end
@@ -39,7 +39,7 @@ RSpec.describe '新規投稿', type: :system do
         visit posts_path
         # フォームが空のまま、投稿ボタンを押す
         fill_in 'title', with: ''
-        fill_in 'content', with: ''
+        # fill_in 'content', with: ''
         find('input[type="submit"]').click
         # 新規投稿ページへ戻される
         expect(current_path).to eq posts_path
