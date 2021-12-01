@@ -25,7 +25,7 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   # config.assets.js_compressor = :uglifier
-  # To use ES6
+  # ES6使用設定
   config.assets.js_compressor = Uglifier.new(harmony: true)
   # config.assets.css_compressor = :sass
 
