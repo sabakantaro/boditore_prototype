@@ -24,6 +24,8 @@
 
 ・HTML/CSS<br>
 ・Javascript<br>
+・Vue.js<br>
+・Vuetify（UI フレームワーク）<br>
 
 ### 開発環境、インフラ
 
@@ -43,6 +45,10 @@
 
 ・擬似チーム開発を意識した点。<br>
 →github でプルリクを活用し、機能実装の細分化をしました。<br>
+・アプリの部分 SPA 化
+→Vue.js を使用して部分 SPA 化をしました。<br>
+・ECS への自動デプロイ<br>
+→capistorano を用いて自動デプロイを実装しました。<br>
 
 ## こだわったポイント
 
