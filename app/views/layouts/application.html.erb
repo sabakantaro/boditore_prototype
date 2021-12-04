@@ -21,10 +21,9 @@
       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 
       <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-      
-      <%= stylesheet_pack_tag 'hello_vue' %> 
-      <%= javascript_pack_tag 'hello_vue' %>
-      <%= stylesheet_pack_tag 'application' %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application', defer: true %>
 
     <%= render 'layouts/shim' %>
   </head>
