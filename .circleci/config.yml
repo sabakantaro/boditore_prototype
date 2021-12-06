@@ -58,7 +58,8 @@ jobs:
       #awsデプロイ
       - add_ssh_keys:
           fingerprints:
-            - "b2:8e:3c:03:80:9c:dc:78:a3:d6:dd:12:1b:c0:10:94"
+            # - "b2:8e:3c:03:80:9c:dc:78:a3:d6:dd:12:1b:c0:10:94"
+            - "99:9c:f1:fe:52:a6:5f:ca:f0:5e:7b:f2:60:47:ad:c0"
       # masterブランチの時のみデプロイ
       - deploy:
           name: Capistrano deploy
