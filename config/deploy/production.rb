@@ -1,3 +1,4 @@
+set :log_level, :debug
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
@@ -57,5 +58,7 @@
 # EC2サーバーのIP、EC2サーバーにログインするユーザー名、サーバーのロールを記述
 server '3.113.131.50', user: 'sabakantaro', roles: %w[app db web]
 
-# デプロイするサーバーにsshログインする鍵の情報を記述※boditore_key_rsaはCircleCI上になかった為id_rsaに変更
-set :ssh_options, keys: '~/.ssh/id_rsa.pub'
+# デプロイするサーバーにsshログインする鍵の情報を記述
+# id_rsaを使用していたが、CircleCIコンテナ内のSHA256の内容がboditore_key_rsaと一致したため変更
+# capistranoコマンド実行者の秘密鍵
+set :ssh_options, keys: '~/.ssh/boditore_key_rsa'
