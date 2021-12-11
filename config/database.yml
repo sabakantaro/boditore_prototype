@@ -81,4 +81,5 @@ production:
   database: boditore_production
   username: root
   password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOSTNAME'] %>
   socket: /var/lib/mysql/mysql.sock
