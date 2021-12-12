@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
@@ -5,13 +7,14 @@ class Post < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   has_one_attached :eyecatch
   attr_accessor :image
-  #vueでエラーメッセージ実装予定
-  validates :title, 
-      :presence => {:message => "を入力してください" }, 
-      :length => { :maximum => 20, :message => "は20文字以内で入力してください"} 
-  validates :content, 
-      :presence => {:message => "を入力してください" }, 
-      :length => { :maximum => 500, :message => "は500文字以内で入力してください"} 
+
+  # vueでエラーメッセージ実装予定
+  validates :title,
+            presence: { message: 'を入力してください' },
+            length: { maximum: 20, message: 'は20文字以内で入力してください' }
+  validates :content,
+            presence: { message: 'を入力してください' },
+            length: { maximum: 500, message: 'は500文字以内で入力してください' }
 
   def user
     User.find_by(id: user_id)
@@ -29,8 +32,8 @@ class Post < ApplicationRecord
 
   def eyecatch=(image)
     if image.present?
-      prefix = image[/(image|application)(\/.*)(?=\;)/]
-      type = prefix.sub(/(image|application)(\/)/, '')
+      prefix = image[%r{(image|application)(/.*)(?=;)}]
+      type = prefix.sub(%r{(image|application)(/)}, '')
       data = Base64.decode64(image.sub(/data:#{prefix};base64,/, ''))
       filename = "#{Time.zone.now.strftime('%Y%m%d%H%M%S%L')}.#{type}"
       File.open("#{Rails.root}/tmp/#{filename}", 'wb') do |f|
@@ -43,7 +46,6 @@ class Post < ApplicationRecord
   end
 
   def image_url
-    eyecatch.attached? ? 
-    Rails.application.routes.url_helpers.rails_blob_path(eyecatch, only_path: true) : nil
+    Rails.application.routes.url_helpers.rails_blob_path(eyecatch, only_path: true) if eyecatch.attached?
   end
 end

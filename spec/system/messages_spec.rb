@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # modelでuser, roomの有無を確認しているため実装見送り

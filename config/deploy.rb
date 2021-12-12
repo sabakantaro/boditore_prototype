@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # config valid for current version and patch releases of Capistrano
 lock '~> 3.16.0'
 
@@ -37,11 +39,11 @@ set :rbenv_ruby, '2.6.5'
 #                 keys: ['~/.ssh/boditore_key_rsa']
 
 set :default_env, {
-  rbenv_root: "/home/user/.rbenv",
-  path: "/home/user/.rbenv/bin:$PATH",
-  region: ENV["S3_REGION"],
-  aws_access_key_id: ENV["S3_ACCESS_KEY"],
-  aws_secret_access_key: ENV["S3_SECRET_KEY"]
+  rbenv_root: '/home/user/.rbenv',
+  path: '/home/user/.rbenv/bin:$PATH',
+  region: ENV['S3_REGION'],
+  aws_access_key_id: ENV['S3_ACCESS_KEY'],
+  aws_secret_access_key: ENV['S3_SECRET_KEY']
 }
 
 # 出力するログのレベル。

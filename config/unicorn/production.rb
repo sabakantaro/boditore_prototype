@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ワーカーの数。後述
 $worker  = 2
 # 何秒経過すればワーカーを削除するのかを決める

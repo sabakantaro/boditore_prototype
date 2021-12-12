@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -33,8 +35,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'jquery-rails', '4.3.1'
 gem 'rack-cors'
-gem 'rails_same_site_cookie'
 gem 'rails-i18n'
+gem 'rails_same_site_cookie'
 # gem 'react-rails'
 gem 'webpacker'
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'home#index'
   get  '/home',    to: 'home#index'
@@ -43,5 +45,4 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   resources :rooms, only: %i[create show index]
   resources :posts, only: %i[edit update destroy]
-
 end

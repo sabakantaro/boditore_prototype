@@ -9,8 +9,6 @@
 筋トレ SNS である本アプリでは、筋トレをする仲間を見つけることができ、その仲間たちと情報交換ができるため横のつながりができ、挫折せずに筋トレを習慣化することができます。<br>
 公式マニュアルや技術記事などを参考に、すべて独学で開発しました。<br>
 
-<img width="1275" alt="" src="Boditore_ER図.png"><br>
-
 サイト URL・・・<a href="https://www.boditore.com">Boditore</a>（トップページ右上からゲストログインできます。）
 
 ## 使用技術
@@ -46,7 +44,7 @@
 ・擬似チーム開発を意識した点。<br>
 github でプルリクを活用し、機能実装の細分化をしました。<br>
 ・アプリの部分 SPA 化<br>
-Vue.js を使用して部分 SPA 化をしました。<br>
+Vue.js を使用して投稿機能を部分 SPA 化をしました。<br>
 ・ECS への自動デプロイ<br>
 capistorano を用いて自動デプロイを実装しました。<br>
 
@@ -75,7 +73,7 @@ capistorano を用いて自動デプロイを実装しました。<br>
 
 ・新規登録、ログイン、ログアウト、ユーザー情報編集<br>
 ・ゲストログイン機能<br>
-・検索機能（ユーザー、投稿画面で曖昧検索が可能）<br>
+・検索機能（ユーザー画面ではトレーニング歴での絞り込み、投稿画面で曖昧検索が可能）<br>
 ・ユーザー・投稿一覧表示<br>
 
 ### 記事に関する機能
@@ -96,7 +94,7 @@ capistorano を用いて自動デプロイを実装しました。<br>
 ### メッセージ機能
 
 ・1 対 1 のチャットルームを作成できる<br>
-・メッセージ送信機能<br>
+・メッセージ送信機能(Ajax)<br>
 
 ### 通知機能
 
@@ -108,15 +106,15 @@ capistorano を用いて自動デプロイを実装しました。<br>
 ・トップページの自動スライドアニメーション(javascript で実装)<br>
 ・メッセージ投稿後の自動更新(javascript で実装)<br>
 
-<!-- ・スマートフォン・タブレット・PC 画面に合わせたレスポンシブル対応(sass で実装)<br> -->
+<!-- ・スマートフォン・タブレット・PC 画面に合わせたレスポンシブル対応(sass で実装)※完全SPA化後に実装<br> -->
 
 ## インフラ構成
 
-![Boditore_AWS構成図](https://user-images.githubusercontent.com/79243411/138543432-9120d02d-5ec8-4808-835d-cfff566a8c64.png)
+![Boditore_prototype_AWS構成図](https://user-images.githubusercontent.com/79243411/145733333-e91a617c-8a7f-4e7f-8f57-69e04acf2d1f.png)
 
 ## ER 図
 
-![Boditore_ER図](https://user-images.githubusercontent.com/79243411/138538840-d58f7984-3552-493a-833e-92946f20e4c9.png)
+![Boditore_prototype_ER図](https://user-images.githubusercontent.com/79243411/145733354-f426ccfe-4a39-4334-a0a0-dd606348e1ae.png)
 
 ## 今後の改良計画
 

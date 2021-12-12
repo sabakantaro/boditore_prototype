@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.web_console.whitelisted_ips = '126.227.156.113'
@@ -52,7 +54,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.x.webpacker[:dev_server_host] = "http://localhost:8080"
+  config.x.webpacker[:dev_server_host] = 'http://localhost:8080'
 
   config.active_storage.service = :local
   Rails.application.routes.default_url_options[:host] = 'localhost'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :active_relationships,  class_name: 'Relationship',
                                    foreign_key: 'follower_id',
@@ -17,10 +19,10 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_one_attached :image 
-  validates_inclusion_of :experience, in:1..100, message: "は1~100年で入力してください"
+  has_one_attached :image
+  validates_inclusion_of :experience, in: 1..100, message: 'は1~100年で入力してください'
 
-    # Include default devise modules. Others available are:
+  # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   # ゲストユーザー
@@ -55,8 +57,6 @@ class User < ApplicationRecord
   end
 
   def image_url
-    image.attached? ? 
-    Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true) : nil
+    Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true) if image.attached?
   end
-
 end

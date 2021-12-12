@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class PostsController < ApplicationController
@@ -20,15 +22,14 @@ module Api
         end
       end
 
-        def destroy
-          post = Post.find(params[:id])
-          post.destroy!
-          render json: post
-        end
-    
-    
+      def destroy
+        post = Post.find(params[:id])
+        post.destroy!
+        render json: post
+      end
+
       private
-    
+
       def post_params
         params.require(:post).permit(:title, :content, :image).merge(user_id: current_user.id)
       end
