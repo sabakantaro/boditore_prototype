@@ -258,23 +258,16 @@ ul {
     }
   }
   &__status {
-    // display: inline-block;
-    // width: 750 px;
     padding: 15px;
-    // margin: 5% 0;
     border: 1 px solid #e1e1e1;
     border-radius: 5 px;
     position: relative;
     box-shadow: 0px 4px 6px #ccc;
     &__experience {
       width: 200px;
-      // text-align: center;
-      // margin-left: 45px;
     }
     &__profile {
       width: 200px;
-      // text-align: center;
-      // margin-left: 45px;
     }
   }
 }
@@ -654,7 +647,7 @@ footer {
   width: 600px;
   margin: 0 auto;
   padding: 40px;
-  padding-top: 100px;
+  padding-top: 120px;
   border: 1px solid #e1e1e1;
   background-color: white;
   border-radius: 5px;
@@ -750,7 +743,7 @@ footer {
 .post__wrapper {
   & a {
     text-decoration: none;
-    color: blue;
+    color: $cBlack;
   }
 }
 
@@ -778,7 +771,7 @@ footer {
 
     & a {
       text-decoration: none;
-      color: blue;
+      color: $cBlack;
     }
     &__user {
       position: relative;

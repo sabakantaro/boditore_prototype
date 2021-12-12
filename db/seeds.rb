@@ -1,12 +1,12 @@
 require 'faker'
 
-50.times do |n|
+100.times do |n|
   name  = Gimei.first.katakana
   email = Faker::Internet.email
   password = 'password'
   # picture = File.open('./app/assets/images/default.png')
   profile = 'よろしくお願いします！'
-  experience = 5
+  experience = rand(1..9)
   User.create!(name: name,
                email: email,
                password: password,
@@ -19,8 +19,8 @@ end
 
 User.all.each do |user|
   user.posts.create!(
-    title: Faker::Superhero.name,
-    content: Faker::Superhero.power,
+    title: 'おすすめのトレーニング',
+    content: 'EZバーを使ったバーベルカールがおすすめです！',
     # image: File.open('./app/assets/images/show.jpg')
   )
 end

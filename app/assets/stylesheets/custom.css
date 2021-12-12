@@ -688,7 +688,7 @@ footer {
   width: 600px;
   margin: 0 auto;
   padding: 40px;
-  padding-top: 100px;
+  padding-top: 120px;
   border: 1px solid #e1e1e1;
   background-color: white;
   border-radius: 5px;
@@ -792,7 +792,7 @@ footer {
 /* post index */
 .post__wrapper a {
   text-decoration: none;
-  color: blue;
+  color: black;
 }
 
 .post__index {
@@ -827,7 +827,7 @@ footer {
 
 .post__index__item a {
   text-decoration: none;
-  color: blue;
+  color: black;
 }
 
 .post__index__item__user {

@@ -9,11 +9,12 @@
       <% @users.each do |user| %>
         <div>
         <% if user.image.attached? %>
-              <%= image_tag user.image, class:"user-icon_small"%>
-              <% else %>
-              <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
-              <% end %>
-        <h3>トレーニング歴：<%= link_to user.experience, user %>年</h3>
+          <%= image_tag user.image, class:"user-icon_small"%>
+        <% else %>
+          <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
+        <% end %>
+        <h4><%= link_to user.name, user %></h4>
+        <h3>トレーニング歴：<%= user.experience %>年</h3>
         <hr>
         </div>
       <% end %>
