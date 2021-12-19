@@ -46,6 +46,55 @@
                     placeholder="インクラインダンベルフライ"
                   >
                   </v-textarea>
+                  <label> タグ </label>
+                  <v-select
+                    for="tag"
+                    placeholder="選択してください"
+                    name="post.tag"
+                    :options="options"
+                    v-model="post.tag"
+                    class="
+                      bg-white
+                      shadow
+                      appearance-none
+                      border
+                      rounded
+                      w-11/12
+                      md:w-full
+                      text-gray-700
+                      leading-tight
+                      focus:outline-none
+                      focus:shadow-outline
+                      focus:border-b-2
+                      focus:border-blue-400
+                      block
+                      mx-auto
+                    "
+                  ></v-select>
+                  <!-- <label for="筋トレ">筋トレ</label>
+                  <input
+                    type="checkbox"
+                    id="筋トレ"
+                    value="筋トレ"
+                    v-model="tag"
+                  />
+                  <label for="食事">食事</label>
+                  <input
+                    type="checkbox"
+                    id="食事"
+                    value="食事"
+                    v-model="tag"
+                  />
+                  <label for="その他">その他</label>
+                  <input
+                    type="checkbox"
+                    id="その他"
+                    value="その他"
+                    v-model="tag"
+                  />
+                  <br />
+                  <div>回答：{{ tag }}</div> -->
+                  <br />
                   <label>画像</label><br />
                   <input
                     name="uploadedImage"
@@ -80,6 +129,8 @@
 
 <script>
 import axios from "axios";
+import vSelect from "vue-select";
+import "vue-select/dist/vue-select.css";
 
 const token = document
   .getElementsByName("csrf-token")[0]
@@ -87,11 +138,15 @@ const token = document
 axios.defaults.headers.common["X-CSRF-Token"] = token;
 
 export default {
+  components: { "v-select": vSelect },
   data() {
     return {
       dialog: false,
       post: {},
       uploadedImage: "",
+      // tag: "",
+      // postTag: "",
+      options: ["筋トレ", "食事", "その他"],
     };
   },
   methods: {
