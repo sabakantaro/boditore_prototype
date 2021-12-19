@@ -18,6 +18,8 @@ class Post < ApplicationRecord
   validates :content,
             presence: { message: 'を入力してください' },
             length: { maximum: 500, message: 'は500文字以内で入力してください' }
+  validates :tag,
+            presence: { message: 'を入力してください' },
 
   def user
     User.find_by(id: user_id)
