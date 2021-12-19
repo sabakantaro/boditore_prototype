@@ -1,2 +1,0 @@
-class PostCategoryRelation < ApplicationRecord
-end

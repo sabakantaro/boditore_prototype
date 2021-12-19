@@ -4,7 +4,8 @@
       <li class="post__index__item" v-for="post in posts" :key="post.id">
         <div class="post__index__item__user">
           <h3>{{ post.title }}</h3>
-          {{ post.content }}
+          {{ post.content }}<br />
+          <p>#{{ post.tag }}</p>
           <img
             v-if="post.image_url"
             class="post__index__item__img"
