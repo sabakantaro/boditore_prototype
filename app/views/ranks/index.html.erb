@@ -1,5 +1,4 @@
 ど<br />
-
 ど<br />
 ど<br />
 ど<br />
@@ -8,9 +7,26 @@
 ど<br />
 ど<br />
 ど<br />
-<% @all_ranks.each.with_index(1) do |post, i| %>
+<% @month_user_favorite_ranks.each.with_index(1) do |post, i| %>
   第<%= i %>位
 :
-<%= post.title %>
+<%= post.user.name %>
 :
 <% end %>
+
+
+
+
+<% @month_user_post_ranks.each.with_index(1) do |user, i| %>
+  第<%= i %>位
+:
+<%= user.name %>
+:
+<% end %> 
+
+<% @month_user_relationship_ranks.each.with_index(1) do |user, i| %>
+  第<%= i %>位
+:
+<%= user.name %>
+:
+<% end %> 
