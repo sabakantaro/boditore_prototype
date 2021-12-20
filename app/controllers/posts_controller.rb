@@ -18,6 +18,9 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
     @favorites_count = Favorite.where(post_id: params[:id]).count
+    @comments = @post.comments
+    @comment = current_user.comments.new 
+    @comment_reply = @post.comments.build
   end
 
   def new

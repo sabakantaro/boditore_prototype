@@ -28,6 +28,10 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
 
+  resources :posts do
+    resources :comments, only: :create
+  end
+
   resources :users do
     member do
       get :following, :followers

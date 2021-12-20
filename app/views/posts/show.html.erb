@@ -25,6 +25,46 @@
         <%= link_to "編集 |", edit_post_path(@post) %>
         <%= link_to "削除", post_path(@post), method: :delete %>
       <% end %>
+
+      <% if user_signed_in? %>
+        <%= form_with(model: [@post, @comment], local: true) do |f| %> 
+          <%= f.text_area :text, placeholder: "コメントする", rows: "2" %>
+          <%= f.submit "送信" %>
+        <% end %>
+      <% else %>
+        <strong><p>コメントの投稿には新規登録/ログインが必要です</p></strong>
+      <% end %>
+
+  <div id="comments_area">
+    <h2>comments</h2>
+    <% @comments.each do |comment| %>
+      <% if comment.parent_id.present? || comment.id.blank? %>
+        <% next %>
+      <% end %>
+        <hr>
+        <p> <%= comment.user.name %> : <%=comment.text%></p>
+        <p> date : <%=comment.created_at.strftime("%Y-%m-%d %H:%M") %>
+      <div id="reply_area">
+        <% comment.replies.order(:created_at).each do |reply| %>
+        <p> <%= comment.user.name %> : <%=reply.text%></p>
+        <% end %>
+      </div>
+        <%= form_with(model:[@post,@comment_reply]) do |form| %>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <p><label>Reply</label></p>
+            <textarea class="form-control input-form" name="comment[text]" rows="2"><%=@comment_reply.text%></textarea>
+          </div>
+        </div>
+          <%= form.hidden_field :post_id, value: @post.id %>
+          <%= form.hidden_field :parent_id, value: comment.id%>
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+
       <h4><%= link_to posts_path do %>投稿一覧へ</h4>
       <% end %>
     </div>

@@ -13,6 +13,8 @@
 //= require jquery
 //= require bootstrap
 //= require_tree .
+//= require turbolinks
+
 
 $(document).on("ready", function () {
   $(".full-screen").slick({

@@ -26,6 +26,10 @@
   
 <% else %>
 
+  <% content_for(:body_attributes) do %>
+    data-turbolinks="false"
+　　<% end %>
+
   <div class="section">
             <div class="sliderArea">
               <div class="full-screen slider">

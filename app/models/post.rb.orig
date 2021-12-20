@@ -7,8 +7,6 @@ class Post < ApplicationRecord
   has_many :tag_relationships, dependent: :destroy
   has_many :tags, through: :tag_relationships
   has_many :comments
-  has_many :comments
-  has_many :replies, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   has_one_attached :eyecatch
   attr_accessor :image
@@ -22,7 +20,11 @@ class Post < ApplicationRecord
             presence: { message: 'を入力してください' },
             length: { maximum: 500, message: 'は500文字以内で入力してください' }
   validates :tag,
+<<<<<<< HEAD
+            presence: { message: 'を入力してください' },
+=======
             presence: { message: 'を入力してください' }
+>>>>>>> feature/3
 
   def user
     User.find_by(id: user_id)

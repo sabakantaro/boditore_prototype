@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :comments
   has_one_attached :image
   validates_inclusion_of :experience, in: 1..100, message: 'は1~100年で入力してください'
 
