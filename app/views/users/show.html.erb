@@ -43,6 +43,43 @@
           <h4>・プロフィール</h4>
           <p><%= @user.profile %></p>
         </li>
+
+        <li class="user__show__bottom__status__achievement">
+          <h4>・アチーブメント</h4>
+          <% if @user.posts.count >= 100 %>
+            投稿数100以上<i class="fas fa-medal"></i>
+          <% elsif @user.posts.count >= 50%>
+          　投稿数50以上<i class="fas fa-medal"></i>
+          <% elsif @user.posts.count >= 1%>
+            投稿数1以上<i class="fas fa-medal"></i>
+          <% else %>
+            投稿数なし<i class="fas fa-medal"></i>
+          <% end %>
+          <br />
+
+          <% if @favorite_list.count >= 100 %>
+            お気に入りされた投稿数100以上<i class="fas fa-medal"></i>
+          <% elsif @favorite_list.count >= 50%>
+          　お気に入りされた投稿数50以上<i class="fas fa-medal"></i>
+          <% elsif @favorite_list.count >= 1%>
+            お気に入りされた投稿数1以上<i class="fas fa-medal"></i>
+          <% else %>
+            お気に入りされた投稿数なし<i class="fas fa-medal"></i>
+          <% end %>
+          <br />
+
+          <% if @user.followers.count >= 100 %>
+            フォロワー数100以上<i class="fas fa-medal"></i>
+          <% elsif @user.followers.count >= 50%>
+          　フォロワー数50以上<i class="fas fa-medal"></i>
+          <% elsif @user.followers.count >= 1%>
+            フォロワー数1以上<i class="fas fa-medal"></i>
+          <% else %>
+            フォロワー数なし<i class="fas fa-medal"></i>
+          <% end %>
+          <br />
+        </li>
+
       </ul>
     </div>
 
