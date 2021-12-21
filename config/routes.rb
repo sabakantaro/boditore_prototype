@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :relationships,       only: %i[create destroy]
+  resources :relationships, only: %i[create destroy]
 
   resources :notifications, only: %i[index destroy]
 
