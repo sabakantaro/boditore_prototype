@@ -5,21 +5,23 @@ class UsersController < ApplicationController
 
   def search
     @users = if params[:experience].present?
-               User.where('experience LIKE ?', "%#{params[:experience]}%")
+               User.where('experience LIKE ?', "%#{params[:experience]}%").
              else
                User.none
              end
+    @users = @users.page(params[:page])
+
   end
 
   def following
     @user  = User.find(params[:id])
-    @users = @user.following.all
+    @users = @user.following.all.page(params[:page])
     render 'show_follow'
   end
 
   def followers
     @user  = User.find(params[:id])
-    @users = @user.followers.all
+    @users = @user.followers.all.page(params[:page])
     render 'show_follow'
   end
 
@@ -29,7 +31,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page])
 
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_id) # ログイン中のユーザーのお気に入りのpost_idカラムを取得
     @favorite_list = Post.find(favorites) # postsテーブルから、お気に入り登録済みのレコードを取得

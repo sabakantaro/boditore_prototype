@@ -9,6 +9,8 @@ class PostsController < ApplicationController
              else
                Post.none
              end
+    @posts = @posts.page(params[:page])
+
   end
 
   def index
