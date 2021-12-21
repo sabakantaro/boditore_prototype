@@ -21,7 +21,8 @@ end
 User.all.each do |user|
   user.posts.create!(
     title: 'おすすめのトレーニング',
-    content: 'EZバーを使ったバーベルカールがおすすめです！'
+    content: 'EZバーを使ったバーベルカールがおすすめです！',
+    tag: '筋トレ'
     # image: File.open('./app/assets/images/show.jpg')
   )
 end
