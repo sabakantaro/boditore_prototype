@@ -13,7 +13,6 @@ body {
   max-width: 100%;
   margin: 0 auto;
   padding: 0 25px;
-  padding-top: 60px;
 }
 
 .sliderArea.w300 {
@@ -172,5 +171,102 @@ ul {
 .gnav li:hover > ul > li {
   height: 1.8rem;
   overflow: visible;
+}
+
+/* 共通 */
+.notifications {
+  color: white;
+}
+
+.notifications .notice {
+  text-align: center;
+  position: fixed;
+  z-index: 100;
+  opacity: 1;
+  margin: 0 auto;
+  padding: 15px;
+  margin-bottom: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 60px;
+  border-radius: 4px;
+  color: #46a942;
+  background-color: #def2de;
+  border-color: #ccebdd;
+  border: 1px solid;
+  animation: fadeout 1s linear 3s 1;
+  animation-fill-mode: forwards;
+  -webkit-animation: fadeout 1s linear 3s 1;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.notifications .alert {
+  text-align: center;
+  position: fixed;
+  z-index: 100;
+  opacity: 1;
+  margin: 0 auto;
+  padding: 15px;
+  margin-bottom: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 60px;
+  border-radius: 4px;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  border: 1px solid;
+  animation: fadeout 1s linear 3s 1;
+  animation-fill-mode: forwards;
+  -webkit-animation: fadeout 1s linear 3s 1;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+    height: 60px;
+    margin: 0 auto;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  99% {
+    opacity: 0;
+    height: 60px;
+    margin: 0 auto;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  100% {
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  0% {
+    opacity: 1;
+    height: 60px;
+    margin: 0 auto;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  99% {
+    opacity: 0;
+    height: 60px;
+    margin: 0 auto;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  100% {
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+  }
 }
 /*# sourceMappingURL=custom.css.map */

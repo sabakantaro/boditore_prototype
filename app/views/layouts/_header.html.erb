@@ -1,66 +1,60 @@
-<header class="header">
-    <div class="wrapper">
-    
+<header>
+  <div class="h-14 w-full bg-gray-300 flex justify-between place-items-center">
+
+    <div class="h-full w-48 md:ml-8 flex place-items-center">
       <%= link_to root_path do %>
-      <h3 id="logo">Boditore
+      <h3 class="w-24 md:w-36">Boditore
       <i class="fas fa-dumbbell"></i>
       </h3>
-       <% end %>
-        <nav class="nav">
-          <ul class="nav__wrapper">
-            <% if user_signed_in? %>
-              <li class="nav__item">
-                <%= link_to  posts_path do %>
-                <i class="fas fa-list fa-lg"></i>
-                <% end %>
-              </li>
-              <li class="nav__item">
-                <%= link_to  notifications_path do %>
-                <i class="fas fa-bell fa-lg"></i>
-                <% end %>
-              </li>
-              <li class="nav__item">
-                <%= link_to  ranks_path do %>
-                <i class="fas fa-trophy fa-lg"></i>
-                <% end %>
-              </li>
-            <% else %>
-              <li class="nav__item">
-                <%= link_to  posts_path do %>
-                <i class="fas fa-list fa-lg"></i>
-                <% end %>
-              </li>
-            <% end %>
-          <% if user_signed_in? %>
-            <li class="nav__item">
-              <ul class="gnav">
-                <li>
-                  <a href="#"><i class="far fa-user-circle fa-lg"></i><b class="caret"></b>&xdtri;</a>
-                  <ul>
-                    <li><%= link_to "プロフィール", current_user %></li>
-                    <li><%= link_to "プロフィール編集", edit_user_registration_path %></li>
+      <% end %>
+    </div>
 
-                    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
+    <div class="h-14 hidden md:block">
+      <div class="h-full w-120 md:mr-8 lg:mr-14 flex place-items-center space-x-reverse space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 xl:space-x-12">
+          <% if user_signed_in? %>
+            <div class="w-1/4 header_link type1">
+              <%= link_to  posts_path do %>
+              <i class="fas fa-list fa-lg"></i>
+              <% end %>
+            </div>
+            <div class="w-1/4 header_link type1">
+              <%= link_to  notifications_path do %>
+              <i class="fas fa-bell fa-lg"></i>
+              <% end %>
+            </div>
+            <div class="w-1/4 header_link type1">
+              <%= link_to  ranks_path do %>
+              <i class="fas fa-trophy fa-lg"></i>
+              <% end %>
+            </div>
+            <div class="w-1/4 header_link type1">
+              <%= link_to  current_user do %>
+              <i class="far fa-user-circle fa-lg"></i>
+              <% end %>
+            </div>
+
           <% else %>
-            <li class="nav__item">
-              <ul class="gnav">
-                <li>
-                  <a href="#"><i class="far fa-user-circle fa-lg"></i><b class="caret"></b>&xdtri;</a>
-                  <ul>
-                    <li><%= link_to "新規登録", new_user_registration_path %></li>
-                    <li><%= link_to "ログイン", new_user_session_path %></li>
-                    
-                  </ul>
-                </li>
-                <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %></li>
-              </ul>
-            </li>
-            <% end %>
-          </ul>
-        </nav>
+            
+            <div class="w-1/4 header_link type1">
+              <%= link_to  new_user_registration_path do %>
+              <span class="text-base truncate">新規登録</span>
+              <% end %>
+            </div>
+            <div class="w-1/4 header_link type1">
+              <%= link_to  new_user_session_path do %>
+              <span class="text-base truncate">ログイン</span>
+              <% end %>
+            </div>
+            <div class="w-1/4 header_link type1">
+              <%= link_to  users_guest_sign_in_path, method: :post do %>
+              <span class="text-base truncate">ゲストログイン</span>
+              <% end %>
+            </div>
+            
+          <% end %>
+            
+        </div>
       </div>
-    </header>
+
+  </div>
+</header>
