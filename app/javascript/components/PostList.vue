@@ -1,25 +1,32 @@
 <template>
-  <div class="post__wrapper">
-    <ul class="post__index">
-      <li class="post__index__item" v-for="post in posts" :key="post.id">
-        <div class="post__index__item__user">
-          <h3>{{ post.title }}</h3>
-          {{ post.content }}<br />
-          <p>#{{ post.tag }}</p>
-          <img
-            v-if="post.image_url"
-            class="post__index__item__img"
-            v-bind:src="post.image_url"
-          />
-          <img
-            v-else
-            class="post__index__item__img"
-            v-bind:src="require('./images/post-image.jpg')"
-          />
+  <div class="">
+    <ul class="">
+      <li
+        class="relative hover:bg-gray-100 active:bg-gray-200"
+        v-for="post in posts"
+        :key="post.id"
+      >
+        <a v-bind:href="'posts/' + post.id">
+          <div>
+            <div class="py-4 flex justify-center">
+              <h3 class="px-4 pt-4 text-xl">{{ post.title }}</h3>
+            </div>
+            <p class="p-4 flex items-center">{{ post.content }}<br /></p>
+            <p class="p-4 flex items-center">#{{ post.tag }}</p>
+            <img
+              v-if="post.image_url"
+              class="w-full"
+              v-bind:src="post.image_url"
+            />
+            <img
+              v-else
+              class="w-full"
+              v-bind:src="require('./images/post-image.jpg')"
+            />
 
-          <hr />
-          <a v-bind:href="'posts/' + post.id">詳細を見る</a>
-        </div>
+            <hr />
+          </div>
+        </a>
       </li>
     </ul>
   </div>

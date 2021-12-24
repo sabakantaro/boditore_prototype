@@ -1,24 +1,53 @@
 <% if user_signed_in? %>
-  <div id="user">
-    
-      <v-form>
-        <v-container>
-          <v-row class="user__search">
-            <v-col
-              cols="12"
-              md="4"
-            >
-            <%= form_with url: search_users_path, method: :get, local: true do |f| %>
-            <%= f.number_field :experience, :placeholder => "トレーニング年数" %>
-            </v-col>
-            <%= f.submit :検索 %>
-            <% end %>
-        </v-row>
-    </v-container>
-  </v-form>
-      
+  <div class="container mx-auto lg:px-8 xl:px-36">
+    <div class="lg:grid grid-cols-3 pt-4">
 
-  <contents></contents>
+      <div class="col-span-2 bg-white rounded-md shadow m-4">
+
+        <div class="p-4 flex items-center">
+            <b class="ml-2">トレーニング年数で検索</b>
+        </div>
+        <div class="search">
+          <%= form_with url: search_users_path, method: :get, local: true  do |f| %>
+            <div class="flex justify-around">
+                <div class="placeholder-gray-800 border">
+                  <%= f.number_field(:experience, :placeholder => "年数", class:"", min: 0, max: 100) %>
+                </div>
+              </div>
+              <div class='flex justify-center py-4'>
+                <%= f.submit "検索", class:"cursor-pointer px-3 py-2 bg-green-500 text-white font-semibold rounded hover:bg-green-700" %>
+              </div>
+          <% end %>
+        </div>
+
+        <div id="user">
+          <contents></contents>
+        </div>
+      </div>
+
+      <div class="col-span-1">
+        <div class="bg-white rounded-md m-4 shadow">
+          <%= link_to user_path(@login_user), data: {"turbolinks" => false} do %>
+            <div class="p-4 hover:bg-gray-100 active:bg-gray-200 rounded-md">
+              <div class="flex items-center mb-6">
+                <h3 class="ml-2">ログインユーザー</h3>
+              </div>
+              <div class="flex justify-center">
+                <% if @login_user.image.attached? %>
+                  <%= image_tag @login_user.image, class: "rounded-full h-32 w-32" %>
+                <% else %>
+                  <%= image_tag "default.png", class: "rounded-full h-32 w-32" %>
+                <% end %>
+              </div>
+              <div class="flex justify-center pt-2">
+                  <p class="text-xl"><%= @login_user.name %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <%= javascript_pack_tag 'user' %>

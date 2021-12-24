@@ -1,71 +1,51 @@
 <template>
-  <v-card class="user-wrapper">
-    <v-col cols="16" v-for="user in users" :key="user.id">
-      <v-container fluid>
-        <v-row dense>
-          <v-col>
-            <v-card class="user-card">
-              <a v-bind:href="'users/' + user.id">
-                <v-img
-                  v-if="user.image_url"
-                  class="white--text align-end"
-                  height="300px"
-                  v-bind:src="user.image_url"
-                >
-                </v-img>
-                <v-img
-                  v-else
-                  class="white--text align-end"
-                  height="300px"
-                  v-bind:src="require('./images/default.png')"
-                >
-                </v-img>
-              </a>
-              <h3>{{ user.name }}</h3>
-              <h3>トレーニング歴：{{ user.experience }}年</h3>
+  <div class="relative hover:bg-gray-100 active:bg-gray-200">
+    <div v-for="user in users" :key="user.id">
+      <a v-bind:href="'users/' + user.id">
+        <div class="text-sm flex justify-between items-center px-4 pt-4">
+          <div class="flex display-start items-center">
+            <img
+              v-if="user.image_url"
+              class="rounded-full h-16 w-16 flex items-center justify-center"
+              v-bind:src="user.image_url"
+            />
+            <img
+              v-else
+              class="rounded-full h-16 w-16 flex items-center justify-center"
+              v-bind:src="require('./images/default.png')"
+            />
 
-              <v-card-actions>
-                <v-title color="orange lighten-2" text> プロフィール </v-title>
+            <h3 class="px-4 pt-4 text-xl">{{ user.name }}</h3>
+          </div>
+        </div>
 
-                <v-spacer></v-spacer>
-
-                <v-btn icon @click="show = !show">
-                  <v-icon>{{
-                    show ? "mdi-chevron-up" : "mdi-chevron-down"
-                  }}</v-icon>
-                </v-btn>
-              </v-card-actions>
-
-              <v-expand-transition>
-                <div v-show="show">
-                  <v-divider></v-divider>
-
-                  <v-card-text>
-                    <p>{{ user.profile }}</p>
-                  </v-card-text>
-                </div>
-              </v-expand-transition>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-col>
-  </v-card>
+        <h3 class="px-4 pt-4 text-xl">
+          <i class="fas fa-fist-raised"></i> トレーニング歴：{{
+            user.experience
+          }}年
+        </h3>
+        <div class="px-4 pt-4 text-xl">
+          <i class="fas fa-id-card"></i> プロフィール：
+        </div>
+        <p class="p-4 flex items-center">{{ user.profile }}</p>
+      </a>
+    </div>
+  </div>
 </template>
 
 <style scoped lang="scss">
-.user-wrapper {
-  margin: 0px 300px;
-  & a {
-    text-decoration: none;
-    overflow: hidden;
-  }
-}
+// .user-wrapper {
+//   margin: 0px 300px;
+//   & a {
+//     text-decoration: none;
+//     overflow: hidden;
+//   }
+// }
 
-.user-card {
-  text-align: center;
-  width: 100%;
-}
+// .user-card {
+//   text-align: center;
+//   width: 100%;
+// }
 </style>
 
 <script>
@@ -74,7 +54,6 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      show: false,
       users: "users",
     };
   },

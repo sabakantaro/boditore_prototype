@@ -23,7 +23,7 @@
 ・HTML/CSS<br>
 ・Javascript<br>
 ・Vue.js<br>
-・Vuetify（UI フレームワーク）<br>
+・TailwindCSS（UI フレームワーク）<br>
 
 ### 開発環境、インフラ
 
