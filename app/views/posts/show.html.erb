@@ -1,72 +1,114 @@
-<div class="common_wrapper">
-  <div class="post__show">
-    <% if @post.user.image.attached? %>
-      <%= image_tag @post.user.image, class:"user-icon_small"%>
-    <% else %>
-      <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
-    <% end %>
-    <%= link_to @post.user.name, @post.user %>
-    <h1 class="post__show__title__body"><%= @post.title %></h1>
+<div class="container mx-auto lg:px-8 xl:px-36">
+  <div class="lg:grid grid-cols-3 pt-4">
 
-    <div class="post__show__content">
-      <p><%= @post.content %></p>
-            <% if @post.eyecatch.attached? %>
-              <%= image_tag @post.eyecatch, class: "post__index__item__img" %>
-            <% else %>
-              <%= image_tag "post-image.jpg", class: "post__index__item__img" %>
-            <% end %>
+    <div class="col-span-2 bg-white rounded-md shadow m-4">
+      <div class="relative">
+        <div class="flex items-center pl-4 pt-4">
+          <% if @post.user.image.attached? %>
+            <%= image_tag @post.user.image, class:"rounded-full h-16 w-16"%>
+          <% else %>
+            <%= image_tag "default.png", class: "rounded-full h-16 w-16" %>
+          <% end %>
+          <div class="flex justify-center pl-2 ml-2 hover:underline">
+          <%= link_to @post.user.name, @post.user %>
+          </div>
+        </div>
+        <div class="py-4 flex justify-center">
+          <h3 class="px-4 pt-4 text-xl"><%= @post.title %></h3>
+        </div>
+        <p class="p-4 flex items-center"><%= @post.content %><br /></p>
+        <p class="p-4 flex items-center">#<%= @post.tag %></p>
 
-        <div class="post__show__content__favorite">
+        <% if @post.eyecatch.attached? %>
+          <%= image_tag @post.eyecatch, class: "w-full" %>
+        <% else %>
+          <%= image_tag "post-image.jpg", class: "w-full" %>
+        <% end %>
+
+        <div class="p-4 flex justify-center">
           <%= render partial: 'favorites/favorite' %>
         </div>
 
-      <hr>
-      <% if user_signed_in? && @post.user_id == current_user.id %>
-        <%= link_to "編集 |", edit_post_path(@post) %>
-        <%= link_to "削除", post_path(@post), method: :delete %>
-      <% end %>
-
-      <% if user_signed_in? %>
-        <%= form_with(model: [@post, @comment], local: true) do |f| %> 
-          <%= f.text_area :text, placeholder: "コメントする", rows: "2" %>
-          <%= f.submit "送信" %>
-        <% end %>
-      <% else %>
-        <strong><p>コメントの投稿には新規登録/ログインが必要です</p></strong>
-      <% end %>
-
-  <div id="comments_area">
-    <h2>comments</h2>
-    <% @comments.each do |comment| %>
-      <% if comment.parent_id.present? || comment.id.blank? %>
-        <% next %>
-      <% end %>
         <hr>
-        <p> <%= comment.user.name %> : <%=comment.text%></p>
-        <p> date : <%=comment.created_at.strftime("%Y-%m-%d %H:%M") %>
-      <div id="reply_area">
-        <% comment.replies.order(:created_at).each do |reply| %>
-        <p> <%= comment.user.name %> : <%=reply.text%></p>
+        
+      </div>
+      <% if user_signed_in? && @post.user_id == current_user.id %>
+        <div class="py-4 flex justify-center">
+          <%= link_to "編集する", edit_post_path(@post), class:"cursor-pointer px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100" %>
+        </div>
+        <div class="py-4 flex justify-center">
+          <%= link_to "削除する", post_path(@post), method: :delete, class:"cursor-pointer px-3 py-2 text-red-500 border border-red-500 font-semibold rounded hover:bg-red-100" %>
+        </div>
+        <% end %>
+    </div>
+
+    <div class="col-span-1">
+      <div class="m-4 p-4 h-auto divide-y divide-gray-400 bg-white rounded-md shadow">
+        <% if user_signed_in? %>
+          <%= form_with(model: [@post, @comment], local: true) do |f| %> 
+            <label class="form-text pb-4">コメント</label><br />
+            <%= f.text_area :text, class:"placeholder-gray-800 border w-full" %>
+            <div class="py-4 flex justify-center">
+              <%= f.submit "送信", class:"cursor-pointer px-3 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700" %>
+            </div>
+          <% end %>
+        <% else %>
+          <strong><p>コメントの投稿には新規登録/ログインが必要です</p></strong>
         <% end %>
       </div>
-        <%= form_with(model:[@post,@comment_reply]) do |form| %>
-        <div class="row">
-          <div class="form-group col-md-6">
-            <p><label>Reply</label></p>
-            <textarea class="form-control input-form" name="comment[text]" rows="2"><%=@comment_reply.text%></textarea>
+
+        <div class="m-4 p-4 h-auto bg-white rounded-md shadow">
+          <h2>コメント一覧</h2>
+          <hr />
+
+          <% @comments.each do |comment| %>
+
+            <% if comment.parent_id.present? || comment.id.blank? %>
+              <% next %>
+            <% end %>
+
+            <div class="flex display-start items-center px-4 pt-2">
+              <% if comment.user.image.attached? %>
+                <%= image_tag comment.user.image, class:"h-8 w-8"%>
+              <% else %>
+                <%= image_tag "default.png", class: "h-8 w-8" %>
+              <% end %>
+              <div class="pl-2">
+              <%= link_to comment.user.name, comment.user %>
+              </div>
+            </div>
+            <div class="flex display-start items-center pt-2 px-4 pb-2">
+              <p><%=comment.text%></p>
+            </div>
+            
+
+            <div id="reply_area">
+              <% comment.replies.order(:created_at).each do |reply| %>
+              <p><i class="fas fa-reply"></i><%= comment.user.name %> : <%=reply.text%></p>
+              <% end %>
+            </div>
+            <div class="pt-4">
+              <%= form_with(model:[@post,@comment_reply]) do |f| %>
+                <label class="text-xs">コメントに返信する</label>
+                <textarea class="placeholder-gray-800 border w-full" name="comment[text]" rows="1"><%=@comment_reply.text%></textarea>
+                <%= f.hidden_field :post_id, value: @post.id %>
+                <%= f.hidden_field :parent_id, value: comment.id%>
+                <div class="flex justify-center mb-2">
+                  <%= f.submit "返信", class:"cursor-pointer px-1 py-1/2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700" %>
+                </div>
+              <% end %>
+              <hr />
+              </div>
+
+            <% end %>
+            
+
           </div>
         </div>
-          <%= form.hidden_field :post_id, value: @post.id %>
-          <%= form.hidden_field :parent_id, value: comment.id%>
-        <div class="actions">
-          <%= form.submit %>
-        </div>
-      <% end %>
-    </div>
-    <% end %>
+      
+          
+        
+        
 
-      <h4><%= link_to posts_path do %>投稿一覧へ</h4>
-      <% end %>
-    </div>
   </div>
-</div>
+</div> 

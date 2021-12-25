@@ -49,7 +49,7 @@
             <input
               type="submit"
               value="投稿"
-              class="cursor-pointer px-3 py-2 bg-green-500 text-white font-semibold rounded hover:bg-blue-700"
+              class="cursor-pointer px-3 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700"
               @click="dialog = false"
             />
           </div>

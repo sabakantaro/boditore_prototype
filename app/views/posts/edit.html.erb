@@ -1,26 +1,26 @@
 <div class="container mx-auto lg:px-8 xl:px-80">
-<div class="m-4 p-4 h-auto divide-y divide-gray-400 bg-white rounded-md shadow">
-<h1>編集</h1>
-  <%= form_for(@post, url: post_path(@post)) do |f| %>
-  <p>
-        <%= f.label :タイトル %><br>
-        <%= f.text_field :title, autofocus: true, :placeholder =>"#{@post.title}" %>
-    </p>
+  <div class="m-4 p-4 h-auto divide-y divide-gray-400 bg-white rounded-md shadow">
+    <h2 class="px-4">編集</h2>
+    <%= form_for(@post, url: post_path(@post)) do |f| %>
+      <div class="px-4 pb-4 pt-4">
+          <%= f.label :タイトル %><br>
+          <%= f.text_field :title, autofocus: true, :placeholder =>"#{@post.title}", class:'placeholder-gray-800 border w-full' %>
+      </div>
 
-    <p>
-      <%= f.label :投稿内容 %><br>
-      <%= f.text_area :content, autofocus: true, :placeholder =>"#{@post.content}" %>
-    </p>
-    
-    
-    <p>
-      <%= f.label :写真 %><br>
-      <%= f.file_field :image %>
-    </p>
+      <div class="px-4 pb-4">
+        <%= f.label :投稿内容 %><br>
+        <%= f.text_area :content, autofocus: true, :placeholder =>"#{@post.content}", class:'placeholder-gray-800 border w-full' %>
+      </div>
+      
+      
+      <div class="px-4 pb-4">
+        <%= f.label :写真 %><br>
+        <%= f.file_field :image %>
+      </div>
 
-    <p>
-      <%= f.submit "投稿" %>
-    </p>
-  <% end %>
-</div>
+      <div class="py-4 flex justify-center">
+        <%= f.submit "投稿",class:'cursor-pointer px-3 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700' %>
+      </div>
+    <% end %>
+  </div>
 </div>
