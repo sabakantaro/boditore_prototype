@@ -1,57 +1,66 @@
-<div class="bg-dm">
-</div>
+<div class="container mx-auto lg:px-8 xl:px-36">
+    <div class="bg-white rounded-md shadow m-4">
 
-<div class="common_wrapper">
-
-<h1>おしらせ</h1>
-<%= link_to notification_path(@notifications), method: :delete do %>
-通知クリア<i class="fas fa-trash fa-lg"></i>
-<% end %>
-<hr>
-<% if @notifications.exists? %>
-  <% @notifications.each do |notification| %>
-    <div class="notice">
-      <tr>
-        <td>
-          <%= link_to user_path(notification.visitor) do %>
-          <% if notification.visitor.image.attached? %>
-            <%= image_tag notification.visitor.image, class:"user-icon_small"%>
-            <% else %>
-            <%= image_tag "default.png", alt: "user-icon",class: "user-icon_small" %>
-            <% end %>
-            <%= notification.visitor.name %>
-          <% end %>
-        </td>
-        <td>
-          さんからフォローされました
-        </td>
-        <td>
-          <%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
-        </td>
-      </tr>
-      <hr>
-    </div>
-
-    <div class="notice">
-        <%= link_to user_path(notification.visitor) do %>
-        <% if notification.visitor.image.attached? %>
-        <%= image_tag notification.visitor.image, class:"user-icon_small"%>
-        <% else %>
-            <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
-            <% end %>
-        <%= notification.visitor.name %>
+      <div class="flex items-center pt-4 pl-4 mb-4">
+        <h1>おしらせ</h1>
+      </div>
+      <div class="flex items-center pl-4 mb-4">
+        <%= link_to notification_path(@notifications), method: :delete do %>
+        通知クリア<i class="fas fa-trash fa-lg"></i>
         <% end %>
-        さんがあなた(<%= notification.visited.name %>さん)にDMを送りました
-        <td>
-          <%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
-        </td>
         <hr>
-    </div>
-    
-  <% end %>
-  <hr>
-<% else %>
-  <p>おしらせはありません</p>
-<% end %>
+      </div>
 
+      <% if @notifications.exists? %>
+      <% @notifications.each do |notification| %>
+
+      <div class="relative hover:bg-gray-100 active:bg-gray-200">
+        <div class="text-sm flex justify-between items-center px-4 pt-4 pb-4">
+          <div class="flex display-start items-center">
+              
+                <div class='flex items-center'>
+                  <%= link_to user_path(notification.visitor) do %>
+                    <% if notification.visitor.image.attached? %>
+                      <%= image_tag notification.visitor.image, class: "rounded-full h-16 w-16 flex items-center justify-center mr-2"%>
+                    <% else %>
+                      <%= image_tag "default.png", class: "rounded-full h-16 w-16 flex items-center justify-center mr-2" %>
+                    <% end %>
+                  <% end %>
+                  <%= notification.visitor.name %>さんからフォローされました
+                  <%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
+                  <hr>
+                </div>
+
+
+                </div>
+        </div>
+      </div>
+
+      <div class="relative hover:bg-gray-100 active:bg-gray-200">
+        <div class="text-sm flex justify-between items-center px-4 pt-4 pb-4">
+          <div class="flex display-start items-center">
+
+                <div class='flex items-center'>
+                  <%= link_to user_path(notification.visitor) do %>
+                    <% if notification.visitor.image.attached? %>
+                      <%= image_tag notification.visitor.image, class: "rounded-full h-16 w-16 flex items-center justify-center mr-2"%>
+                    <% else %>
+                      <%= image_tag "default.png", class: "rounded-full h-16 w-16 flex items-center justify-center mr-2" %>
+                    <% end %>
+                  <% end %>
+                    <%= notification.visitor.name %>さんがあなた(<%= notification.visited.name %>さん)にDMを送りました
+                    <%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
+                    <hr>
+                </div>
+              
+          </div>
+        </div>
+      </div>
+      <% end %>
+      
+    <% else %>
+      <p class='text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-500 font-bold text-center py-3 sm:py-10'>おしらせはありません</p>
+    <% end %>
+          
+  </div>
 </div>

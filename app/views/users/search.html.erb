@@ -1,7 +1,7 @@
 <div class="common_wrapper">
   <h1>検索結果
   <%= form_with url: search_users_path, method: :get, local: true do |f| %>
-    <%= f.number_field :experience, :placeholder => "トレーニング年数" %>
+    <%= f.number_field :experience, :placeholder => "トレーニング年数", min: 0, max: 100 %>
     <%= f.submit :検索 %>
   <% end %></h1>
   <table>

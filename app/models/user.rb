@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments
   has_one_attached :image
-  validates_inclusion_of :experience, in: 1..100, message: 'は1~100年で入力してください'
+  validates_inclusion_of :experience, in: 0..100, message: 'は0~100年で入力してください'
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

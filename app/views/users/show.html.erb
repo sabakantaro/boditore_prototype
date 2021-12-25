@@ -1,145 +1,194 @@
-<div class="user__wrapper">
-  <div class="user__show">
-    <ul class="user__show__top">
-        <li class="user__show__top__icon">
+<div class="container mx-auto lg:px-8 xl:px-36">
+  <div class="lg:grid grid-cols-3">
+
+    <div class="col-span-1">
+      <div class="bg-white rounded-t-md shadow mt-4 mx-4">
+        <div class="mt-4 px-16 pt-4 flex justify-center">
             <% if @user.image.attached? %>
-              <%= image_tag @user.image, alt: "user-icon", class: "user-icon" %>
+              <%= image_tag @user.image, alt: "", class: "rounded-full h-32 w-32" %>
             <% else %>
-              <%= image_tag "default.png", alt: "user-icon", class: "user-icon" %>
+              <%= image_tag "default.png", alt: "", class: "rounded-full h-32 w-32" %>
             <% end %>
-        </li>
-        <li class="user__show__top__content">
-          <% if @user.id == current_user.id %>
-            <button class="btn slide-bg"><span></span><%= link_to "プロフィール編集", edit_user_registration_path  %></button>
-            <button class="btn slide-bg"><span></span><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
-          <% else %>
-            <%= render 'follow_form' %>
-            <% if @isRoom == true %>
-            <button class="btn slide-bg"><span></span><a href="/rooms/<%= @roomId %>">チャットへ</a></button>
-            <% else %>
-              <%= form_for @room do |f| %>
-                <%= fields_for @entry do |e| %>
-                  <%= e.hidden_field :user_id, :value=> @user.id %>
-                <% end %>
-                  <h3><%= f.submit "チャットを始める" , class: "btn"%></h3>
-              <% end %>
-            <% end %>
-          <% end %>
-        </li>
-      </ul>
-      <ul class="user__show__bottom">
-        <li class="user__show__bottom__name">
-            <h3><%= @user.name %></h3>
-        </li>
-        <li class="user__show__bottom__follow">
-            <%= render 'shared/stats' %>
-        </li>
-      </ul>
-      <ul class="user__show__bottom__status">
-        <li class="user__show__bottom__status__experience">
-          <h4>・トレーニング歴：<%= @user.experience %>年</h4>
-        </li>
-        <li class="user__show__bottom__status__profile">
-          <h4>・プロフィール</h4>
-          <p><%= @user.profile %></p>
-        </li>
+        </div>
+        
+      
+      <div class="user__show__bottom">
+        <div class="pt-4 flex justify-center">
+            <p class="text-2xl"><%= @user.name %></p>
+        </div>
+        
+      </div>
+        <div class="px-4 pt-4 text-xl">
+          <i class="fas fa-fist-raised"></i>
+          トレーニング歴：<%= @user.experience %>年
+        </div>
+        <div class="px-4 pt-4 text-xl">
+        <i class="fas fa-id-card"></i> 
+          プロフィール：
+        </div>
+        <p class="p-4 flex items-center"><%= @user.profile %></p>
 
-        <li class="user__show__bottom__status__achievement">
-          <h4>・アチーブメント</h4>
+        <div class="px-4 pt-4 text-xl">
+          <i class="fas fa-trophy"></i>
+          アチーブメント：
+        </div>
+        <p class="p-4 flex items-center">
           <% if @user.posts.count >= 100 %>
-            投稿数100以上<i class="fas fa-medal"></i>
+            投稿数100以上<i class="fas fa-medal color-gold"></i>
           <% elsif @user.posts.count >= 50%>
-          　投稿数50以上<i class="fas fa-medal"></i>
+          　投稿数50以上<i class="fas fa-medal color-silver"></i>
           <% elsif @user.posts.count >= 1%>
-            投稿数1以上<i class="fas fa-medal"></i>
+            投稿数1以上<i class="fas fa-medal color-bronze"></i>
           <% else %>
-            投稿数なし<i class="fas fa-medal"></i>
+            投稿をしてみよう！
           <% end %>
           <br />
-
+        </p>
+        <p class="p-4 flex items-center">
           <% if @favorite_list.count >= 100 %>
-            お気に入りされた投稿数100以上<i class="fas fa-medal"></i>
+            お気に入りされた投稿数100以上<i class="fas fa-medal color-gold"></i>
           <% elsif @favorite_list.count >= 50%>
-          　お気に入りされた投稿数50以上<i class="fas fa-medal"></i>
+          　お気に入りされた投稿数50以上<i class="fas fa-medal color-silver"></i>
           <% elsif @favorite_list.count >= 1%>
-            お気に入りされた投稿数1以上<i class="fas fa-medal"></i>
+            お気に入りされた投稿数1以上<i class="fas fa-medal color-bronze"></i>
           <% else %>
-            お気に入りされた投稿数なし<i class="fas fa-medal"></i>
+            投稿にお気に入りしてもらおう！
           <% end %>
           <br />
-
+          </p>
+          <p class="p-4 flex items-center">
           <% if @user.followers.count >= 100 %>
-            フォロワー数100以上<i class="fas fa-medal"></i>
+            フォロワー数100以上<i class="fas fa-medal color-bronze"></i>
           <% elsif @user.followers.count >= 50%>
-          　フォロワー数50以上<i class="fas fa-medal"></i>
+          　フォロワー数50以上<i class="fas fa-medal color-silver"></i>
           <% elsif @user.followers.count >= 1%>
-            フォロワー数1以上<i class="fas fa-medal"></i>
+            フォロワー数1以上<i class="fas fa-medal color-bronze"></i>
           <% else %>
-            フォロワー数なし<i class="fas fa-medal"></i>
+            フォロワーを増やそう！
           <% end %>
           <br />
-        </li>
+        </p>
+        <% if @user.id == current_user.id %>
+          <div class="flex justify-center pb-4">
+            
+              <%= link_to "プロフィール編集", edit_user_registration_path, class:'px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100' %>
+          </div>
+          <div class="flex justify-center pb-4">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:'px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100' %>
+          </div>
+        <% else %>
+          <div class="flex justify-center pb-4">
+              <%= render 'follow_form' %>
+          </div>
+          <div class="flex justify-center pb-4">
+              <% if @isRoom == true %>
+              <a class='px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100', href="/rooms/<%= @roomId%>">チャットへ</a>
+              <% else %>
+                <%= form_for @room do |f| %>
+                  <%= fields_for @entry do |e| %>
+                    <%= e.hidden_field :user_id, :value=> @user.id %>
+                  <% end %>
+                    <h3><%= f.submit "チャットを始める" , class:'px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100' %></h3>
+                <% end %>
+              <% end %>
+          </div>
+        <% end %>
 
-      </ul>
+          <div class="grid grid-cols-2 bg-white shadow rounded-b-md">
+            <%= render 'shared/stats' %>
+          </div>
+
+      </div>
     </div>
 
-    <div class="user__show__post__index">
+    <div class="col-span-2">
+    <div class="bg-white rounded-md shadow mt-4 mx-4">
       <div class="tabs">
         <input id="all" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="all">自分の投稿</label>
+        <label class="tab_item rounded-tl-md" for="all">自分の投稿</label>
         <input id="favorite" type="radio" name="tab_item">
-        <label class="tab_item" for="favorite">お気に入り投稿</label>
+        <label class="tab_item rounded-tr-md" for="favorite">お気に入り投稿</label>
         <div class="tab_content" id="all_content">
           <% @posts.each do |post| %>
-          <li class="user__show__post__index__item">
-            <div class="user__show__post__index__item__user">
+          <div class="relative pt-4">
+            <div class="flex items-center">
               <% if post.user.image.attached? %>
-                <%= image_tag post.user.image, class:"user-icon_small"%>
+                <%= image_tag post.user.image, class:"rounded-full h-16 w-16"%>
               <% else %>
-                <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
+                <%= image_tag "default.png", alt: "", class: "rounded-full h-16 w-16" %>
               <% end %>
-              <div class="user__show__post__index__item__user__name"><%= link_to post.user.name, user_path(post.user) %></div>
-              
-            <h3><%=link_to post.title, post_path(post) %></h3>
+              <div class="flex justify-center pl-2 ml-2 hover:underline">
+                <%= link_to post.user.name, user_path(post.user) %>
+              </div>
             </div>
-            <p><%= post.content %></p>
+            <div class="py-4 flex justify-center">
+              <h3 class="px-4 pt-4 text-xl">
+                <%= post.title %>
+              </h3>
+            </div>
+            <p class="p-4 flex items-center">
+              <%= post.content %>
+            </p>
+            <p class="p-4 flex items-center">
+              #<%= post.tag %>
+            </p>
             <% if post.eyecatch.attached? %>
               <%= image_tag post.eyecatch, class: "post__index__item__img" %>
             <% else %>
               <%= image_tag "post-image.jpg", class: "post__index__item__img" %>
             <% end %>
-            <hr>
-            <%=link_to "詳細を見る", post_path(post) %>
-          </li>
+            <div class="flex justify-center pt-2 pb-8">
+            <%=link_to "詳細を見る", post_path(post), class:'px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100' %>
+            </div>
+            <hr />
+          </div>
           <% end %>
         </div>
+
         <div class="tab_content" id="favorite_content">
           <% if @favorite_list.present? %>
             <% @favorite_list.each do |post| %>
-              <li class="user__show__post__index__item">
-                <div class="user__show__post__index__item__user">
+              <div class="relative pt-4">
+                <div class="flex items-center">
                   <% if post.user.image.attached? %>
-                    <%= image_tag post.user.image, class:"user-icon_small"%>
+                    <%= image_tag post.user.image, class:"rounded-full h-16 w-16"%>
                   <% else %>
-                    <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
+                    <%= image_tag "default.png", alt: "", class: "rounded-full h-16 w-16" %>
                   <% end %>
-                  <div class="user__show__post__index__item__user__name"><%= link_to post.user.name, user_path(post.user) %></div>
+                  <div class="flex justify-center pl-2 ml-2 hover:underline">
+                    <%= link_to post.user.name, user_path(post.user) %>
+                  </div>
                 </div>
-                <h3><%=link_to post.title, post_path(post) %></h3>
-                <p><%= post.content %></p>
+                <div class="py-4 flex justify-center">
+                  <h3 class="px-4 pt-4 text-xl">
+                    <%= post.title %>
+                  </h3>
+                </div>
+                <p class="p-4 flex items-center">
+                  <%= post.content %>
+                </p>
+                <p class="p-4 flex items-center">
+                  #<%= post.tag %>
+                </p>
                 <% if post.eyecatch.attached? %>
                   <%= image_tag post.eyecatch, class: "post__index__item__img" %>
                 <% else %>
                   <%= image_tag "post-image.jpg", class: "post__index__item__img" %>
                 <% end %>
-                <hr>
-                <%=link_to "詳細を見る", post_path(post) %>
-              </li>
+                <div class="flex justify-center pt-2 pb-8">
+                  <%=link_to "詳細を見る", post_path(post), class:'px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100' %>
+                </div>
+                <hr />
+              <%= paginate @posts %>
             <% end %>
           <% end %>
+          </div>
+          </div>
+        </div>
+        </div>
+        </div>
         </div>
       </div>
     </div>
+  </div>
 </div>
-
-<%= paginate @posts %>

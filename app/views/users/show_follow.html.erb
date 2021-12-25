@@ -1,33 +1,40 @@
-<div class="common_wrapper">
+<div class="container mx-auto lg:px-8 xl:px-36">
 
-  <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
-        <h1>フォロー</h1>
-
-      </section>
-      <section class="stats">
-          <div class="user_avatars">
-            <% @users.each do |user| %>
-            <% if user.image.attached? %>
-            <%= image_tag user.image, class:"user-icon_small"%>
-            <% else %>
-            <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
-            <% end %>
-            <%= link_to user.name, user %>
-            <hr>
-            <% end %>
+    <div class="bg-white rounded-md shadow m-4">
+      <div class="flex items-center pt-4 pl-4 mb-4">
+        <h3 class="ml-2">フォロー</h3>
+      </div>
+      <div class="relative hover:bg-gray-100 active:bg-gray-200">
+        <div class="text-sm flex justify-between items-center px-4 pt-4">
+          <div class="flex display-start items-center">
+              <% @users.each do |user| %>
+                <% if user.image.attached? %>
+                <%= image_tag user.image, class: "rounded-full h-16 w-16 flex items-center justify-center"%>
+                <% else %>
+                <%= image_tag "default.png", class: "rounded-full h-16 w-16 flex items-center justify-center" %>
+                <% end %>
+              <h3 class="px-4 pt-4 text-xl">
+                <%= link_to user.name, user %>
+              </h3>
+            </div>
           </div>
-      </section>
-
-      <span><%= link_to "プロフィールに戻る", @user %></span>
-
-    </aside>
-
+            <h3 class="px-4 pt-4 text-xl">
+              <i class="fas fa-fist-raised"></i> トレーニング歴：
+                <%= user.experience %>年
+            </h3>
+            <div class="px-4 pt-4 text-xl">
+              <i class="fas fa-id-card"></i> プロフィール：
+            </div>
+            <p class="p-4 flex items-center">
+              <%=  user.profile %>
+            </p>
+            <% end %>
+            <div class="px-4 pt-4 text-xl">
+            <%= paginate @users %>
+            </div>
+      </div>
+    </div>
   </div>
-
 </div>
 
-<div class="bg"></div>
-
-<%= paginate @users %>
+  </div>
