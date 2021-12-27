@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def search
     @users = if params[:experience].present?
-               User.where('experience LIKE ?', "%#{params[:experience]}%").
+               User.where('experience LIKE ?', "%#{params[:experience]}%")
              else
                User.none
              end

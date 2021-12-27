@@ -1,26 +1,47 @@
-<div class="common_wrapper">
-  <h1>検索結果
-  <%= form_with url: search_users_path, method: :get, local: true do |f| %>
-    <%= f.number_field :experience, :placeholder => "トレーニング年数", min: 0, max: 100 %>
-    <%= f.submit :検索 %>
-  <% end %></h1>
-  <table>
-    <tbody>
-      <% @users.each do |user| %>
-        <div>
-        <% if user.image.attached? %>
-          <%= image_tag user.image, class:"user-icon_small"%>
-        <% else %>
-          <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
-        <% end %>
-        <h4><%= link_to user.name, user %></h4>
-        <h3>トレーニング歴：<%= user.experience %>年</h3>
-        <hr>
+<div class="container mx-auto lg:px-8 xl:px-80">
+  <div class="bg-white rounded-md shadow">
+    <div class="p-4 flex items-center">
+      <b class="ml-2">検索結果</b>
+    </div>
+    <%= form_with url: search_users_path, method: :get, local: true do |f| %>
+      <div class="flex justify-around">
+        <div class="placeholder-gray-800 border">
+        <%= f.number_field :experience, :placeholder => "年数", min: 0, max: 100 %>
         </div>
-      <% end %>
-    </tbody>
-  </table>
-  <%= link_to "戻る", home_path %>
-</div>
+      </div>
+      <div class='flex justify-center py-4'>
+        <%= f.submit "検索", class:"cursor-pointer px-3 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700" %>
+      </div>
+    <% end %>
 
-<%= paginate @users %>
+      <% @users.each do |user| %>
+        <div class="relative hover:bg-gray-100 active:bg-gray-200">
+        <%= link_to user do %>
+          <div class="flex items-center pl-4 pt-4">
+            <% if user.image.attached? %>
+              <%= image_tag user.image, class:"rounded-full h-16 w-16"%>
+            <% else %>
+              <%= image_tag "default.png", class:"rounded-full h-16 w-16"%>
+            <% end %>
+            <div class="flex justify-center pl-2 ml-2 hover:underline">
+              <%= user.name %>
+            </div>
+          </div>
+          <h3 class="px-4 pt-4 text-xl">
+            <i class="fas fa-fist-raised"></i>
+            トレーニング歴：<%= user.experience %>年
+          </h3>
+          <h3 class="px-4 pt-4 text-xl">
+            <i class="fas fa-id-card"></i>
+            プロフィール：
+          </h3>
+          <p class="p-4 flex items-center">
+            <%= user.profile %>
+          </p> 
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    <%= paginate @users %>
+  </div>
+</div>

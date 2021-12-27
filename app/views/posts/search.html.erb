@@ -1,32 +1,46 @@
-<div class="common_wrapper">
-  <h1>検索結果
+<div class="container mx-auto lg:px-8 xl:px-80">
+<div class="bg-white rounded-md shadow">
+  <div class="p-4 flex items-center">
+    <b class="ml-2">検索結果</b>
+  </div>
   <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
-    <%= f.text_field :title, :placeholder => "検索キーワード" %>
-    <%= f.submit :検索 %>
-  <% end %></h1>
-  <ul class="post__index">
+    <div class="flex justify-around">
+      <div class="placeholder-gray-800 border">
+        <%= f.text_field :title, :placeholder => "検索キーワード" %>
+      </div>
+    </div>
+    <div class='flex justify-center py-4'>
+      <%= f.submit "検索", class:"cursor-pointer px-3 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700" %>
+    </div>
+  <% end %>
+
     <% @posts.each do |post| %>
-      <li class="post__index__item">
-          <div class="post__index__item__user">
-        <% if post.user.image.attached? %>
-              <%= image_tag post.user.image, class:"user-icon_small"%>
-            <% else %>
-              <%= image_tag "default.png", alt: "user-icon", class: "user-icon_small" %>
-            <% end %>
-            <div class="post__index__item__user__name"><%= post.user.name %>
-          </div>
-          <h3><%= post.title %></h3>
-          <p><%= post.content %></p>
-          <% if post.eyecatch.attached? %>
-              <%= image_tag post.eyecatch, class: "post__index__item__img" %>
-            <% end %>
-          <hr>
-        <%=link_to "詳細を見る", post_path(post) %>
-          </div>
-      </li>
+      <div class="relative hover:bg-gray-100 active:bg-gray-200">
+      <%=link_to post_path(post) do %>
+        <div class="flex items-center pl-4 pt-4">
+          <% if post.user.image.attached? %>
+            <%= image_tag post.user.image, class:"rounded-full h-16 w-16"%>
+          <% else %>
+            <%= image_tag "default.png", class:"rounded-full h-16 w-16"%>
+          <% end %>
+            <div class="flex justify-center pl-2 ml-2 hover:underline">
+              <%= post.user.name %>
+            </div>
+        </div>
+        <div class="py-4 flex justify-center">
+          <h3 class="px-4 pt-4 text-xl"><%= post.title %></h3>
+        </div>
+        <p class="p-4 flex items-center"><%= post.content %><br /></p>
+        <p class="p-4 flex items-center">#<%= post.tag %></p>
+        <% if post.eyecatch.attached? %>
+          <%= image_tag post.eyecatch, class: "w-full" %>
+        <% else %>
+          <%= image_tag "post-image.jpg", class: "w-full" %>
+        <% end %>
+        <hr>
       <% end %>
-    </ul>
-  <hr>
-    <%= link_to "戻る", posts_path %>
+      </div>
+    <% end %>
+    <%= paginate @posts %>
 </div>
-<%= paginate @posts %>
+</div>

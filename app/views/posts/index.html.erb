@@ -1,30 +1,33 @@
-<div class="container mx-auto lg:px-8 xl:px-36">
-  <div class="lg:grid grid-cols-3 pt-4">
+<div id="main">
+    <div class="container mx-auto lg:px-8 xl:px-36">
+      <div class="lg:grid grid-cols-3 pt-4">
 
-    <div class="col-span-2 bg-white rounded-md shadow m-4">
-      <div class="p-4 flex items-center">
-          <b class="ml-2">キーワードで検索</b>
-      </div>
-      <div class="search">
-        <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
-          <div class="flex justify-around">
-            <div class="placeholder-gray-800 border">
-              <%= f.text_field :title, :placeholder => "検索キーワード" %>
-            </div>
+        <div class="col-span-2 bg-white rounded-md shadow m-4">
+          <div class="p-4 flex items-center">
+              <b class="ml-2">キーワードで検索</b>
           </div>
-          <div class='flex justify-center py-4'>
-            <%= f.submit "検索", class:"cursor-pointer px-3 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700" %>
+          <div class="search">
+            <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
+              <div class="flex justify-around">
+                <div class="placeholder-gray-800 border">
+                  <%= f.text_field :title, :placeholder => "検索キーワード" %>
+                </div>
+              </div>
+              <div class='flex justify-center py-4'>
+                <%= f.submit "検索", class:"cursor-pointer px-3 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700" %>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+          <contents></contents>
+        </div>
+
+        <div class="col-span-1">
+          <navbar></navbar>
+        </div>
+
       </div>
-      <contents></contents>
     </div>
-
-    <div class="col-span-1">
-      <navbar></navbar>
-    </div>
-
   </div>
-</div>
+
 <%= javascript_pack_tag 'main' %>
 <%= stylesheet_pack_tag 'main' %>
