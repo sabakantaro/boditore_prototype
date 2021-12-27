@@ -1,33 +1,173 @@
-ど<br />
-ど<br />
-ど<br />
-ど<br />
-ど<br />
-ど<br />
-ど<br />
-ど<br />
-ど<br />
+<div class="container mx-auto lg:px-8 xl:px-36">
+  <div class="lg:grid grid-cols-3 pt-4">
 
-<% @month_user_favorite_ranks.each.with_index(1) do |post, i| %>
-  第<%= i %>位
-:
-<%= post.user.name %>
-:
-<% end %>
-<br />
+    <div class="col-span-1">
+      <div class="rounded-md m-4 shadow">
 
-<% @month_user_post_ranks.each.with_index(1) do |user, i| %>
-  第<%= i %>位
-:
-<%= user.name %>
-:
-<% end %> 
-<br />
+        <div class="flex justify-center text-xl p-4">
+          投稿数ランキング
+        </div>
 
-<% @month_user_relationship_ranks.each.with_index(1) do |user, i| %>
-  第<%= i %>位
-:
-<%= user.name %>
-:
-<% end %> 
-<br />
+        <% @month_user_favorite_ranks.each.with_index(1) do |post, i| %>
+        <%= link_to post.user , data: {"turbolinks" => false} do %>
+
+        <% if i == 1 %>
+          <div class="relative bg-yellow-300 hover:bg-yellow-100 active:bg-yellow-200">
+          <div class="p-4 flex items-center">
+              <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+          </div>
+        <% elsif i == 2 %>
+          <div class="relative bg-gray-400 hover:bg-gray-200 active:bg-gray-300">
+          <div class="p-4 flex items-center">
+              <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+          </div>
+        <% elsif i == 3 %>
+          <div class="relative bg-yellow-600 hover:bg-yellow-500 active:bg-yellow-600">
+          <div class="p-4 flex items-center">
+              <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+          </div>
+        <% else %>
+          <div class="relative bg-white hover:bg-gray-100 active:bg-gray-200">
+          <div class="p-4 flex items-center">
+              <p class="">第<%= i %>位</p>
+          </div>
+        <% end %>
+        
+          <div class="text-sm flex justify-between items-center px-4">
+            <div class="flex display-start items-center">
+              <% if post.user.image.attached? %>
+                <%= image_tag post.user.image, class: "rounded-full h-12 w-12 flex justify-center" %>
+              <% else %>
+                <%= image_tag "default.png", class: "rounded-full h-12 w-12 flex justify-center" %>
+              <% end %>
+              <div class="pt-4 flex justify-center">
+                  <p class="text-2xl"><%= post.user.name %></p>
+              </div>
+            </div>
+          </div>
+
+            <div class="px-4 pt-4 text-sm pb-4">
+              <i class="fas fa-fist-raised"></i>
+              トレーニング歴：<%= post.user.experience %>年
+            </div>
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+    </div>
+
+    <div class="col-span-1">
+      <div class="rounded-md m-4 shadow">
+
+        <div class="flex justify-center text-xl p-4">
+          お気に入り数ランキング
+        </div>
+
+        <% @month_user_post_ranks.each.with_index(1) do |user, i| %>
+        <%= link_to user , data: {"turbolinks" => false} do %>
+
+        <% if i == 1 %>
+          <div class="relative bg-yellow-300 hover:bg-yellow-100 active:bg-yellow-200">
+          <div class="p-4 flex items-center">
+              <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+          </div>
+        <% elsif i == 2 %>
+          <div class="relative bg-gray-400 hover:bg-gray-200 active:bg-gray-300">
+          <div class="p-4 flex items-center">
+              <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+          </div>
+        <% elsif i == 3 %>
+          <div class="relative bg-yellow-600 hover:bg-yellow-500 active:bg-yellow-600">
+          <div class="p-4 flex items-center">
+              <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+          </div>
+        <% else %>
+          <div class="relative bg-white hover:bg-gray-100 active:bg-gray-200">
+          <div class="p-4 flex items-center">
+              <p class="">第<%= i %>位</p>
+          </div>
+        <% end %>
+        
+          <div class="text-sm flex justify-between items-center px-4">
+            <div class="flex display-start items-center">
+              <% if user.image.attached? %>
+                <%= image_tag user.image, class: "rounded-full h-12 w-12 flex justify-center" %>
+              <% else %>
+                <%= image_tag "default.png", class: "rounded-full h-12 w-12 flex justify-center" %>
+              <% end %>
+              <div class="pt-4 flex justify-center">
+                  <p class="text-2xl"><%= user.name %></p>
+              </div>
+            </div>
+          </div>
+
+            <div class="px-4 pt-4 text-sm pb-4">
+              <i class="fas fa-fist-raised"></i>
+              トレーニング歴：<%= user.experience %>年
+            </div>
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+    </div>
+
+    <div class="col-span-1">
+      <div class="rounded-md m-4 shadow">
+
+        <div class="flex justify-center text-xl p-4">
+          フォロワー数ランキング
+        </div>
+
+        <% @month_user_relationship_ranks.each.with_index(1) do |user, i| %>
+        <%= link_to user , data: {"turbolinks" => false} do %>
+
+        <% if i == 1 %>
+          <div class="relative bg-yellow-300 hover:bg-yellow-100 active:bg-yellow-200">
+          <div class="p-4 flex items-center">
+              <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+          </div>
+        <% elsif i == 2 %>
+          <div class="relative bg-gray-400 hover:bg-gray-200 active:bg-gray-300">
+          <div class="p-4 flex items-center">
+              <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+          </div>
+        <% elsif i == 3 %>
+          <div class="relative bg-yellow-600 hover:bg-yellow-500 active:bg-yellow-600">
+          <div class="p-4 flex items-center">
+              <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+          </div>
+        <% else %>
+          <div class="relative bg-white hover:bg-gray-100 active:bg-gray-200">
+          <div class="p-4 flex items-center">
+              <p class="">第<%= i %>位</p>
+          </div>
+        <% end %>
+        
+          <div class="text-sm flex justify-between items-center px-4">
+            <div class="flex display-start items-center">
+              <% if user.image.attached? %>
+                <%= image_tag user.image, class: "rounded-full h-12 w-12 flex justify-center" %>
+              <% else %>
+                <%= image_tag "default.png", class: "rounded-full h-12 w-12 flex justify-center" %>
+              <% end %>
+              <div class="pt-4 flex justify-center">
+                  <p class="text-2xl"><%= user.name %></p>
+              </div>
+            </div>
+          </div>
+
+            <div class="px-4 pt-4 text-sm pb-4">
+              <i class="fas fa-fist-raised"></i>
+              トレーニング歴：<%= user.experience %>年
+            </div>
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+</div>
