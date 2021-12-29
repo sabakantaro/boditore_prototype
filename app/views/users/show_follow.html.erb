@@ -1,40 +1,38 @@
 <div class="container mx-auto lg:px-8 xl:px-36">
-
-    <div class="bg-white rounded-md shadow m-4">
-      <div class="flex items-center pt-4 pl-4 mb-4">
-        <h3 class="ml-2">フォロー</h3>
-      </div>
-      <div class="relative hover:bg-gray-100 active:bg-gray-200">
-        <div class="text-sm flex justify-between items-center px-4 pt-4">
-          <div class="flex display-start items-center">
-              <% @users.each do |user| %>
-                <% if user.image.attached? %>
-                <%= image_tag user.image, class: "rounded-full h-16 w-16 flex items-center justify-center"%>
-                <% else %>
-                <%= image_tag "default.png", class: "rounded-full h-16 w-16 flex items-center justify-center" %>
-                <% end %>
-              <h3 class="px-4 pt-4 text-xl">
-                <%= link_to user.name, user %>
-              </h3>
-            </div>
-          </div>
-            <h3 class="px-4 pt-4 text-xl">
-              <i class="fas fa-fist-raised"></i> トレーニング歴：
-                <%= user.experience %>年
-            </h3>
-            <div class="px-4 pt-4 text-xl">
-              <i class="fas fa-id-card"></i> プロフィール：
-            </div>
-            <p class="p-4 flex items-center">
-              <%=  user.profile %>
-            </p>
-            <% end %>
-            <div class="px-4 pt-4 text-xl">
-            <%= paginate @users %>
-            </div>
-      </div>
+  <div class="bg-white rounded-md shadow m-4">
+    <div class="flex items-center pt-4 pl-4 mb-4">
+      <h3 class="ml-2">フォロー</h3>
     </div>
-  </div>
+      <% @users.each do |user| %>
+      <div class="relative hover:bg-gray-100 active:bg-gray-200">
+      <%= link_to user do %>
+        <div class="flex items-center pl-4 pt-4">
+          <% if user.image.attached? %>
+            <%= image_tag user.image, class: "rounded-full h-16 w-16 flex items-center justify-center"%>
+          <% else %>
+            <%= image_tag "default.png", class: "rounded-full h-16 w-16 flex items-center justify-center" %>
+          <% end %>
+          <div class="flex justify-center pl-2 ml-2 hover:underline">
+              <%= user.name %>
+          </div>
+        </div>
+        <h3 class="px-4 pt-4 text-xl">
+          <i class="fas fa-fist-raised"></i>
+          トレーニング歴：<%= user.experience %>年
+        </h3>
+        <h3 class="px-4 pt-4 text-xl">
+          <i class="fas fa-id-card"></i>
+          プロフィール：
+        </h3>
+        <p class="p-4 flex items-center">
+          <%= user.profile %>
+        </p> 
+      <% end %>
+      </div>
+    <% end %>
+    </div>
+    </div>
+    <div class="py-4 flex justify-center">
+      <%= paginate @users %>
+    </div>
 </div>
-
-  </div>

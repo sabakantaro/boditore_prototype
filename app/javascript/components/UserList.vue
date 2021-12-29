@@ -33,21 +33,6 @@
   </div>
 </template>
 
-<style scoped lang="scss">
-// .user-wrapper {
-//   margin: 0px 300px;
-//   & a {
-//     text-decoration: none;
-//     overflow: hidden;
-//   }
-// }
-
-// .user-card {
-//   text-align: center;
-//   width: 100%;
-// }
-</style>
-
 <script>
 import axios from "axios";
 
