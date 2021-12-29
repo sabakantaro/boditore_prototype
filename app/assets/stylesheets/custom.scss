@@ -874,3 +874,29 @@ input[name="tab_item"] {
 //     border-radius: 100px;
 //   }
 // }
+
+/*ページネーション*/
+
+.pagination {
+  border: none;
+  color: #696969;
+}
+
+.pagination * {
+  border: none;
+  color: #696969;
+}
+
+.pagination a:hover {
+  border-radius: 10px;
+}
+
+.pagination > .page.current {
+  color: blue;
+}
+
+.pagination > .first,
+.last {
+  border: none;
+  color: #696969;
+}

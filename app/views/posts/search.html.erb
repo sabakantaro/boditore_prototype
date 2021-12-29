@@ -1,4 +1,4 @@
-<div class="container mx-auto lg:px-8 xl:px-80">
+<div class="container mx-auto lg:px-8 xl:px-80 pt-4">
 <div class="bg-white rounded-md shadow">
   <div class="p-4 flex items-center">
     <b class="ml-2">検索結果</b>
@@ -41,6 +41,9 @@
       <% end %>
       </div>
     <% end %>
-    <%= paginate @posts %>
+    
 </div>
+<div class="py-4 flex justify-center">
+      <%= paginate @posts %>
+    </div>
 </div>
