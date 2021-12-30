@@ -18,13 +18,13 @@ describe Relationship do
       expect(relationship.errors[:follower_id]).to include
     end
 
-    it 'followerが存在すること' do
+    it 'followerが存在する' do
       relationship = build(:relationship, follower: nil)
       relationship.valid?
       expect(relationship.errors[:follower]).to include('を入力してください')
     end
 
-    it 'followingが存在すること' do
+    it 'followingが存在する' do
       relationship = build(:relationship, followed: nil)
       relationship.valid?
       expect(relationship.errors[:followed]).to include('を入力してください')

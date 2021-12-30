@@ -8,7 +8,7 @@ RSpec.describe '新規投稿', type: :system do
     @post = FactoryBot.build(:post)
   end
 
-  context '新規投稿ができるとき' do
+  context '新規投稿ができるとき', use_truncation: false do
     it 'ログインしたユーザーは新規投稿できる' do
       # ログインする
       visit new_user_session_path

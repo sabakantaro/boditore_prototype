@@ -2,37 +2,36 @@
 
 require 'rails_helper'
 
-# modelでuser, roomの有無を確認しているため実装見送り
+RSpec.describe 'Messages', type: :system do
+  # it '新規投稿する' do
+  #   message = build(:message)
 
-# RSpec.describe 'コメント投稿', type: :system do
-#   before do
-#     @user = FactoryBot.create(:user)
-#     # @user2 = FactoryBot.create(:user)
-#     # @message = FactoryBot.build(:message)
-#     @room = FactoryBot.create(:room)
-#   end
+  #   user = message.sender
 
-#   # ログインしていないユーザーは、コメント投稿フォームが表示されないことを確認済み
+  #   other_user = message.recipient
 
-#   it 'ログインしたユーザーはトークルームでコメントを投稿できる' do
-#     # ログインする
-#     # visit new_user_session_path
-#     # fill_in 'user_email', with: @user.email
-#     # fill_in 'user_password', with: @user.password
-#     # find('input[name="commit"]').click
-#     # # expect(current_path).to eq root_path
-#     # # ツイート詳細ページに遷移する
-#     # visit room_path(@room)
-#     # # フォームに情報を入力する
-#     # # fill_in 'content', with: 'test'
-#     # # # コメントを送信すると、Messageモデルのカウントが1上がる
-#     # # expect  do
-#     #   find('input[name="commit"]').click
-#     #   # sleep 1
-#     # end.to change {Message.count}.by(1)
-#     # コメント内容と「あなたのコメントです」と表示されている
-#     # visit tweet_path(@tweet)
-#     # expect(page).to have_content(@message.text)
-#     # expect(page).to have_content('あなた')
-#   end
-# end
+  #   sign_in user
+
+  #   visit root_path
+
+  #   click_link 'ユーザー'
+
+  #   expect(page).to have_content other_user.name
+
+  #   click_on 'メッセージ'
+
+  #   expect(page).to have_content other_user.name
+
+  #   expect(current_path).to eq messages_user_path(other_user)
+
+  #   expect do
+  #     fill_in 'message_content', with: message.content
+
+  #     click_button '送信'
+  #   end.to change { Message.count }.by(1)
+
+  #   expect(page).to have_content message.content
+
+  #   expect(current_path).to eq messages_user_path(other_user)
+  # end
+end
