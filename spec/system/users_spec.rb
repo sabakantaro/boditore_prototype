@@ -3,91 +3,180 @@
 require 'rails_helper'
 
 RSpec.describe 'ユーザー新規登録', type: :system do
-  before do
-    @user = FactoryBot.build(:user)
+
+  describe 'session' do
+    let!(:user) { create(:user) }
+
+    it 'ログインする' do
+      visit root_path
+
+      click_link 'ログイン'
+
+      expect(current_path).to eq new_user_session_path
+
+      fill_in 'user_email', with: user.email
+
+      fill_in 'user_password', with: user.password
+
+      click_button 'ログイン'
+
+      expect(current_path).to eq root_path
+
+      expect(page).to have_content 'ログインしました。'
+    end
+
+    it 'ログアウトする' do
+      sign_in user
+
+      visit root_path
+
+      click_link 'ログアウト'
+
+      expect(current_path).to eq root_path
+
+      expect(page).to have_content 'ログアウトしました。'
+    end
+
+    it 'ゲストユーザーとしてログインする' do
+      visit root_path
+
+      click_link 'ゲストログイン'
+
+      expect(current_path).to eq root_path
+
+      expect(page).to have_content 'ゲストユーザーとしてログインしました。'
+    end
   end
 
-  context 'ユーザー新規登録ができるとき' , use_truncation: false do
-    it '正しい情報を入力すればユーザー新規登録ができてトップページに移動する' do
-      # トップページに移動する
+  describe 'registration' do
+    let!(:user) { build(:user) }
+
+    it '新規登録する' do
       visit root_path
-      # トップページに遷移するボタンがある
-      expect(page).to have_link 'Boditore', href: root_path
-      # 新規登録ページへ移動する
-      visit new_user_registration_path
-      # ユーザー情報を入力する
-      fill_in 'user_name', with: @user.name
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
-      fill_in 'user_password_confirmation', with: @user.password_confirmation
-      fill_in 'user_profile', with: @user.profile
-      fill_in 'user_experience', with: @user.experience
-      # 新規登録ボタンを押すとuserモデルのカウントが1上がる
-      expect  do
-        find('input[name="commit"]').click
-      end.to change { User.count }.by(1)
-      # トップページへ遷移する
+
+      expect do
+        click_link '新規登録'
+
+        expect(current_path).to eq new_user_registration_path
+
+        fill_in 'user_name', with: user.name
+
+        fill_in 'user_email', with: user.email
+
+        fill_in 'user_password', with: user.password
+
+        fill_in 'user_password_confirmation', with: user.password
+
+        fill_in 'user_profile', with: user.profile
+
+        fill_in 'user_experience', with: user.experience
+
+        click_button '登録'
+
+        expect(page).to have_content 'アカウント登録が完了しました。'
+      end.to change(User, :count).by(1)
+
+      expect(current_path).to eq root_path
+
+      # 登録内容が反映されているか
+      expect(page).to have_content user.name
+
+      expect(page).to have_content 'ログアウト'
+    end
+
+    it '編集する' do
+      user = create(:user)
+      #ログイン
+      visit root_path
+
+      click_link 'ログイン'
+
+      fill_in 'user_email', with: user.email
+
+      fill_in 'user_password', with: user.password
+
+      click_button 'ログイン'
+      #プロフィール編集
+      click_link 'プロフィール編集'
+
+      expect(current_path).to eq edit_user_registration_path
+
+      expect(page).to have_field 'user_name', with: user.name
+
+      expect(page).to have_field 'user_email', with: user.email
+
+      expect(page).to have_field 'user_profile', with: user.profile
+
+      expect(page).to have_field 'user_experience', with: user.experience
+
+      expect(page).to have_field 'user_current_password', with: user.current_password
+
+      expect do
+        fill_in 'user_name', with: 'まちおなるぞう'
+        fill_in 'user_current_password', with: user.password
+        click_button '更新'
+      end.to change { User.find(user.id).name }
+
       expect(current_path).to eq root_path
     end
   end
 
-  context 'ユーザー新規登録ができないとき' do
-    it '誤った情報ではユーザー新規登録ができずに新規登録ページへ戻ってくる' do
-      # トップページに移動する
-      visit root_path
-      # 新規登録ページへ移動する
-      visit new_user_registration_path
-      # 空のユーザー情報を入力する
-      fill_in 'user_name', with: ''
-      fill_in 'user_email', with: ''
-      fill_in 'user_password', with: ''
-      fill_in 'user_password_confirmation', with: ''
-      # 新規登録ボタンを押してもユーザーモデルのカウントは上がらない
-      expect  do
-        find('input[type="submit"]').click
-      end.to change { User.count }.by(0)
-      # 新規登録ページへ戻される
-      expect(current_path).to eq root_path
-    end
+  it '詳細を表示する' do
+    user = create(:user)
+
+    visit root_path
+
+    #ログイン
+    visit root_path
+
+    click_link 'ログイン'
+
+    fill_in 'user_email', with: user.email
+
+    fill_in 'user_password', with: user.password
+
+    click_button 'ログイン'
+    #ユーザー画面へ遷移
+    visit user_path(user)
+
+    expect(page).to have_content user.name
+
+    expect(page).to have_content user.experience
+
+    expect(page).to have_content user.profile
+
+    expect(current_path).to eq user_path(user)
+  end
+
+  it 'フォロー中のユーザーを表示する' do
+    relationship = create(:relationship)
+
+    user = relationship.follower
+
+    other_user = relationship.followed
+
+    sign_in user
+
+    visit user_path(user)
+
+    click_link 'フォロー'
+
+    expect(page).to have_content other_user.name
+  end
+
+  it 'フォロワーを表示する' do
+    relationship = create(:relationship)
+
+    user = relationship.follower
+
+    other_user = relationship.followed
+
+    sign_in user
+
+    visit user_path(other_user)
+
+    click_link 'フォロワー'
+
+    expect(page).to have_content user.name
   end
 end
-
-# RSpec.describe 'ログイン', type: :system do
-#   before do
-#     @user = FactoryBot.create(:user)
-#   end
-#   context 'ログインができるとき' do
-#     it '保存されているユーザーの情報と合致すればログインができる' do
-#       # トップページに移動する
-#       visit root_path
-#       # ログインページへ遷移する
-#       visit new_user_session_path
-#       # 正しいユーザー情報を入力する
-#       fill_in 'user_email', with: @user.email
-#       fill_in 'user_password', with: @user.password
-#       # ログインボタンを押す
-#       find('input[name="commit"]').click
-#       # トップページへ遷移する
-#       expect(current_path).to eq root_path
-#       # 新規登録ボタン・ログインボタンが表示されていない
-#       expect(page).to have_no_link 'ログイン', href: new_user_session_path
-#       expect(page).to have_no_link '新規登録', href: new_user_registration_path
-#     end
-#   end
-
-  # context 'ログインができないとき' do
-  #   it '保存されているユーザーの情報と合致しないとログインができない' do
-  #     # トップページに移動する
-  #     visit root_path
-  #     # ログインページへ遷移する
-  #     visit new_user_session_path
-  #     # 空のユーザー情報を入力する
-  #     fill_in 'user_email', with: ''
-  #     fill_in 'user_password', with: ''
-  #     # ログインボタンを押す
-  #     find('input[name="commit"]').click
-  #     # ログインページへ戻される
-  #     expect(current_path).to eq new_user_session_path
-  #   end
-  # end
-# end
