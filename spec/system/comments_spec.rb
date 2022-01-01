@@ -4,28 +4,32 @@ require 'rails_helper'
 
 RSpec.describe 'Comments', type: :system do
   it '新規投稿する' do
-    comment = build(:comment)
+    comment = create(:comment)
 
     post = comment.post
 
     user = comment.user
+    #ログイン
+    visit root_path
 
-    sign_in user
+    click_link 'ログイン'
+
+    fill_in 'user_email', with: user.email
+
+    fill_in 'user_password', with: user.password
+
+    click_button 'ログイン'
 
     visit post_path(post)
 
-    click_button 'コメント'
+    # fill_in '.comment-text', with: comment.text
 
-    select comment.category, from: 'コメントカテゴリ'
+    find(".comment-text").set(comment.text)
 
-    fill_in '希望時間', with: comment.available_time
-
-    fill_in '本文', with: comment.content
-
-    find('.modal input[value="コメント"]').click
+    click_button '送信'
 
     expect(current_path).to eq post_path(post)
 
-    expect(page).to have_content comment.content
+    expect(page).to have_content comment.text
   end
 end
