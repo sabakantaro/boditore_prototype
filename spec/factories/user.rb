@@ -9,4 +9,13 @@ FactoryBot.define do
     password              { '00000000' }
     password_confirmation { '00000000' }
   end
+
+  factory :other_user, class: User do
+    name { 'なかやまぜいにくん' }
+    email { 'power@example.com' }
+    profile               { 'パワー！' }
+    experience            { '10' }
+    password { 'itsmylife' }
+    password_confirmation { 'itsmylife' }
+  end
 end

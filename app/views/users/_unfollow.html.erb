@@ -1,5 +1,5 @@
 <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
   html: { method: :delete },
   remote: true) do |f| %>
-<%= f.submit "フォロー解除", class: "cursor-pointer px-3 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700" %>
+<%= f.submit "フォロー解除", class: "follow-button-delete cursor-pointer px-3 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700" %>
 <% end %>
