@@ -90,7 +90,7 @@
             <div class="pt-4">
               <%= form_with(model:[@post,@comment_reply]) do |f| %>
                 <label class="text-xs">コメントに返信する</label>
-                <textarea class="placeholder-gray-800 border w-full" name="comment[text]" rows="1"><%=@comment_reply.text%></textarea>
+                <textarea class="reply-text placeholder-gray-800 border w-full" name="comment[text]" rows="1"><%=@comment_reply.text%></textarea>
                 <%= f.hidden_field :post_id, value: @post.id %>
                 <%= f.hidden_field :parent_id, value: comment.id%>
                 <div class="flex justify-center mb-2">

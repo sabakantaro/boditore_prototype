@@ -13,7 +13,6 @@ RSpec.describe 'Relationships', type: :system do
     user = relationship.follower
 
     other_user = relationship.followed
-
     #ログイン
     visit root_path
 

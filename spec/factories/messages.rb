@@ -2,8 +2,9 @@
 
 FactoryBot.define do
   factory :message do
-    content        { Faker::Lorem.sentence }
-    user
-    room
+    # content { '筋トレするかしないかどっちなーんだい！' }
+    # room
+
+    # association :user, factory: :user
   end
 end

@@ -4,34 +4,38 @@ require 'rails_helper'
 
 RSpec.describe 'Messages', type: :system do
   # it '新規投稿する' do
-  #   message = build(:message)
+  #   message = create(:message)
 
-  #   user = message.sender
+  #   user = message.user
 
-  #   other_user = message.recipient
-
-  #   sign_in user
-
+  #   other_user = message.other_user
+  #   #ログイン
   #   visit root_path
 
-  #   click_link 'ユーザー'
+  #   click_link 'ログイン'
 
-  #   expect(page).to have_content other_user.name
+  #   fill_in 'user_email', with: user.email
 
-  #   click_on 'メッセージ'
+  #   fill_in 'user_password', with: user.password
 
-  #   expect(page).to have_content other_user.name
+  #   click_button 'ログイン'
 
-  #   expect(current_path).to eq messages_user_path(other_user)
+  #   visit user_path(other_user)
+
+  #   visit room_path(other_user)
+
+  #   # expect(page).to have_content other_user.name
+
+  #   expect(current_path).to eq room_path(other_user)
 
   #   expect do
   #     fill_in 'message_content', with: message.content
 
-  #     click_button '送信'
+  #     click_button '投稿'
   #   end.to change { Message.count }.by(1)
 
   #   expect(page).to have_content message.content
 
-  #   expect(current_path).to eq messages_user_path(other_user)
+  #   expect(current_path).to eq rooms_user_path(other_user)
   # end
 end
