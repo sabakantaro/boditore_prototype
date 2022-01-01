@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :favorite do
-    user
-    post
+    association :user, factory: :user
+    association :post, factory: :post
   end
 end

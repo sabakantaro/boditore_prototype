@@ -4,46 +4,64 @@ require 'rails_helper'
 
 RSpec.describe 'Favorites', type: :system do
   # csrf_meta_tagsを有効にする
-  # before { ActionController::Base.allow_forgery_protection = true }
-  # after  { ActionController::Base.allow_forgery_protection = false }
+  before { ActionController::Base.allow_forgery_protection = true }
+  after  { ActionController::Base.allow_forgery_protection = false }
 
-  # it 'いいねをする' do
-  #   Favorite = build(:Favorite)
+  it 'いいねをする' do
+    favorite = create(:favorite)
 
-  #   post = Favorite.post
+    post = favorite.post
 
-  #   user = Favorite.user
+    user = favorite.user
+    #ログイン
+    visit root_path
 
-  #   sign_in user
+    click_link 'ログイン'
 
-  #   visit post_path(post)
+    fill_in 'user_email', with: user.email
 
-  #   expect do
-  #     find('.Favorite-button-register').click
+    fill_in 'user_password', with: user.password
 
-  #     expect(page).to have_css '.Favorite-button-delete', visible: false
-  #   end.to change { Favorite.count }.by(1)
+    click_button 'ログイン'
 
-  #   expect(current_path).to eq post_path(post)
-  # end
+    visit post_path(post)
 
-  # it 'いいねを取り消す' do
-  #   Favorite = create(:Favorite)
+    find('.favorite-button-delete').click
 
-  #   post = Favorite.post
+    expect do
+      find('.favorite-button-register').click
 
-  #   user = Favorite.user
+      expect(page).to have_css '.favorite-button-delete', visible: false
+    end.to change { Favorite.count }.by(1)
 
-  #   sign_in user
+    expect(current_path).to eq post_path(post)
+  end
 
-  #   visit post_path(post)
+  it 'いいねを取り消す' do
+    favorite = create(:favorite)
 
-  #   expect do
-  #     find('.favorite-button-delete').click
+    post = favorite.post
 
-  #     expect(page).to have_css '.favorite-button-register', visible: false
-  #   end.to change { Favorite.count }.by(-1)
+    user = favorite.user
+    #ログイン
+    visit root_path
 
-  #   expect(current_path).to eq post_path(post)
-  # end
+    click_link 'ログイン'
+
+    fill_in 'user_email', with: user.email
+
+    fill_in 'user_password', with: user.password
+
+    click_button 'ログイン'
+
+    visit post_path(post)
+
+    expect do
+      find('.favorite-button-delete').click
+
+      expect(page).to have_css '.favorite-button-register', visible: false
+    end.to change { Favorite.count }.by(-1)
+
+    expect(current_path).to eq post_path(post)
+  end
 end

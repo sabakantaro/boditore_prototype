@@ -1,11 +1,11 @@
 
       <% if !Favorite.exists?(user_id:current_user.id,post_id:@post.id) %>
-        <%= link_to post_add_path(@post),method: :post do %>
+        <%= link_to post_add_path(@post), class:"favorite-button-register", method: :post do %>
         <i class="fas fa-star fa-2x" style="color: gray;"></i>
         <%= @favorites_count %>
         <% end %>
       <% else %>
-        <%= link_to post_add_path(@post),method: :delete do %>
+        <%= link_to post_add_path(@post), class:"favorite-button-delete", method: :delete do %>
         <i class="fas fa-star fa-2x" style="color: orange;"></i>
         <%= @favorites_count %>
         <% end %>
