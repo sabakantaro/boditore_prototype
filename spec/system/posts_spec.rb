@@ -83,4 +83,18 @@ RSpec.describe 'Posts', type: :system do
 
     expect(page).to have_content Post.find(@post.id).title
   end
+  
+  it '投稿を検索する' do
+    user = create(:user)
+
+    sign_in user
+
+    visit posts_path
+
+    find(".post-search").set(@post.title)
+
+    visit search_posts_path
+
+    expect(current_path).to eq search_posts_path
+  end
 end
