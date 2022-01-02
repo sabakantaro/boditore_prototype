@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="user in users" :key="user.id">
-      <a v-bind:href="'users/' + user.id">
+      <a class="users-show" v-bind:href="'users/' + user.id">
         <div class="relative hover:bg-gray-100 active:bg-gray-200">
           <div class="text-sm flex justify-between items-center px-4 pt-4">
             <div class="flex display-start items-center">
