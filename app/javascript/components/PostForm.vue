@@ -10,7 +10,7 @@
             name="post.title"
             type="text"
             v-model="post.title"
-            class="placeholder-gray-800 border w-full"
+            class="post-title placeholder-gray-800 border w-full"
             label="タイトルを入力してください。"
             value=""
             placeholder="おすすめの大胸筋トレーニング"
@@ -21,7 +21,7 @@
             name="post.content"
             type="area"
             v-model="post.content"
-            class="placeholder-gray-800 border w-full"
+            class="post-content placeholder-gray-800 border w-full"
             label="投稿内容を入力してください。"
             auto-grow
             value=""

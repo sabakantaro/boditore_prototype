@@ -5,7 +5,7 @@
         <h1>おしらせ</h1>
       </div>
       <div class="flex items-center pl-4 mb-4">
-        <%= link_to notification_path(@notifications), method: :delete do %>
+        <%= link_to notification_path(@notifications),class:"notification-delete", method: :delete do %>
         通知クリア<i class="fas fa-trash fa-lg"></i>
         <% end %>
         <hr>

@@ -10,7 +10,7 @@ describe User, type: :model do
       expect(user).to be_valid
     end
 
-    it 'name, email, passwordなしでは登録できない' do
+    it 'name, email, password, profile, experienceなしでは登録できない' do
       user = User.new(
         name: 'Tester',
         email: 'tester@example.com',
@@ -22,14 +22,14 @@ describe User, type: :model do
       expect(user).to be_valid
     end
 
-    it '@ がメールアドレスに含まれていること' do
+    it '@ がメールアドレスに含まれている' do
       User.create(email: 'tester@example.com')
       user = User.new(email: 'yamadacom')
       user.valid?
       expect(user.errors[:email]).to include('は不正な値です')
     end
 
-    it 'メールアドレスが重複しないこと' do
+    it 'メールアドレスが重複しない' do
       User.create(
         name: 'Tester',
         email: 'tester@example.com',
@@ -48,13 +48,13 @@ describe User, type: :model do
       expect(user.errors[:email]).to include('はすでに存在します')
     end
 
-    it 'パスワードは6文字以上であること' do
+    it 'パスワードは6文字以上である' do
       user = User.new(password: '12345', password_confirmation: '12345')
       user.valid?
       expect(user.errors[:password]).to include('は6文字以上で入力してください')
     end
 
-    it 'password_confirmationはpasswordと同じであること' do
+    it 'password_confirmationはpasswordと同じである' do
       user = User.new(password: '000000', password_confirmation: '111111')
       user.valid?
       expect(user.errors[:password_confirmation]).to include('とパスワードの入力が一致しません')

@@ -6,9 +6,8 @@ class Post < ApplicationRecord
   has_many :users, through: :favorites
   has_many :tag_relationships, dependent: :destroy
   has_many :tags, through: :tag_relationships
-  has_many :comments
-  has_many :comments
-  has_many :replies, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :replies, through: :comments, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   has_one_attached :eyecatch
   attr_accessor :image

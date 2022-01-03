@@ -82,13 +82,13 @@
           </div>
           <div class="flex justify-center pb-4">
               <% if @isRoom == true %>
-              <a class='px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100', href="/rooms/<%= @roomId%>">チャットへ</a>
+              <a class='message px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100', href="/rooms/<%= @roomId%>">チャットへ</a>
               <% else %>
                 <%= form_for @room do |f| %>
                   <%= fields_for @entry do |e| %>
                     <%= e.hidden_field :user_id, :value=> @user.id %>
                   <% end %>
-                    <h3><%= f.submit "チャットを始める" , class:'px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100' %></h3>
+                    <h3><%= f.submit "チャットを始める" , class:'message px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100' %></h3>
                 <% end %>
               <% end %>
           </div>
