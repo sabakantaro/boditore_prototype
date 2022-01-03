@@ -83,6 +83,38 @@ RSpec.describe 'Posts', type: :system do
 
     expect(page).to have_content Post.find(@post.id).title
   end
+
+  it '画像を変更する' do
+    visit root_path
+    #ログイン
+    click_link 'ログイン'
+
+    fill_in 'user_email', with: @user.email
+
+    fill_in 'user_password', with: @user.password
+
+    click_button 'ログイン'
+
+    visit post_path(@post)
+
+    visit edit_post_path(@post)
+
+    expect(current_path).to eq edit_post_path(@post)
+
+    expect(page).to have_field 'post_title', with: @post.title
+
+    expect(page).to have_field 'post_content', with: @post.content
+
+    expect do
+      attach_file('post_image', 'spec/fixtures/testsample.jpg')
+
+      click_button '投稿'
+
+      visit post_path(@post)
+    end.to change { Post.find(@post.id).eyecatch }
+
+    expect(current_path).to eq post_path(@post)
+  end
   
   it '投稿を検索する' do
     user = create(:user)

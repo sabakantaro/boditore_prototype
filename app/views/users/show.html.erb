@@ -88,7 +88,7 @@
                   <%= fields_for @entry do |e| %>
                     <%= e.hidden_field :user_id, :value=> @user.id %>
                   <% end %>
-                    <h3><%= f.submit "チャットを始める" , class:'px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100' %></h3>
+                    <h3><%= f.submit "チャットを始める" , class:'message px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100' %></h3>
                 <% end %>
               <% end %>
           </div>
