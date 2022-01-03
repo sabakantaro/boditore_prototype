@@ -8,7 +8,7 @@ jobs:
           PGHOST: 127.0.0.1
           PGUSER: Snivy
           RAILS_ENV: test
-      #使ってるデータベースとバージョンを指定する。# 「host: localhost」でアクセスできるサービスコンテナイメージ。
+      #使ってるデータベースとバージョンを指定する。
       - image: circleci/postgres:13.3
         environment:
           #それぞれ設定
@@ -48,7 +48,7 @@ jobs:
       # Webpack用
       - run:
           name: yarn Install
-          command: yarn install
+          command: yarn install --ignore-engines
       - run: bundle exec bin/webpack
 
       - run:
@@ -58,10 +58,8 @@ jobs:
       #awsデプロイ
       - add_ssh_keys:
           fingerprints:
-            # - "b2:8e:3c:03:80:9c:dc:78:a3:d6:dd:12:1b:c0:10:94"
-            # - "99:9c:f1:fe:52:a6:5f:ca:f0:5e:7b:f2:60:47:ad:c0"
             - "5f:94:d4:40:1b:d0:fd:19:e8:13:ae:df:10:9f:0d:01"
-      # - run: ssh ${USER_NAME}@${HOST_NAME} 'cd var/www/boditore_prototype && git pull'
+
       # masterブランチの時のみデプロイ
       - deploy:
           name: Capistrano deploy
