@@ -6,6 +6,7 @@ FactoryBot.define do
     email                 { Faker::Internet.free_email }
     profile               { 'よろしくお願いします！' }
     experience            { '5' }
+    image { File.open(File.join(Rails.root, 'spec/fixtures/testsample.jpg')) }
     password              { '00000000' }
     password_confirmation { '00000000' }
   end

@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe 'ユーザー新規登録', type: :system do
-
   describe 'session' do
     let!(:user) { create(:user) }
 
@@ -116,6 +115,33 @@ RSpec.describe 'ユーザー新規登録', type: :system do
         fill_in 'user_current_password', with: user.password
         click_button '更新'
       end.to change { User.find(user.id).name }
+
+      expect(current_path).to eq root_path
+    end
+
+
+    it '画像を変更する' do
+      user = create(:user)
+      #ログイン
+      visit root_path
+
+      click_link 'ログイン'
+
+      fill_in 'user_email', with: user.email
+
+      fill_in 'user_password', with: user.password
+
+      click_button 'ログイン'
+      #プロフィール編集
+      click_link 'プロフィール編集'
+
+      expect(current_path).to eq edit_user_registration_path
+
+      expect do
+        attach_file('user_image', 'spec/fixtures/testsample.jpg')
+        fill_in 'user_current_password', with: user.password
+        click_button '更新'
+      end.to change { User.find(user.id).image }
 
       expect(current_path).to eq root_path
     end
