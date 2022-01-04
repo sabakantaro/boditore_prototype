@@ -23,6 +23,60 @@
 
         <div class="col-span-1">
           <navbar></navbar>
+
+          <div class="bg-white rounded-md m-4 shadow">
+
+            <div class="flex justify-center text-xl p-4">
+              お気に入り数ランキング
+            </div>
+
+            <% @month_post_favorite_ranks.each.with_index(1) do |post, i| %>
+            <%= link_to post , data: {"turbolinks" => false} do %>
+
+            <% if i == 1 %>
+              <div class="relative bg-yellow-300 hover:bg-yellow-100 active:bg-yellow-200">
+              <div class="p-4 flex items-center">
+                  <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+              </div>
+            <% elsif i == 2 %>
+              <div class="relative bg-gray-400 hover:bg-gray-200 active:bg-gray-300">
+              <div class="p-4 flex items-center">
+                  <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+              </div>
+            <% elsif i == 3 %>
+              <div class="relative bg-yellow-600 hover:bg-yellow-500 active:bg-yellow-600">
+              <div class="p-4 flex items-center">
+                  <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+              </div>
+            <% else %>
+              <div class="relative bg-white hover:bg-gray-100 active:bg-gray-200">
+              <div class="p-4 flex items-center">
+                  <p class="">第<%= i %>位</p>
+              </div>
+            <% end %>
+                <div class="px-4 pt-4 text-xl pb-4">
+                  <%= post.title %>
+                </div>
+            
+
+   
+                <div class="flex display-start items-center px-4 pt-2 pb-4">
+                  <% if post.user.image.attached? %>
+                    <%= image_tag post.user.image, class: "h-8 w-8" %>
+                  <% else %>
+                    <%= image_tag "default.png", class: "h-8 w-8" %>
+                  <% end %>
+                  <div class="pl-2 hover:underline">
+                      <%= link_to post.user.name, post.user %>
+                  </div>
+                </div>
+
+            </div>
+            <% end %>
+            <% end %>
+
+          </div>
+
         </div>
 
       </div>

@@ -15,6 +15,8 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(created_at: :desc)
+    #月間お気に入り数ランキング
+    @month_post_favorite_ranks = Post.find(Favorite.group(:post_id).where(created_at: Time.current.all_month).order('count(post_id) desc').limit(10).pluck(:post_id))
   end
 
   def show
