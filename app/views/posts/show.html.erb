@@ -60,7 +60,7 @@
         <div class="m-4 p-4 h-auto bg-white rounded-md shadow">
           <h2>コメント一覧</h2>
           <hr />
-
+<div class="comments">
           <% @comments.each do |comment| %>
 
             <% if comment.parent_id.present? || comment.id.blank? %>
@@ -84,24 +84,26 @@
 
             <div id="reply_area">
               <% comment.replies.order(:created_at).each do |reply| %>
+              <div class="comment" id="comment<%= comment.id %>">
               <p><i class="fas fa-reply"></i><%= comment.user.name %> : <%=reply.text%></p>
               <% end %>
+              </div>
             </div>
             <div class="pt-4">
-              <%= form_with(model:[@post,@comment_reply]) do |f| %>
+              <%= form_with(model:[@post,@comment_reply], class: "comment_form", id: "comment_input", local: true) do |f| %>
                 <label class="text-xs">コメントに返信する</label>
-                <textarea class="reply-text placeholder-gray-800 border w-full" name="comment[text]" rows="1"><%=@comment_reply.text%></textarea>
+                <textarea class="comment_form-text reply-text placeholder-gray-800 border w-full" name="comment[text]" rows="1"><%=@comment_reply.text%></textarea>
                 <%= f.hidden_field :post_id, value: @post.id %>
                 <%= f.hidden_field :parent_id, value: comment.id%>
                 <div class="flex justify-center mb-2">
-                  <%= f.submit "返信", class:"cursor-pointer px-1 py-1/2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700" %>
+                  <%= f.submit "返信", class:"comment_form-btn cursor-pointer px-1 py-1/2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700" %>
                 </div>
               <% end %>
               <hr />
-              </div>
+            
 
             <% end %>
-            
+              </div>
 
           </div>
         </div>

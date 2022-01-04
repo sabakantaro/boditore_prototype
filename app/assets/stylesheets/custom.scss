@@ -91,31 +91,6 @@ body {
   color: orangered;
 }
 
-// .body-main-2 {
-//   text-align: center;
-//   width: 74%;
-//   margin: 0 auto;
-//   margin-top: 60px;
-//   padding: 40px;
-//   border: 1px solid #e1e1e1;
-//   background-color: white;
-//   border-radius: 5px;
-//   box-shadow: 0px 4px 6px #ccc;
-// }
-
-// ul.sub__ttl {
-//   display: flex;
-//   justify-content: space-between;
-//   & li {
-//     display: inline-block;
-//   }
-// }
-
-// /*btn*/
-// .center {
-//   text-align: center;
-// }
-
 .nav {
   color: #fff;
   background-color: black;
@@ -196,226 +171,7 @@ ul {
   overflow: visible;
 }
 
-// /* user-icon */
-
-// .user-icon {
-//   width: 100px;
-//   height: 100px;
-//   border-radius: 100px;
-// }
-
-// .user-icon_small {
-//   width: 50px;
-//   height: 50px;
-//   border-radius: 100px;
-// }
-
-// .n-circle {
-//   position: absolute;
-//   padding-left: 1rem;
-//   padding-top: 0rem;
-//   color: #efa04c;
-// }
-
-// /* user show */
-
-// .user__wrapper {
-//   height: 100%;
-//   width: 100%;
-//   // margin-top: 5px;
-//   padding: 80px 0;
-// }
-
-// .user__show {
-//   width: 600px;
-//   margin: 0 auto;
-//   padding: 20px;
-//   border: 1px solid #e1e1e1;
-//   background-color: white;
-//   border-radius: 5px;
-//   box-shadow: 0px 4px 6px #ccc;
-// }
-
-// .user__show__top {
-//   padding: 20px;
-//   margin-left: 40px;
-//   height: 120px;
-//   display: flex;
-// }
-
-// .user__show__bottom {
-//   margin-top: 30px;
-//   padding: 20px;
-//   display: flex;
-//   justify-content: space-between;
-
-//   &__name {
-//     width: 200px;
-//     text-align: center;
-//     margin-left: 45px;
-//   }
-
-//   &__follow {
-//     display: flex;
-//     width: 200px;
-//     padding-top: 20px;
-//     margin: 0 auto;
-//     margin-left: 55px;
-//     & a {
-//       color: $cBlack;
-//       text-decoration: none;
-//     }
-//   }
-//   &__status {
-//     padding: 15px;
-//     border: 1 px solid #e1e1e1;
-//     border-radius: 5 px;
-//     position: relative;
-//     box-shadow: 0px 4px 6px #ccc;
-//     &__experience {
-//       width: 200px;
-//     }
-//     &__profile {
-//       width: 200px;
-//     }
-//   }
-// }
-
-// .user__show__top__content {
-//   margin-left: 50px;
-// }
-
-// .user__show__top__content .btn {
-//   width: 200px;
-//   text-decoration: none;
-//   background-color: $cWhite;
-//   color: $cBlack;
-//   border: 1px solid $cBlack;
-//   padding: 10px 40px;
-//   margin: 30px 0;
-//   font-weight: 600;
-//   cursor: pointer;
-//   transition: all 0.3s;
-
-//   &.slide-bg {
-//     position: relative;
-//     overflow: hidden;
-//     z-index: 1;
-
-//     & a {
-//       text-decoration: none;
-//       color: $cBlack;
-//     }
-//     & span {
-//       display: inline-block;
-//       width: 100%;
-//       height: 100%;
-//       background-color: $cBlack;
-//       position: absolute;
-//       top: 0;
-//       left: 0;
-//       transform: translateX(-100%);
-//       transition: transform 0.3s;
-//       z-index: -1;
-//     }
-
-//     &:hover {
-//       color: $cWhite;
-
-//       & a {
-//         text-decoration: none;
-//         color: $cWhite;
-//       }
-
-//       & span {
-//         transform: none;
-//       }
-//     }
-//   }
-// }
-
-// .btn__unfollow {
-//   width: 200px;
-//   text-decoration: none;
-//   background-color: gray;
-//   color: $cWhite;
-//   border: 1px solid gray;
-//   padding: 13px 40px;
-//   margin: 30px 0;
-//   font-weight: 600;
-//   cursor: pointer;
-//   transition: all 0.3s;
-//   border-radius: 5px;
-// }
-
-// .btn__follow {
-//   width: 200px;
-//   text-decoration: none;
-//   background-color: skyblue;
-//   color: $cWhite;
-//   border: 1px solid skyblue;
-//   padding: 13px 40px;
-//   margin: 30px 0;
-//   font-weight: 600;
-//   cursor: pointer;
-//   transition: all 0.3s;
-//   border-radius: 5px;
-// }
-
-// .user__show__post {
-//   &__index__item {
-//     &__user {
-//       position: relative;
-//       &__name {
-//         position: absolute;
-//         left: 55px;
-//         top: 15px;
-//       }
-//     }
-
-//     & h3 {
-//       display: block;
-//       text-align: center;
-//     }
-
-//     & a {
-//       text-decoration: none;
-//       color: black;
-//     }
-//   }
-
-//   &__index {
-//     display: flex;
-//     justify-content: space-around;
-//     width: 100%;
-//     &__item {
-//       display: inline-block;
-//       width: 750px;
-//       padding: 30px;
-//       margin: 5% 0;
-//       border: 1px solid #e1e1e1;
-//       border-radius: 5px;
-//       position: relative;
-//       box-shadow: 0px 4px 6px #ccc;
-//       &__user a {
-//         text-decoration: none;
-//         color: $cBlack;
-//       }
-//     }
-//   }
-// }
-
-// /*タブ切り替え全体のスタイル*/
-
-// .tabs {
-//   margin-top: 50px;
-//   padding-bottom: 40px;
-//   background-color: #fff;
-//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-//   width: 900px;
-// }
-
-/*タブのスタイル*/
+/*タブ*/
 
 .tab_item {
   width: calc(100% / 2);
@@ -437,13 +193,13 @@ ul {
   opacity: 0.75;
 }
 
-/*ラジオボタンを全て消す*/
+/*ラジオボタンを消す*/
 
 input[name="tab_item"] {
   display: none;
 }
 
-/*タブ切り替えの中身のスタイル*/
+/*タブ切り替え*/
 
 .tab_content {
   display: none;
@@ -452,93 +208,19 @@ input[name="tab_item"] {
   overflow: hidden;
 }
 
-/*選択されているタブのコンテンツのみを表示*/
+/*選択されているタブのコンテンツみ表示*/
 
 #all:checked ~ #all_content,
 #favorite:checked ~ #favorite_content {
   display: block;
 }
 
-/*選択されているタブのスタイルを変える*/
+/*選択されているタブのスタイルを変更*/
 
 .tabs input:checked + .tab_item {
   background-color: black;
   color: #fff;
 }
-
-// /* footer */
-
-// footer {
-//   width: 100%;
-//   color: $cBlack;
-//   text-align: center;
-// }
-
-// .footer-menu a {
-//   display: inline;
-//   color: $cBlack;
-//   text-decoration: none;
-// }
-
-// /*post*/
-
-// .sysNextSubmit {
-//   width: 120px;
-//   text-decoration: none;
-//   background-color: #556b2f;
-//   color: $cWhite;
-//   border: 1.5px solid gray;
-//   padding: 13px 40px;
-//   margin: 30px 0;
-//   font-weight: 600;
-//   cursor: pointer;
-//   transition: all 0.3s;
-//   border-radius: 5px;
-// }
-
-// .post {
-//   text-align: center;
-//   & a {
-//     text-decoration: none;
-//     color: $cBlack;
-//   }
-// }
-
-// /*user-index*/
-
-// .search {
-//   width: 250px;
-//   min-height: 500px;
-//   height: auto;
-//   float: left;
-//   margin-top: 10px;
-// }
-
-// .user__search {
-//   padding-top: 80px;
-//   padding-bottom: 20px;
-//   justify-content: center;
-//   text-align: center;
-//   & input {
-//     background-color: white;
-//     border-style: inset;
-//     border-radius: 3px;
-//     box-sizing: border-box;
-//     padding: 2px;
-//   }
-// }
-
-// .post__search {
-//   justify-content: center;
-//   text-align: center;
-//   & input {
-//     background-color: white;
-//     border-style: inset;
-//     border-radius: 3px;
-//     box-sizing: border-box;
-//     padding: 2px;
-//   }
-// }
 
 /* DM */
 
@@ -568,26 +250,7 @@ input[name="tab_item"] {
   padding: 10px;
 }
 
-// /* DM*/
-
-// .room-show__form {
-//   text-align: center;
-//   height: 70px;
-//   width: 100%;
-//   padding-top: 20px;
-//   padding-bottom: 30px;
-//   display: flex;
-//   border-top: 1px solid #e1e1e1;
-//   background-color: #bcbcbc;
-//   position: fixed;
-//   bottom: 0;
-//   &__box {
-//     position: relative;
-//     margin: 0 auto;
-//   }
-// }
-
-/* 共通 */
+/* アラート */
 .notifications {
   color: $cWhite;
 
@@ -652,36 +315,6 @@ input[name="tab_item"] {
   }
 }
 
-// .common_wrapper {
-//   width: 600px;
-//   margin: 0 auto;
-//   padding: 40px;
-//   padding-top: 120px;
-//   border: 1px solid #e1e1e1;
-//   background-color: white;
-//   border-radius: 5px;
-//   box-shadow: 0px 4px 6px #ccc;
-//   h1 {
-//     text-align: center;
-//   }
-//   & a {
-//     text-decoration: none;
-//     color: $cBlack;
-//   }
-// }
-
-// .notice {
-//   color: $cBlack;
-//   text-align: left;
-//   width: fit-content;
-//   margin: 10px auto 0 0;
-//   padding: 10px;
-//   & a {
-//     text-decoration: none;
-//     color: blue;
-//   }
-// }
-
 @keyframes fadeout {
   0% {
     opacity: 1;
@@ -726,154 +359,6 @@ input[name="tab_item"] {
     padding: 0;
   }
 }
-
-// /* post show */
-
-// .post__show__title__body {
-//   display: block;
-//   text-align: center;
-//   font-size: 30px;
-//   font-weight: bold;
-//   padding: 30px 0;
-// }
-
-// .post__show__content {
-//   font-size: 18px;
-
-//   &__favorite {
-//     display: flex;
-//     justify-content: center;
-//     padding: 20px;
-//   }
-// }
-
-// /* post index */
-
-// .post__wrapper {
-//   & a {
-//     text-decoration: none;
-//     color: $cBlack;
-//   }
-// }
-
-// .post__index {
-//   margin: 0px auto;
-//   width: 500px;
-//   display: flex;
-//   justify-content: space-around;
-//   flex-wrap: wrap;
-
-//   &__item {
-//     display: inline-block;
-//     width: 100%;
-//     padding: 30px;
-//     margin-top: 30px;
-//     border: 1px solid #e1e1e1;
-//     background-color: white;
-//     border-radius: 5px;
-//     position: relative;
-//     box-shadow: 0px 4px 6px #ccc;
-//     & h3 {
-//       display: block;
-//       text-align: center;
-//     }
-
-//     & a {
-//       text-decoration: none;
-//       color: $cBlack;
-//     }
-//     &__user {
-//       position: relative;
-//       &__name {
-//         position: absolute;
-//         left: 55px;
-//         top: 15px;
-//       }
-//     }
-
-//     &__img {
-//       height: 300px;
-//       width: 100%;
-//       object-fit: cover;
-//       margin: 20px 0;
-//     }
-//   }
-// }
-
-// /*Form画面*/
-
-// /* レスポンシブ対応 */
-
-// @media screen and (min-width: 320px) {
-//   .body {
-//     font-size: 1.4rem;
-//   }
-
-//   .nav__item a {
-//     padding: 1px 1rem;
-//   }
-
-//   .gnav {
-//     padding: 3px;
-//   }
-
-//   .gnav li:hover > ul > li {
-//     height: 2.8rem;
-//     overflow: visible;
-//   }
-
-//   .slick-slide img {
-//     width: 500px;
-//     height: 250px;
-//   }
-
-//   ul.sub__ttl {
-//     display: flex;
-//     justify-content: space-between;
-//   }
-
-//   .user-icon {
-//     width: 100px;
-//     height: 100px;
-//     border-radius: 100px;
-//   }
-//   .user-icon_small {
-//     width: 50px;
-//     height: 50px;
-//     border-radius: 100px;
-//   }
-// }
-
-// @media screen and (min-width: 768px) {
-//   .body {
-//     font-size: 1.5rem;
-//   }
-
-//   .nav__item a {
-//     padding: 10px 3rem;
-//   }
-
-//   .slick-slide img {
-//     width: 890px;
-//     height: 450px;
-//   }
-
-//   ul.sub__ttl {
-//     display: flex;
-//     justify-content: space-between;
-//   }
-
-//   .user-icon {
-//     width: 200px;
-//     height: 200px;
-//     border-radius: 100px;
-//   }
-//   .user-icon_small {
-//     width: 50px;
-//     height: 50px;
-//     border-radius: 100px;
-//   }
-// }
 
 /*ページネーション*/
 

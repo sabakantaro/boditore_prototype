@@ -15,7 +15,6 @@
 //= require_tree .
 //= require turbolinks
 
-
 $(document).on("ready", function () {
   $(".full-screen").slick({
     centerMode: true,
@@ -27,3 +26,4 @@ $(document).on("ready", function () {
     infinite: true,
   });
 });
+

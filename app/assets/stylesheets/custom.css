@@ -185,7 +185,7 @@ ul {
   overflow: visible;
 }
 
-/*タブのスタイル*/
+/*タブ*/
 .tab_item {
   width: calc(100% / 2);
   height: 50px;
@@ -207,12 +207,12 @@ ul {
   opacity: 0.75;
 }
 
-/*ラジオボタンを全て消す*/
+/*ラジオボタンを消す*/
 input[name="tab_item"] {
   display: none;
 }
 
-/*タブ切り替えの中身のスタイル*/
+/*タブ切り替え*/
 .tab_content {
   display: none;
   padding: 40px 40px 0;
@@ -220,13 +220,13 @@ input[name="tab_item"] {
   overflow: hidden;
 }
 
-/*選択されているタブのコンテンツのみを表示*/
+/*選択されているタブのコンテンツみ表示*/
 #all:checked ~ #all_content,
 #favorite:checked ~ #favorite_content {
   display: block;
 }
 
-/*選択されているタブのスタイルを変える*/
+/*選択されているタブのスタイルを変更*/
 .tabs input:checked + .tab_item {
   background-color: black;
   color: #fff;
@@ -266,7 +266,7 @@ input[name="tab_item"] {
   padding: 10px;
 }
 
-/* 共通 */
+/* アラート */
 .notifications {
   color: white;
 }
