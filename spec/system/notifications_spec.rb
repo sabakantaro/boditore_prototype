@@ -13,7 +13,7 @@ RSpec.describe 'Notifications', type: :system do
     user = relationship.follower
 
     other_user = relationship.followed
-    #ログイン
+    # ログイン
     visit root_path
 
     click_link 'ログイン'
@@ -31,11 +31,11 @@ RSpec.describe 'Notifications', type: :system do
     find('.follow-button-register').click
 
     expect(current_path).to eq user_path(other_user)
-    #ログアウト
+    # ログアウト
     visit root_path
 
     click_link 'ログアウト'
-    #other_userでログイン
+    # other_userでログイン
     visit root_path
 
     click_link 'ログイン'
@@ -59,7 +59,7 @@ RSpec.describe 'Notifications', type: :system do
     user = relationship.follower
 
     other_user = relationship.followed
-    #ログイン
+    # ログイン
     visit root_path
 
     click_link 'ログイン'
@@ -77,11 +77,11 @@ RSpec.describe 'Notifications', type: :system do
     find('.follow-button-register').click
 
     expect(current_path).to eq user_path(other_user)
-    #ログアウト
+    # ログアウト
     visit root_path
 
     click_link 'ログアウト'
-    #other_userでログイン
+    # other_userでログイン
     visit root_path
 
     click_link 'ログイン'

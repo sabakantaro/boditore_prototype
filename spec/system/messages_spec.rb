@@ -7,7 +7,7 @@ RSpec.describe 'Messages', type: :system do
     user = create(:user)
 
     other_user = create(:other_user)
-    #ログイン
+    # ログイン
     visit root_path
 
     click_link 'ログイン'
@@ -23,7 +23,7 @@ RSpec.describe 'Messages', type: :system do
     find('.message').click
 
     expect do
-      fill_in 'message_content', with: '筋トレするかしないかどっちなーんだい！' 
+      fill_in 'message_content', with: '筋トレするかしないかどっちなーんだい！'
 
       click_button '投稿'
     end.to change { Message.count }.by(1)

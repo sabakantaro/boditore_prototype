@@ -10,12 +10,11 @@ class PostsController < ApplicationController
                Post.none
              end
     @posts = @posts.page(params[:page])
-
   end
 
   def index
     @posts = Post.all.order(created_at: :desc)
-    #月間お気に入り数ランキング
+    # 月間お気に入り数ランキング
     @month_post_favorite_ranks = Post.find(Favorite.group(:post_id).where(created_at: Time.current.all_month).order('count(post_id) desc').limit(10).pluck(:post_id))
   end
 
@@ -23,7 +22,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @favorites_count = Favorite.where(post_id: params[:id]).count
     @comments = @post.comments
-    @comment = current_user.comments.new 
+    @comment = current_user.comments.new
     @comment_reply = @post.comments.build
   end
 

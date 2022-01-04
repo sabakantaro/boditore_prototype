@@ -13,7 +13,7 @@ RSpec.describe 'Favorites', type: :system do
     post = favorite.post
 
     user = favorite.user
-    #ログイン
+    # ログイン
     visit root_path
 
     click_link 'ログイン'
@@ -43,7 +43,7 @@ RSpec.describe 'Favorites', type: :system do
     post = favorite.post
 
     user = favorite.user
-    #ログイン
+    # ログイン
     visit root_path
 
     click_link 'ログイン'

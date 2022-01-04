@@ -11,7 +11,6 @@ class Post < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   has_one_attached :eyecatch
   attr_accessor :image
-  
 
   # vueでエラーメッセージ実装予定
   validates :title,

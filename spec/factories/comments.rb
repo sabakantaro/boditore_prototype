@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :comment do
     user_id { 1 }
     post_id { 1 }
-    text { "パワー！" }
+    text { 'パワー！' }
 
     association :user, factory: :user
     association :post, factory: :post

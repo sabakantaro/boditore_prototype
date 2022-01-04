@@ -9,7 +9,7 @@ RSpec.describe 'Comments', type: :system do
     post = comment.post
 
     user = comment.user
-    #ログイン
+    # ログイン
     visit root_path
 
     click_link 'ログイン'
@@ -22,7 +22,7 @@ RSpec.describe 'Comments', type: :system do
 
     visit post_path(post)
 
-    find(".comment-text").set(comment.text)
+    find('.comment-text').set(comment.text)
 
     click_button '送信'
 
@@ -37,7 +37,7 @@ RSpec.describe 'Comments', type: :system do
     post = comment.post
 
     user = comment.user
-    #ログイン
+    # ログイン
     visit root_path
 
     click_link 'ログイン'
@@ -50,7 +50,7 @@ RSpec.describe 'Comments', type: :system do
 
     visit post_path(post)
 
-    find(".reply-text").set(comment.text)
+    find('.reply-text').set(comment.text)
 
     click_button '送信'
 

@@ -51,7 +51,7 @@ RSpec.describe 'Home', type: :system do
     it 'ユーザー一覧画面からユーザー詳細画面を開く' do
       user = create(:user)
 
-      sign_in user      
+      sign_in user
 
       visit root_path
 
@@ -69,7 +69,7 @@ RSpec.describe 'Home', type: :system do
 
       visit root_path
 
-      find(".user-search").set(5)
+      find('.user-search').set(5)
 
       visit search_users_path
 

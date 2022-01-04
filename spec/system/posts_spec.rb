@@ -10,7 +10,7 @@ RSpec.describe 'Posts', type: :system do
 
   it '新規投稿する' do
     visit root_path
-    #ログイン
+    # ログイン
     click_link 'ログイン'
 
     fill_in 'user_email', with: @user.email
@@ -28,7 +28,7 @@ RSpec.describe 'Posts', type: :system do
 
   it '詳細を表示する' do
     visit root_path
-    #ログイン
+    # ログイン
     click_link 'ログイン'
 
     fill_in 'user_email', with: @user.email
@@ -52,7 +52,7 @@ RSpec.describe 'Posts', type: :system do
 
   it '編集する' do
     visit root_path
-    #ログイン
+    # ログイン
     click_link 'ログイン'
 
     fill_in 'user_email', with: @user.email
@@ -86,7 +86,7 @@ RSpec.describe 'Posts', type: :system do
 
   it '画像を変更する' do
     visit root_path
-    #ログイン
+    # ログイン
     click_link 'ログイン'
 
     fill_in 'user_email', with: @user.email
@@ -115,7 +115,7 @@ RSpec.describe 'Posts', type: :system do
 
     expect(current_path).to eq post_path(@post)
   end
-  
+
   it '投稿を検索する' do
     user = create(:user)
 
@@ -123,7 +123,7 @@ RSpec.describe 'Posts', type: :system do
 
     visit posts_path
 
-    find(".post-search").set(@post.title)
+    find('.post-search').set(@post.title)
 
     visit search_posts_path
 
