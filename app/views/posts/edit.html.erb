@@ -15,7 +15,8 @@
       
       <div class="px-4 pb-4">
         <%= f.label :写真 %><br>
-        <%= f.file_field :image %>
+        <%= f.file_field :image, id:'image_upload', class:'w-full text-sm sm:text-lg px-1' %>
+        <div id='preview_area' class='w-full my-5'></div>
       </div>
 
       <div class="py-4 flex justify-center">

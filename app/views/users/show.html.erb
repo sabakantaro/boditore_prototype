@@ -103,14 +103,22 @@
 
     <div class="col-span-2">
     <div class="bg-white rounded-md shadow mt-4 mx-4">
-      <div class="tabs">
-        <input id="all" type="radio" name="tab_item" checked>
-        <label class="tab_item rounded-tl-md" for="all">自分の投稿</label>
-        <input id="favorite" type="radio" name="tab_item">
-        <label class="tab_item rounded-tr-md" for="favorite">お気に入り投稿</label>
-        <div class="tab_content" id="all_content">
+
+
+
+      <div class="tab-panel">
+        <!--タブ-->
+        <ul class="tab-group">
+          <li class="tab tab-A is-active rounded-tl-md">自分の投稿</li>
+          <li class="tab tab-B rounded-tr-md">お気に入り投稿</li>
+        </ul>
+        
+        <!--タブを切り替えて表示するコンテンツ-->
+        <div class="panel-group">
+
+          <div class="panel tab-A is-show">          
           <% @posts.each do |post| %>
-          <div class="relative pt-4">
+          <div class="relative  p-4">
             <div class="flex items-center">
               <% if post.user.image.attached? %>
                 <%= image_tag post.user.image, class:"rounded-full h-16 w-16"%>
@@ -145,10 +153,10 @@
           <% end %>
         </div>
 
-        <div class="tab_content" id="favorite_content">
+          <div class="panel tab-B">
           <% if @favorite_list.present? %>
             <% @favorite_list.each do |post| %>
-              <div class="relative pt-4">
+              <div class="relative p-4">
                 <div class="flex items-center">
                   <% if post.user.image.attached? %>
                     <%= image_tag post.user.image, class:"rounded-full h-16 w-16"%>
@@ -183,7 +191,11 @@
             <% end %>
           <% end %>
           </div>
-          </div>
+
+        </div>
+      </div>
+
+
         </div>
         </div>
         </div>

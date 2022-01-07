@@ -44,7 +44,10 @@
             type="file"
             ref="file"
             v-on:change="onFileChange()"
-          /><br />
+            id="image_upload"
+          />
+          <div id="preview_area" class="w-full my-5"></div>
+          <br />
           <div class="py-4 flex justify-center">
             <input
               type="submit"

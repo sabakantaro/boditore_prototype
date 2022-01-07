@@ -3,10 +3,10 @@
     <h2>プロフィール編集</h2>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-
     <div class="px-4 pb-4 pt-4">
       <%= f.label :写真 %> <br />
-      <%= f.file_field :image %>
+      <%= f.file_field :image, id:'image_upload', class:'w-full text-sm sm:text-lg px-1' %>
+        <div id='preview_area' class='w-full my-5'></div>
     </div>
 
     <div class="px-4 pb-4">
