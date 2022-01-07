@@ -32,7 +32,7 @@
 ・CircleCI<br>
 ・Unicorn<br>
 ・Nginx<br>
-・AWS(VPC、ACM、Route53、EC2、RDS、S3)<br>
+・AWS(VPC、ACM、Route53、EC2、RDS、S3、IAM)<br>
 
 ### テスト、静的コード解析
 
@@ -106,7 +106,6 @@ capistorano を用いて自動デプロイを実装しました。<br>
 ・トップページの自動スライドアニメーション(javascript で実装)<br>
 ・メッセージ投稿後の自動更新(javascript で実装)<br>
 
-<!-- ・スマートフォン・タブレット・PC 画面に合わせたレスポンシブル対応(sass で実装)※完全SPA化後に実装<br> -->
 
 ## インフラ構成
 
