@@ -43,7 +43,7 @@
                   <p class="text-xl"><%= current_user.name %></p>
               </div>
               <div class="flex justify-center pb-4 pt-2">
-                <%= link_to "プロフィール編集", edit_user_registration_path, class:'px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100' %>
+                <%= link_to "プロフィール編集", edit_user_registration_path, class:'px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100',data: {"turbolinks"=>false}  %>
               </div>
               <div class="flex justify-center pb-4">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:'px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100' %>
@@ -130,25 +130,25 @@
   </div>
 
   <div class="w-full bg-gray-100 my-4 py-5 px-2 md:px-6">
-    <div class="text-3xl lg:text-4xl font-bold text-center border-gray-300 border-b-2 pb-2"> Boditoreの3つの特長</div>
-      <div class="w-full py-2 sm:py-4 px-2 :px-16 mx-auto">
-        <div class="flex justify-around">
-          <div class="">
-            <%= image_tag "subttl1.jpg", alt: "", class: "rounded-full h-64 w-64" %>
-            <div class="flex justify-center pt-4 text-xl">1.魅せる！</div>
+    <div class="w-full py-2 sm:py-4 px-2 :px-16 mx-auto">
+      <p class="text-3xl lg:text-4xl font-bold text-center border-gray-300 border-b-2 pb-2"> Boditoreの3つの特長</p>
+        <div class="grid justify-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+          <div class="pt-4 pb-4">
+            <%= image_tag "subttl1.jpg", alt: "", class: "rounded-lg md:w-56" %>
+            <div class="flex justify-center pt-4 text-xl">①魅せる！</div>
             <p class="flex justify-center pt-4">自慢の筋トレを投稿しよう！</p>
           </div>
-          <div class="">
-            <%= image_tag "subttl2.jpg", alt: "", class: "rounded-full h-64 w-64" %>
-            <div class="flex justify-center pt-4 text-xl">2.調べる！</div>
+          <div class="pt-4 pb-4">
+            <%= image_tag "subttl2.jpg", alt: "", class: "rounded-lg md:w-56" %>
+            <div class="flex justify-center pt-4 text-xl">②調べる！</div>
             <p class="flex justify-center pt-4">リストから投稿を見てみよう！</p>
           </div>
-          <div class="">
-            <%= image_tag "subttl3.jpg", alt: "", class: "rounded-full h-64 w-64" %>
-            <div class="flex justify-center pt-4 text-xl">3.繋がる！</div>
+          <div class="pt-4 pb-4">
+            <%= image_tag "subttl3.jpg", alt: "", class: "rounded-lg md:w-56" %>
+            <div class="flex justify-center pt-4 text-xl">③繋がる！</div>
             <p class="flex justify-center pt-4">メッセージ機能を活用しよう！</p>
-          </div>
         </div>
+      </div>
     </div>
   </div>
 
