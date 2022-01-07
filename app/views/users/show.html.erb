@@ -102,56 +102,49 @@
     </div>
 
     <div class="col-span-2">
-    <div class="bg-white rounded-md shadow mt-4 mx-4">
-
-
-
-      <div class="tab-panel">
-        <!--タブ-->
-        <ul class="tab-group">
-          <li class="tab tab-A is-active rounded-tl-md">自分の投稿</li>
-          <li class="tab tab-B rounded-tr-md">お気に入り投稿</li>
-        </ul>
-        
-        <!--タブを切り替えて表示するコンテンツ-->
-        <div class="panel-group">
-
-          <div class="panel tab-A is-show">          
-          <% @posts.each do |post| %>
-          <div class="relative  p-4">
-            <div class="flex items-center">
-              <% if post.user.image.attached? %>
-                <%= image_tag post.user.image, class:"rounded-full h-16 w-16"%>
-              <% else %>
-                <%= image_tag "default.png", alt: "", class: "rounded-full h-16 w-16" %>
-              <% end %>
-              <div class="flex justify-center pl-2 ml-2 hover:underline">
-                <%= link_to post.user.name, user_path(post.user) %>
+      <div class="bg-white rounded-md shadow mt-4 mx-4">
+        <div class="tab-panel">
+          <ul class="tab-group">
+            <li class="tab tab-A is-active rounded-tl-md">自分の投稿</li>
+            <li class="tab tab-B rounded-tr-md">お気に入り投稿</li>
+          </ul>
+          <div class="panel-group">
+            <div class="panel tab-A is-show">
+            <% @posts.each do |post| %>
+              <div class="relative  p-4">
+                <div class="flex items-center">
+                  <% if post.user.image.attached? %>
+                    <%= image_tag post.user.image, class:"rounded-full h-16 w-16"%>
+                  <% else %>
+                    <%= image_tag "default.png", alt: "", class: "rounded-full h-16 w-16" %>
+                  <% end %>
+                  <div class="flex justify-center pl-2 ml-2 hover:underline">
+                    <%= link_to post.user.name, user_path(post.user) %>
+                  </div>
+                </div>
+                <div class="py-4 flex justify-center">
+                  <h3 class="px-4 pt-4 text-xl">
+                    <%= post.title %>
+                  </h3>
+                </div>
+                <p class="p-4 flex items-center">
+                  <%= post.content %>
+                </p>
+                <p class="p-4 flex items-center">
+                  #<%= post.tag %>
+                </p>
+                <% if post.eyecatch.attached? %>
+                  <%= image_tag post.eyecatch, class: "post__index__item__img" %>
+                <% else %>
+                  <%= image_tag "post-image.jpg", class: "post__index__item__img" %>
+                <% end %>
+                <div class="flex justify-center pt-2 pb-8">
+                <%=link_to "詳細を見る", post_path(post), class:'px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100' %>
+                </div>
+                <hr />
               </div>
-            </div>
-            <div class="py-4 flex justify-center">
-              <h3 class="px-4 pt-4 text-xl">
-                <%= post.title %>
-              </h3>
-            </div>
-            <p class="p-4 flex items-center">
-              <%= post.content %>
-            </p>
-            <p class="p-4 flex items-center">
-              #<%= post.tag %>
-            </p>
-            <% if post.eyecatch.attached? %>
-              <%= image_tag post.eyecatch, class: "post__index__item__img" %>
-            <% else %>
-              <%= image_tag "post-image.jpg", class: "post__index__item__img" %>
             <% end %>
-            <div class="flex justify-center pt-2 pb-8">
-            <%=link_to "詳細を見る", post_path(post), class:'px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100' %>
-            </div>
-            <hr />
           </div>
-          <% end %>
-        </div>
 
           <div class="panel tab-B">
           <% if @favorite_list.present? %>
