@@ -137,7 +137,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       expect(current_path).to eq edit_user_registration_path
 
       expect do
-        attach_file('user_image', 'spec/fixtures/testsample.jpg')
+        attach_file('image_upload', 'spec/fixtures/testsample.jpg')
         fill_in 'user_current_password', with: user.password
         click_button '更新'
       end.to change { User.find(user.id).image }

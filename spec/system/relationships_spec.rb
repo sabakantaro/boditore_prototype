@@ -26,7 +26,7 @@ RSpec.describe 'Relationships', type: :system do
 
     visit user_path(other_user)
 
-    find('.follow-button-delete').click
+    # find('.follow-button-delete').click
 
     expect do
       find('.follow-button-register').click
