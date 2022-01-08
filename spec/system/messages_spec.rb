@@ -24,7 +24,6 @@ RSpec.describe 'Messages', type: :system do
 
     expect do
       find('.message_form-text').set('筋トレするかしないかどっちなーんだい！')
-      # fill_in 'message_content', with: '筋トレするかしないかどっちなーんだい！'
 
       click_button '投稿'
     end.to change { Message.count }.by(1)
