@@ -49,8 +49,9 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-
     @post.update(post_params)
+
+    redirect_to @post
   end
 
   def destroy

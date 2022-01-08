@@ -86,7 +86,7 @@ body {
   display: block;
 }
 
-/*main-feature*/
+/*アチーブメント*/
 .color-gold {
   color: goldenrod;
 }
@@ -109,6 +109,7 @@ ul {
   list-style: none;
 }
 
+/* ヘッダー */
 #logo {
   float: left;
   margin-left: 30px;

@@ -106,7 +106,7 @@ RSpec.describe 'Posts', type: :system do
     expect(page).to have_field 'post_content', with: @post.content
 
     expect do
-      attach_file('post_image', 'spec/fixtures/testsample.jpg')
+      attach_file('image_upload', 'spec/fixtures/testsample.jpg')
 
       click_button '投稿'
 

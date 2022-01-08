@@ -13,7 +13,7 @@
       <div class="h-full w-120 md:mr-8 lg:mr-14 flex place-items-center space-x-reverse space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 xl:space-x-12">
           <% if user_signed_in? %>
             <div class="w-1/4 header_link type1">
-              <%= link_to  posts_path,data: {"turbolinks"=>false} do %>
+              <%= link_to  posts_path do %>
               <i class="fas fa-list fa-lg"></i>
               <% end %>
             </div>
