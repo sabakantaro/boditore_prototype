@@ -107,7 +107,8 @@ export default {
             this.post = {};
             this.uploadedImage = "";
             this.$refs.file.value = "";
-            resolve(res);
+            this.$router.push({ path: '/' });
+            // resolve(res);
           })
           .catch((e) => {
             console.log(e);

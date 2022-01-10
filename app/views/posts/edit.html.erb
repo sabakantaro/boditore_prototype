@@ -1,4 +1,6 @@
-  <% content_for(:body_attributes) do %>
+  <%
+=begin%>
+ <% content_for(:body_attributes) do %>
     data-turbolinks="false"
 　　<% end %>
 
@@ -27,4 +29,17 @@
       </div>
     <% end %>
   </div>
+</div> 
+<%
+=end%>
+
+  <% content_for(:body_attributes) do %>
+    data-turbolinks="false"
+　　<% end %>
+
+<div id="post">
+<contents_edit></contents_edit>
 </div>
+
+<%= javascript_pack_tag 'post' %>
+<%= stylesheet_pack_tag 'post' %>

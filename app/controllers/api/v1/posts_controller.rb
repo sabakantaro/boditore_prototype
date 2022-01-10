@@ -22,10 +22,29 @@ module Api
         end
       end
 
+      def edit; end
+
+      def update
+        post = Post.find(params[:id])
+        if post.update_attributes(post_params)
+          post.eyecatch = post_params[:image]
+          render json: post, methods: [:image_url]
+        else
+          render json: post.errors, status: 422
+        end
+      end
+
+      def show
+        post = Post.find_by(id: params[:id])
+        render json: post, methods: [:image_url]
+      end
+
+
+
       def destroy
         post = Post.find(params[:id])
         post.destroy!
-        render json: post
+        render json: post, methods: [:image_url]
       end
 
       private
