@@ -29,6 +29,8 @@ RSpec.describe 'ユーザー新規登録', type: :system do
 
       visit root_path
 
+      visit users_path
+
       click_link 'ログアウト'
 
       expect(current_path).to eq root_path
@@ -76,11 +78,6 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       end.to change(User, :count).by(1)
 
       expect(current_path).to eq root_path
-
-      # 登録内容が反映されているか
-      expect(page).to have_content user.name
-
-      expect(page).to have_content 'ログアウト'
     end
 
     it '編集する' do
@@ -95,6 +92,8 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'user_password', with: user.password
 
       click_button 'ログイン'
+
+      visit users_path
       # プロフィール編集
       click_link 'プロフィール編集'
 
@@ -131,6 +130,8 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'user_password', with: user.password
 
       click_button 'ログイン'
+
+      visit users_path
       # プロフィール編集
       click_link 'プロフィール編集'
 
