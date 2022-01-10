@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Home', type: :system do
+RSpec.describe 'Users_list', type: :system do
   describe '一覧表示する' do
     # csrf_meta_tagsを有効にする
     before { ActionController::Base.allow_forgery_protection = true }
@@ -15,11 +15,23 @@ RSpec.describe 'Home', type: :system do
 
       sign_in user
 
-      visit root_path
+      visit users_path
 
       expect(page).to have_content user.name
 
       expect(page).to have_content other_user.name
+    end
+
+    it 'ユーザー詳細画面を開く' do
+      user = create(:user)
+
+      sign_in user
+
+      visit users_path
+
+      click_on 'プロフィール詳細'
+
+      expect(current_path).to eq user_path(user)
     end
 
     it 'ユーザー編集画面を開く' do
@@ -27,7 +39,7 @@ RSpec.describe 'Home', type: :system do
 
       sign_in user
 
-      visit root_path
+      visit users_path
 
       click_on 'プロフィール編集'
 
@@ -39,7 +51,7 @@ RSpec.describe 'Home', type: :system do
 
       sign_in user
 
-      visit root_path
+      visit users_path
 
       click_link 'ログアウト'
 
@@ -53,7 +65,7 @@ RSpec.describe 'Home', type: :system do
 
       sign_in user
 
-      visit root_path
+      visit users_path
 
       find('.users-show').click
 
@@ -67,7 +79,7 @@ RSpec.describe 'Home', type: :system do
 
       sign_in user
 
-      visit root_path
+      visit users_path
 
       find('.user-search').set(5)
 
