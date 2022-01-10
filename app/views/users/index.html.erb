@@ -1,0 +1,114 @@
+<div class="container mx-auto lg:px-8 xl:px-36">
+  <div class="lg:grid grid-cols-3 pt-4">
+
+    <div class="col-span-2 bg-white rounded-md shadow m-4">
+
+      <div class="p-4 flex items-center">
+          <b class="ml-2">トレーニング年数で検索</b>
+      </div>
+      <div class="search">
+        <%= form_with url: search_users_path, method: :get, local: true  do |f| %>
+          <div class="flex justify-around">
+              <div class="placeholder-gray-800 border">
+                <%= f.number_field(:experience, :placeholder => "年数", class:"user-search", min: 0, max: 100) %>
+              </div>
+            </div>
+            <div class='flex justify-center py-4'>
+              <%= f.submit "検索", class:"cursor-pointer px-3 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700" %>
+            </div>
+        <% end %>
+      </div>
+
+      <div id="user">
+        <contents></contents>
+      </div>
+    </div>
+
+    <div class="col-span-1">
+      <div class="bg-white rounded-md m-4 shadow">
+        
+          <div class="p-4 rounded-md">
+            <div class="flex items-center mb-6">
+              <h3 class="ml-2">ログインユーザー</h3>
+            </div>
+            <div class="flex justify-center">
+              <% if current_user.image.attached? %>
+                <%= image_tag current_user.image, class: "rounded-full h-32 w-32" %>
+              <% else %>
+                <%= image_tag "default.png", class: "rounded-full h-32 w-32" %>
+              <% end %>
+            </div>
+            <div class="flex justify-center pt-2">
+                <p class="text-xl"><%= current_user.name %></p>
+            </div>
+            <div class="flex justify-center pb-4 pt-2">
+            <%= link_to "プロフィール詳細", current_user, class:"px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100" %>
+            </div>
+            <div class="flex justify-center pb-4">
+              <%= link_to "プロフィール編集", edit_user_registration_path, class:'px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100',data: {"turbolinks"=>false}  %>
+            </div>
+            <div class="flex justify-center pb-4">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:'px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100' %>
+            </div>
+          </div>
+      </div>
+
+            <div class="bg-white rounded-md m-4 shadow">
+
+      <div class="flex justify-center text-xl p-4">
+        フォロワー数ランキング
+      </div>
+
+      <% @month_user_relationship_ranks.each.with_index(1) do |user, i| %>
+      <%= link_to user , data: {"turbolinks" => false} do %>
+
+      <% if i == 1 %>
+        <div class="relative bg-yellow-300 hover:bg-yellow-100 active:bg-yellow-200">
+        <div class="p-4 flex items-center">
+            <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+        </div>
+      <% elsif i == 2 %>
+        <div class="relative bg-gray-400 hover:bg-gray-200 active:bg-gray-300">
+        <div class="p-4 flex items-center">
+            <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+        </div>
+      <% elsif i == 3 %>
+        <div class="relative bg-yellow-600 hover:bg-yellow-500 active:bg-yellow-600">
+        <div class="p-4 flex items-center">
+            <p class=""><i class="fas fa-crown"></i>第<%= i %>位</p>
+        </div>
+      <% else %>
+        <div class="relative bg-white hover:bg-gray-100 active:bg-gray-200">
+        <div class="p-4 flex items-center">
+            <p class="">第<%= i %>位</p>
+        </div>
+      <% end %>
+      
+          <div class="flex display-start items-center px-4 pt-2 pb-4">
+            <% if user.image.attached? %>
+              <%= image_tag user.image, class: "rounded-full h-12 w-12 flex justify-center" %>
+            <% else %>
+              <%= image_tag "default.png", class: "rounded-full h-12 w-12 flex justify-center" %>
+            <% end %>
+            <div class="pl-2 flex justify-center">
+                <p class="text-2xl"><%= user.name %></p>
+            </div>
+          </div>
+
+          <div class="px-4 pt-4 text-sm pb-4">
+            <i class="fas fa-fist-raised"></i>
+            トレーニング歴：<%= user.experience %>年
+          </div>
+      </div>
+      <% end %>
+      <% end %>
+
+    </div>
+
+    </div>
+
+  </div>
+</div>
+
+<%= javascript_pack_tag 'user' %>
+<%= stylesheet_pack_tag 'user' %>
