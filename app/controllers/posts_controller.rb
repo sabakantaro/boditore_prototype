@@ -30,35 +30,35 @@ class PostsController < ApplicationController
     @post = current_user.posts.build
   end
 
-  def create
-    @post = Post.new(post_params)
-    @post = current_user.posts.build(post_params)
-    @post.user_id = current_user.id
-    if @post.save
-      @post.eyecatch = post_params[:image]
-      redirect_to @post, notice: '投稿されました'
-    else
-      flash.now[:alert] = '入力してください'
-      render :new
-    end
-  end
+  # def create
+  #   @post = Post.new(post_params)
+  #   @post = current_user.posts.build(post_params)
+  #   @post.user_id = current_user.id
+  #   if @post.save
+  #     @post.eyecatch = post_params[:image]
+  #     redirect_to @post, notice: '投稿されました'
+  #   else
+  #     flash.now[:alert] = '入力してください'
+  #     render :new
+  #   end
+  # end
 
-  def edit
-    @post = Post.find(params[:id])
-  end
+  # def edit
+  #   @post = Post.find(params[:id])
+  # end
 
-  def update
-    @post = Post.find(params[:id])
-    @post.update(post_params)
+  # def update
+  #   @post = Post.find(params[:id])
+  #   @post.update(post_params)
 
-    redirect_to @post
-  end
+  #   redirect_to @post
+  # end
 
-  def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
-  end
+  # def destroy
+  #   @post = Post.find(params[:id])
+  #   @post.destroy
+  #   redirect_to posts_path
+  # end
 
   private
 
