@@ -27,7 +27,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
     it 'ログアウトする' do
       sign_in user
 
-      visit root_path
+      visit users_path
 
       visit users_path
 

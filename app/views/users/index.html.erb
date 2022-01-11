@@ -1,26 +1,51 @@
 <div class="container mx-auto lg:px-8 xl:px-36">
   <div class="lg:grid grid-cols-3 pt-4">
-
     <div class="col-span-2 bg-white rounded-md shadow m-4">
-
       <div class="p-4 flex items-center">
-          <b class="ml-2">トレーニング年数で検索</b>
+        <b class="ml-2">トレーニング年数で検索</b>
       </div>
       <div class="search">
         <%= form_with url: search_users_path, method: :get, local: true  do |f| %>
           <div class="flex justify-around">
-              <div class="placeholder-gray-800 border">
-                <%= f.number_field(:experience, :placeholder => "年数", class:"user-search", min: 0, max: 100) %>
-              </div>
+            <div class="placeholder-gray-800 border">
+              <%= f.number_field(:experience, :placeholder => "年数", class:"user-search", min: 0, max: 100) %>
             </div>
-            <div class='flex justify-center py-4'>
-              <%= f.submit "検索", class:"cursor-pointer px-3 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700" %>
-            </div>
+          </div>
+          <div class='flex justify-center py-4'>
+            <%= f.submit "検索", class:"cursor-pointer px-3 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700" %>
+          </div>
         <% end %>
       </div>
 
-      <div id="user">
-        <contents></contents>
+      <% @users.each do |user| %>
+        <div class="relative hover:bg-gray-100 active:bg-gray-200">
+        <%= link_to user, class:"users-show" do %>
+          <div class="flex items-center pl-4 pt-4">
+            <% if user.image.attached? %>
+              <%= image_tag user.image, class:"rounded-full h-16 w-16"%>
+            <% else %>
+              <%= image_tag "default.png", class:"rounded-full h-16 w-16"%>
+            <% end %>
+            <div class="flex justify-center pl-2 ml-2 hover:underline">
+              <%= user.name %>
+            </div>
+          </div>
+          <h3 class="px-4 pt-4 text-xl">
+            <i class="fas fa-fist-raised"></i>
+            トレーニング歴：<%= user.experience %>年
+          </h3>
+          <h3 class="px-4 pt-4 text-xl">
+            <i class="fas fa-id-card"></i>
+            プロフィール：
+          </h3>
+          <p class="p-4 flex items-center">
+            <%= user.profile %>
+          </p> 
+        <% end %>
+        </div>
+      <% end %>
+      <div class="py-4 flex justify-center">
+        <%= paginate @users %>
       </div>
     </div>
 
@@ -109,6 +134,3 @@
 
   </div>
 </div>
-
-<%= javascript_pack_tag 'user' %>
-<%= stylesheet_pack_tag 'user' %>
