@@ -37,7 +37,18 @@
           class="bg-white shadow appearance-none border rounded w-11/12 md:w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-b-2 focus:border-blue-400 block mx-auto"
         ></v-select>
         <br />
-
+        <label class="form-text pb-4">画像</label><br />
+        <input
+          name="uploadedImage"
+          type="file"
+          ref="preview"
+          v-on:change="onFileChange()"
+          id="image_upload"
+        />
+        <div v-if="url" class="py-4 flex justify-center">
+          <img :src="url" class="w-full" />
+        </div>
+        <br />
         <div class="py-4 flex justify-center">
           <div
             class="btn cursor-pointer px-3 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700"
@@ -60,8 +71,10 @@ export default {
   components: { "v-select": vSelect },
   data() {
     return {
+      url: "",
       id: this.$route.params.id,
       options: ["筋トレ", "食事", "その他"],
+      uploadedImage: "",
       post: {
         title: "",
         content: "",
@@ -73,6 +86,17 @@ export default {
     this.setpostEdit(this.id);
   },
   methods: {
+    onFileChange() {
+      let file = event.target.files[0] || event.dataTransfer.files;
+      let reader = new FileReader();
+      reader.onload = () => {
+        const file = this.$refs.preview.files[0];
+        this.url = URL.createObjectURL(file);
+        this.uploadedImage = event.target.result;
+        this.post.image = this.uploadedImage;
+      };
+      reader.readAsDataURL(file);
+    },
     setpostEdit(id) {
       axios.get(`api/v1/posts/${id}`).then((res) => {
         this.post.id = res.data.id;

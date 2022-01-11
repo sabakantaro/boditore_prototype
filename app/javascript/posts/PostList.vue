@@ -9,7 +9,7 @@
         ></router-link>
       </button>
     </div>
-    <div class="">
+    <div>
       <div
         class="relative hover:bg-gray-100 active:bg-gray-200"
         v-for="post in posts"
@@ -36,7 +36,7 @@
             <hr />
           </div>
         </a>
-        <div class="p-4 flex justify-between">
+        <div class="p-4 flex justify-center">
           <div
             class="cursor-pointer px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-300"
           >
@@ -44,7 +44,8 @@
               >編集する</router-link
             >
           </div>
-
+        </div>
+        <div class="p-4 flex justify-center">
           <div
             class="cursor-pointer px-3 py-2 text-red-500 border border-red-500 font-semibold rounded hover:bg-red-100"
             v-on:click="deletePost(post.id)"

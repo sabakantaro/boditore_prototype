@@ -42,11 +42,13 @@
           <input
             name="uploadedImage"
             type="file"
-            ref="file"
+            ref="preview"
             v-on:change="onFileChange()"
             id="image_upload"
           />
-          <div id="preview_area" class="w-full my-5"></div>
+          <div v-if="url" class="py-4 flex justify-center">
+            <img :src="url" class="w-full" />
+          </div>
           <br />
           <div class="py-4 flex justify-center">
             <input
@@ -76,11 +78,10 @@ export default {
   components: { "v-select": vSelect },
   data() {
     return {
+      url: "",
       dialog: false,
       post: {},
       uploadedImage: "",
-      // tag: "",
-      // postTag: "",
       options: ["筋トレ", "食事", "その他"],
     };
   },
@@ -89,6 +90,8 @@ export default {
       let file = event.target.files[0] || event.dataTransfer.files;
       let reader = new FileReader();
       reader.onload = () => {
+        const file = this.$refs.preview.files[0];
+        this.url = URL.createObjectURL(file);
         this.uploadedImage = event.target.result;
         this.post.image = this.uploadedImage;
       };
@@ -104,11 +107,7 @@ export default {
           method: "POST",
         })
           .then((res) => {
-            this.post = {};
-            this.uploadedImage = "";
-            this.$refs.file.value = "";
-            this.$router.push({ path: '/' });
-            // resolve(res);
+            this.$router.push({ path: "/" });
           })
           .catch((e) => {
             console.log(e);

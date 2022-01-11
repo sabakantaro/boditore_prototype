@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  if (
-    document.URL.match("posts/:id/edit$") ||
-    document.URL.match("posts$") ||
-    document.URL.match("users/edit$")
-  ) {
+  if (document.URL.match("users/edit$")) {
     document
       .getElementById("image_upload")
       .addEventListener("change", function (e) {
