@@ -32,7 +32,7 @@ RSpec.describe 'Notifications', type: :system do
 
     expect(current_path).to eq user_path(other_user)
     # ログアウト
-    visit root_path
+    visit users_path
 
     click_link 'ログアウト'
     # other_userでログイン
@@ -78,7 +78,7 @@ RSpec.describe 'Notifications', type: :system do
 
     expect(current_path).to eq user_path(other_user)
     # ログアウト
-    visit root_path
+    visit users_path
 
     click_link 'ログアウト'
     # other_userでログイン
