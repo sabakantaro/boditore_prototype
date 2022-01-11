@@ -39,8 +39,6 @@ module Api
         render json: post, methods: [:image_url]
       end
 
-
-
       def destroy
         post = Post.find(params[:id])
         post.destroy!
