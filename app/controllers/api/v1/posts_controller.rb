@@ -3,6 +3,7 @@
 module Api
   module V1
     class PostsController < ApplicationController
+      # before_action :authenticate_user, only: [:edit, :destroy, :update]
       skip_before_action :verify_authenticity_token
 
       def index
@@ -46,6 +47,11 @@ module Api
       end
 
       private
+      # def authenticate_user
+      #   unless Post.find(params[:id]).user.id.to_i == current_user.id
+      #       redirect_to root_path, alert: '自分以外の投稿を編集・削除できません。'
+      #   end
+      # end
 
       def post_params
         params.require(:post).permit(:title, :content, :image, :tag).merge(user_id: current_user.id)

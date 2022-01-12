@@ -113,6 +113,7 @@ export default {
         },
         (error) => {
           console.log(error);
+          this.$router.push({ path: "/" });
         }
       );
     },
