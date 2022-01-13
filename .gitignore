@@ -32,6 +32,7 @@
 .ssh/*
 .vscode/*
 .DS_Store
+storage/*
 
 /public/packs
 /public/packs-test
