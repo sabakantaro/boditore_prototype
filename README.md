@@ -1,6 +1,6 @@
 # <a href="https://www.boditore.com">Boditore</a>
 
-![Boditore_紹介画像](https://user-images.githubusercontent.com/79243411/139571787-ddd37840-d3db-457a-aed5-f4508530edf6.gif)
+![Boditoreアプリ紹介画像](https://user-images.githubusercontent.com/79243411/149255214-c823543c-7f07-4ebf-bec4-30e331928b74.gif)
 
 ## アプリの概要
 
