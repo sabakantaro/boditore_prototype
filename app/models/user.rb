@@ -27,7 +27,6 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
-  # ゲストユーザー
   def self.guest
     find_or_create_by!(email: 'aaa@aaa.com') do |user|
       user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
