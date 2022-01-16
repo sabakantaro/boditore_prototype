@@ -36,23 +36,6 @@
             <hr />
           </div>
         </a>
-        <div class="p-4 flex justify-center">
-          <div
-            class="cursor-pointer px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-300"
-          >
-            <router-link :to="{ path: `/edit/${post.id}` }"
-              >編集する</router-link
-            >
-          </div>
-        </div>
-        <div class="p-4 flex justify-center">
-          <div
-            class="cursor-pointer px-3 py-2 text-red-500 border border-red-500 font-semibold rounded hover:bg-red-100"
-            v-on:click="deletePost(post.id)"
-          >
-            削除する
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -67,7 +50,6 @@ export default {
     return {
       id: this.$route.params.id,
       posts: "posts",
-      current_user: "current_user",
     };
   },
   mounted() {
@@ -79,12 +61,12 @@ export default {
         .get("/api/v1/posts")
         .then((response) => (this.posts = response.data));
     },
-    deletePost(id) {
-      axios.delete(`/api/v1/posts/${id}`).then((res) => {
-        this.posts = [];
-        this.setPost();
-      });
-    },
+    // deletePost(id) {
+    //   axios.delete(`/api/v1/posts/${id}`).then((res) => {
+    //     this.posts = [];
+    //     this.setPost();
+    //   });
+    // },
   },
 };
 </script>

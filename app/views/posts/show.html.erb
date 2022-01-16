@@ -30,6 +30,14 @@
         </div>
         <hr>
       </div>
+      <% if user_signed_in? && @post.user_id == current_user.id %>
+        <div class="py-4 flex justify-center">
+          <%= link_to "編集する", edit_post_path(@post), class:"cursor-pointer px-3 py-2 text-gray-500 border border-gray-500 font-semibold rounded hover:bg-gray-100",data: {"turbolinks"=>false} %>
+        </div>
+        <div class="py-4 flex justify-center">
+          <%= link_to "削除する", post_path(@post), method: :delete, class:"cursor-pointer px-3 py-2 text-red-500 border border-red-500 font-semibold rounded hover:bg-red-100" %>
+        </div>
+        <% end %>
     </div>
 
     <div class="col-span-1">

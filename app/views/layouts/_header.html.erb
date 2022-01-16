@@ -62,33 +62,38 @@
         <div id='menu-list' class='absolute top-14 right-0 hidden z-40'>
           <ul class='bg-white border-2 border-gray-700 divide-y-2 divide-gray-700 '>
           <% if user_signed_in? %>
-            <li class='menu_item h-full w-32 flex place-items-center justify-center'>
+            <li class='menu_item h-full w-36 flex place-items-center justify-center'>
+              <%= link_to  users_path do %>
+              <i class="fas fa-users fa-lg"></i>ユーザーリスト
+              <% end %>
+            </li>
+            <li class='menu_item h-full w-36 flex place-items-center justify-center'>
               <%= link_to  posts_path do %>
               <i class="fas fa-list fa-lg"></i>投稿リスト
               <% end %>
             </li>
-            <li class='menu_item h-full w-32 flex place-items-center justify-center'>
+            <li class='menu_item h-full w-36 flex place-items-center justify-center'>
               <%= link_to  notifications_path do %>
               <i class="fas fa-bell fa-lg"></i>おしらせ
               <% end %>
             </li>
-            <li class='menu_item h-full w-32 flex place-items-center justify-center'>
+            <li class='menu_item h-full w-36 flex place-items-center justify-center'>
               <%= link_to  current_user do %>
               <i class="far fa-user-circle fa-lg"></i>プロフィール
               <% end %>
             </li>
           <% else%>
-            <li class='menu_item h-full w-32 flex place-items-center justify-center'>
+            <li class='menu_item h-full w-36 flex place-items-center justify-center'>
               <%= link_to  new_user_registration_path do %>
               <span class="text-base truncate">新規登録</span>
               <% end %>
             </li>
-            <li class='menu_item h-full w-32 flex place-items-center justify-center'>
+            <li class='menu_item h-full w-36 flex place-items-center justify-center'>
               <%= link_to  new_user_session_path do %>
               <span class="text-base truncate">ログイン</span>
               <% end %>
             </li>
-            <li class='menu_item h-full w-32 flex place-items-center justify-center'>
+            <li class='menu_item h-full w-36 flex place-items-center justify-center'>
               <%= link_to  users_guest_sign_in_path, method: :post do %>
               <span class="text-base truncate">ゲストログイン</span>
               <% end %>

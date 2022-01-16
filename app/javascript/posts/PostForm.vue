@@ -4,6 +4,9 @@
       class="m-4 p-4 h-auto divide-y divide-gray-400 bg-white rounded-md shadow"
     >
       <div class="">
+        <p class="text-xs text-red-500 mb-2">
+          {{ Validation.postValidate }}
+        </p>
         <form v-on:submit.prevent="postItem()">
           <label class="form-text pb-4">タイトル</label><br />
           <textarea
@@ -83,6 +86,9 @@ export default {
       post: {},
       uploadedImage: "",
       options: ["筋トレ", "食事", "その他"],
+      Validation: {
+        postValidate: "",
+      },
     };
   },
   methods: {
@@ -98,21 +104,33 @@ export default {
       reader.readAsDataURL(file);
     },
     postItem() {
-      return new Promise((resolve, _) => {
-        axios({
-          url: "api/v1/posts",
-          data: {
-            post: this.post,
-          },
-          method: "POST",
-        })
-          .then((res) => {
-            this.$router.push({ path: "/" });
+      var PostValidate = false;
+      if (!this.post.title) {
+        this.Validation.postValidate = "タイトルを入力してください";
+      } else if (!this.post.content) {
+        this.Validation.postValidate = "投稿内容を入力してください";
+      } else if (!this.post.tag) {
+        this.Validation.postValidate = "タグを選択してください";
+      } else {
+        PostValidate = true;
+      }
+      if (PostValidate == true) {
+        return new Promise((resolve, _) => {
+          axios({
+            url: "api/v1/posts",
+            data: {
+              post: this.post,
+            },
+            method: "POST",
           })
-          .catch((e) => {
-            console.log(e);
-          });
-      });
+            .then((res) => {
+              this.$router.push({ path: "/" });
+            })
+            .catch((e) => {
+              console.log(e);
+            });
+        });
+      }
     },
   },
 };

@@ -1,7 +1,7 @@
 $cWhite: white;
 $cBlack: black;
 
-/*main*/
+/*共通*/
 
 body {
   box-shadow: none !important;
@@ -10,7 +10,33 @@ body {
   margin: auto;
 }
 
-/*main-slider*/
+.gnav li {
+  list-style: none;
+}
+
+.gnav li a {
+  background: $cBlack;
+  text-decoration: none;
+}
+
+/*子階層以降共通*/
+
+.gnav li li {
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.gnav li li a {
+  border-top: 0px solid #eee;
+}
+
+.gnav li:hover > ul > li {
+  height: 1.8rem;
+  overflow: visible;
+}
+
+/*スライド*/
 
 .sliderArea {
   max-width: 100%;
@@ -141,34 +167,6 @@ ul {
   display: flex;
   height: 2rem;
   padding: 0px;
-}
-
-// /*全てのリスト・リンク共通*/
-
-.gnav li {
-  list-style: none;
-}
-
-.gnav li a {
-  background: $cBlack;
-  text-decoration: none;
-}
-
-/*子階層以降共通*/
-
-.gnav li li {
-  height: 0;
-  overflow: hidden;
-  transition: 0.5s;
-}
-
-.gnav li li a {
-  border-top: 0px solid #eee;
-}
-
-.gnav li:hover > ul > li {
-  height: 1.8rem;
-  overflow: visible;
 }
 
 /* DM */

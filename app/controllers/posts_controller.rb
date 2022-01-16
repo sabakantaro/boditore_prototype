@@ -43,26 +43,26 @@ class PostsController < ApplicationController
   #   end
   # end
 
-  # def edit
-  #   @post = Post.find(params[:id])
-  # end
+  def edit
+    @post = Post.find(params[:id])
+  end
 
-  # def update
-  #   @post = Post.find(params[:id])
-  #   @post.update(post_params)
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
 
-  #   redirect_to @post
-  # end
+    redirect_to @post
+  end
 
-  # def destroy
-  #   @post = Post.find(params[:id])
-  #   @post.destroy
-  #   redirect_to posts_path
-  # end
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
+  end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :image, :tag).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :content, :image, :tag, :eyecatch).merge(user_id: current_user.id)
   end
 end

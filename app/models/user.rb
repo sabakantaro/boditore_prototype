@@ -22,11 +22,11 @@ class User < ApplicationRecord
   has_many :comments
   has_one_attached :image
   validates_inclusion_of :experience, in: 0..100, message: 'は0~100年で入力してください'
+  validate :image_type, :image_size
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
-  # ゲストユーザー
   def self.guest
     find_or_create_by!(email: 'aaa@aaa.com') do |user|
       user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
@@ -61,3 +61,22 @@ class User < ApplicationRecord
     Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true) if image.attached?
   end
 end
+
+private
+  def image_type
+    if image.attached? 
+      if !image.blob.content_type.in?(%('image/jpeg image/png image/jpg'))
+        image.purge
+        errors.add(:images, 'はjpegまたはpng形式でアップロードしてください')
+      end
+    end
+  end
+
+  def image_size
+    if image.attached? 
+      if image.blob.byte_size > 5.megabytes
+        image.purge
+        errors.add(:images, "は1つのファイル5MB以内にしてください")
+      end
+    end
+  end
