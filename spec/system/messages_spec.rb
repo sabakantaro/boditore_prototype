@@ -26,6 +26,11 @@ RSpec.describe 'Messages', type: :system do
       find('.message_form-text').set('筋トレするかしないかどっちなーんだい！')
 
       click_button '投稿'
+      
+      visit user_path(other_user)
+
+      find('.message').click
+
     end.to change { Message.count }.by(1)
   end
 end
