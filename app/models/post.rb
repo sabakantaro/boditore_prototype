@@ -12,14 +12,14 @@ class Post < ApplicationRecord
   has_one_attached :eyecatch
   attr_accessor :image
 
-  validates :title,
-            presence: { message: 'を入力してください' },
-            length: { maximum: 20, message: 'は20文字以内で入力してください' }
-  validates :content,
-            presence: { message: 'を入力してください' },
-            length: { maximum: 500, message: 'は500文字以内で入力してください' }
-  validates :tag,
-            presence: { message: 'を入力してください' }
+  # validates :title,
+  #           presence: { message: 'を入力してください' },
+  #           length: { maximum: 20, message: 'は20文字以内で入力してください' }
+  # validates :content,
+  #           presence: { message: 'を入力してください' },
+  #           length: { maximum: 500, message: 'は500文字以内で入力してください' }
+  # validates :tag,
+  #           presence: { message: 'を入力してください' }
 
   def user
     User.find_by(id: user_id)

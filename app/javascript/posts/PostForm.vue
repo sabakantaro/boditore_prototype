@@ -4,7 +4,7 @@
       class="m-4 p-4 h-auto divide-y divide-gray-400 bg-white rounded-md shadow"
     >
       <div class="">
-        <p class="error">
+        <p class="text-xs text-red-500 mb-2">
           {{ Validation.postValidate }}
         </p>
         <form v-on:submit.prevent="postItem()">
@@ -59,7 +59,6 @@
               value="投稿"
               class="cursor-pointer px-3 py-2 bg-gray-500 text-white font-semibold rounded hover:bg-gray-700"
               @click="dialog = false"
-              v-on:click="checkFrom"
             />
           </div>
         </form>
@@ -93,17 +92,6 @@ export default {
     };
   },
   methods: {
-    checkFrom: function () {
-      if (!this.post.title) {
-        this.Validation.postValidate = "タイトルを入力してください";
-      }
-      if (!this.post.content) {
-        this.Validation.postValidate = "投稿内容を入力してください";
-      }
-      if (!this.post.tag) {
-        this.Validation.postValidate = "タグを選択してください";
-      }
-    },
     onFileChange() {
       let file = event.target.files[0] || event.dataTransfer.files;
       let reader = new FileReader();
@@ -116,21 +104,33 @@ export default {
       reader.readAsDataURL(file);
     },
     postItem() {
-      return new Promise((resolve, _) => {
-        axios({
-          url: "api/v1/posts",
-          data: {
-            post: this.post,
-          },
-          method: "POST",
-        })
-          .then((res) => {
-            this.$router.push({ path: "/" });
+      var PostValidate = false;
+      if (!this.post.title) {
+        this.Validation.postValidate = "タイトルを入力してください";
+      } else if (!this.post.content) {
+        this.Validation.postValidate = "投稿内容を入力してください";
+      } else if (!this.post.tag) {
+        this.Validation.postValidate = "タグを選択してください";
+      } else {
+        PostValidate = true;
+      }
+      if (PostValidate == true) {
+        return new Promise((resolve, _) => {
+          axios({
+            url: "api/v1/posts",
+            data: {
+              post: this.post,
+            },
+            method: "POST",
           })
-          .catch((e) => {
-            console.log(e);
-          });
-      });
+            .then((res) => {
+              this.$router.push({ path: "/" });
+            })
+            .catch((e) => {
+              console.log(e);
+            });
+        });
+      }
     },
   },
 };
