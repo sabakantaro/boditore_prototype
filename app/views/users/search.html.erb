@@ -5,7 +5,7 @@
     </div>
     <%= form_with url: search_users_path, method: :get, local: true do |f| %>
       <div class="flex justify-around">
-        <div class="placeholder-gray-800 border">
+        <div class="placeholder-gray-300 border">
         <%= f.number_field :experience, :placeholder => "年数", min: 0, max: 100 %>
         </div>
       </div>

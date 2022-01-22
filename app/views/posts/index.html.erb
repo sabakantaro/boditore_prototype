@@ -8,7 +8,7 @@
           <div class="search">
             <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
               <div class="flex justify-around">
-                <div class="placeholder-gray-800 border">
+                <div class="placeholder-gray-300 border">
                   <%= f.text_field :title, class:"post-search", :placeholder => "検索キーワード" %>
                 </div>
               </div>
@@ -69,8 +69,10 @@
                 </div>
 
             </div>
+            <hr>
             <% end %>
             <% end %>
+            
 
           </div>
 

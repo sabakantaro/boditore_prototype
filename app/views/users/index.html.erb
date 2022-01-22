@@ -8,7 +8,7 @@
         <div class="search">
           <%= form_with url: search_users_path, method: :get, local: true  do |f| %>
             <div class="flex justify-around">
-              <div class="placeholder-gray-800 border">
+              <div class="placeholder-gray-300 border">
                 <%= f.number_field(:experience, :placeholder => "年数", class:"user-search", min: 0, max: 100) %>
               </div>
             </div>
@@ -17,6 +17,7 @@
             </div>
           <% end %>
         </div>
+        <hr>
 
         <% @users.each do |user| %>
           <div class="relative hover:bg-gray-100 active:bg-gray-200">
@@ -44,6 +45,7 @@
             </p> 
           <% end %>
           </div>
+          <hr>
         <% end %>
       </div>
       <div class="py-4 flex justify-center">
@@ -127,6 +129,7 @@
             トレーニング歴：<%= user.experience %>年
           </div>
       </div>
+      <hr>
       <% end %>
       <% end %>
 
