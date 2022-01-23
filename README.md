@@ -45,7 +45,7 @@
 github でプルリクを活用し、機能実装の細分化をしました。<br>
 ・アプリの部分 SPA 化<br>
 Vue.js を使用して投稿機能を部分 SPA 化をしました。<br>
-・ECS への自動デプロイ<br>
+・EC2 への自動デプロイ<br>
 capistorano を用いて自動デプロイを実装しました。<br>
 
 ## こだわったポイント
@@ -122,7 +122,7 @@ capistorano を用いて自動デプロイを実装しました。<br>
 
 ## インフラ構成
 
-![Boditore_prototype_AWS構成図](https://user-images.githubusercontent.com/79243411/145733333-e91a617c-8a7f-4e7f-8f57-69e04acf2d1f.png)
+![AWS Networking (updated)](https://user-images.githubusercontent.com/79243411/150700053-29ffc96d-c9a7-49e5-a8ef-5be33d0d0f64.png)
 
 ## ER 図
 
