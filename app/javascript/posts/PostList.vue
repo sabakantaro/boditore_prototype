@@ -9,6 +9,7 @@
         ></router-link>
       </button>
     </div>
+    <hr />
     <div>
       <div
         class="relative hover:bg-gray-100 active:bg-gray-200"

@@ -32,7 +32,9 @@
 .ssh/*
 .vscode/*
 .DS_Store
+storage/*
 
+/public/assets
 /public/packs
 /public/packs-test
 /node_modules

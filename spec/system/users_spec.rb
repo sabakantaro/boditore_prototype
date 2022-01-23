@@ -29,6 +29,8 @@ RSpec.describe 'ユーザー新規登録', type: :system do
 
       visit users_path
 
+      visit users_path
+
       click_link 'ログアウト'
 
       expect(current_path).to eq root_path
