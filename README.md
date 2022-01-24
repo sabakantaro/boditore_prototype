@@ -32,7 +32,8 @@
 ・CircleCI<br>
 ・Unicorn<br>
 ・Nginx<br>
-・AWS(VPC、ACM、Route53、EC2、RDS、S3、IAM)<br>
+・AWS(VPC、ACM、Route53、EC2、ELB、RDS、S3、IAM)<br>
+・Terraform<br>
 
 ### テスト、静的コード解析
 
@@ -132,6 +133,5 @@ capistorano を用いて自動デプロイを実装しました。<br>
 
 ・Vue.js によるアプリの完全 SPA 化<br>
 ・SPA 実装画面のページネーション導入<br>
-・Terraform によるインフラのコード管理<br>
 
 #### 最後までお読みいただき、ありがとうございました。

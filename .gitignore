@@ -41,3 +41,13 @@ storage/*
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+#  Local .terraform directories
+.terraform/
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
