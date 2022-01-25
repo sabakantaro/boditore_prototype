@@ -32,7 +32,7 @@
 ・CircleCI<br>
 ・Unicorn<br>
 ・Nginx<br>
-・AWS(VPC、ACM、Route53、EC2、ELB、RDS、S3、IAM)<br>
+・AWS(VPC、ACM、Route53、EC2、RDS、S3、IAM)<br>
 ・Terraform<br>
 
 ### テスト、静的コード解析
